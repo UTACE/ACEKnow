@@ -1,7 +1,23 @@
 from django.views.generic import View
 from django.conf import settings
 from django.http import HttpResponse
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+
 import os
+
+class GetDebugInfoAPIView(APIView):
+    def get(self, request):
+        user = request.user.username
+        print(user)
+        return Response(
+            data={
+                "debug": settings.DEBUG
+            },
+            status=status.HTTP_200_OK
+        )
 
 
 # Create your views here.

@@ -20,5 +20,6 @@ from backend.views import FrontendAppView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include('backend.urls')),
     url(r'', FrontendAppView.as_view())
 ]
