@@ -1,5 +1,7 @@
 # Summary
 ## Project Name - (temporary) ACEKnow
+[![](https://github.com/UTACE/ACEKnow/actions/workflows/codeql-analysis.yml/badge.svg)]() 
+[![](https://github.com/UTACE/ACEKnow/actions/workflows/linux_build.yml/badge.svg)]()
 
 ## Project Scope
 The goal of this project is to provide an easy access point for all new/return students where they can find useful information. The project is in the form of a web app.
