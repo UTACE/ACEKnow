@@ -10,8 +10,6 @@ import os
 
 class GetDebugInfoAPIView(APIView):
     def get(self, request):
-        user = request.user.username
-        print(user)
         return Response(
             data={
                 "debug": settings.DEBUG
