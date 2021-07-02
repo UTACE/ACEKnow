@@ -47,7 +47,11 @@ Note: ```.``` means the path to the folder ```aceknow```
 
    Run the following command under “./”
    ```
-   python manage.py collectstatics
+   python manage.py collectstatic
+   ```
+   Note that if you encounter syntax error, try the following command instead:
+   ```
+   python3 manage.py collectstatic
    ```
 3. Modify Django setting to DEBUG=False
    
