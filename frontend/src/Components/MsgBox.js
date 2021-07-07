@@ -11,7 +11,7 @@ class MsgBox extends React.Component {
             <ExclamationDiamondFill/>
           </Col>
           <Col>
-            <strong>Danger</strong>: {this.props.content}
+            <strong>{this.props.variant}</strong>: {this.props.content}
           </Col>
         </Row>
       </Alert>
