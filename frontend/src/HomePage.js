@@ -29,7 +29,7 @@ class HomePage extends React.Component {
     if (this.state.debug) {
       return (
         <Container>
-          <MsgBox variant = "dark" content = "Hello ACEKnow"/>
+          <MsgBox variant = "danger" content = "You are now in development version"/>
         </Container>
       )
     } else {
