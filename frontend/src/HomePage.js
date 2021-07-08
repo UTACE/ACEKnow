@@ -1,6 +1,7 @@
 import React from 'react';
 import {Container} from "react-bootstrap"
 import MsgBox from "./Components/MsgBox";
+import SearchBar from "./Components/SearchBar";
 
 import {mainDomain} from "./configuration";
 
@@ -36,6 +37,7 @@ class HomePage extends React.Component {
       return (
         <Container>
           Nothing here =)
+          <SearchBar />
         </Container>
       )
     }
