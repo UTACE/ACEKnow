@@ -1,10 +1,6 @@
-import React, {useState} from 'react';
-import MsgBox from "./MsgBox";
+import React from 'react';
 import '../SearchBar.css';
 
-function SearchItem(props){
-    const[item, setItem] = useState("");
-}
 
 class SearchBar extends React.Component {
     constructor(props){
