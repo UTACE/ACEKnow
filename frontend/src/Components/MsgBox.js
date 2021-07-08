@@ -5,19 +5,20 @@ import {ExclamationDiamondFill} from 'react-bootstrap-icons';
 class MsgBox extends React.Component {
   render() {
     return(
-      <Alert variant={"danger"}>
+      <Alert variant={this.props.variant}>
         <Row>
           <Col style={{borderLeftStyle: "solid"}} xs={1}>
             <ExclamationDiamondFill/>
           </Col>
           <Col>
-            <strong>Danger</strong>: You are now in development version
+            <strong>{this.props.variant}</strong>: {this.props.content}
           </Col>
         </Row>
       </Alert>
     )
   }
 }
-
+// Types of alerts
+//  'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'
 // ========================================
 export default MsgBox;

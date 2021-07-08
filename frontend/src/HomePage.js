@@ -25,12 +25,11 @@ class HomePage extends React.Component {
         })
     })
   }
-
   render() {
     if (this.state.debug) {
       return (
         <Container>
-          <MsgBox/>
+          <MsgBox variant = "light" content = "You are now in development version"/>
         </Container>
       )
     } else {
@@ -40,7 +39,6 @@ class HomePage extends React.Component {
         </Container>
       )
     }
-
   }
 }
 
