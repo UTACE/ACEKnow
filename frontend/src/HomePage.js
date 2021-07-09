@@ -1,6 +1,7 @@
 import React from 'react';
 import {Container} from "react-bootstrap"
-import MsgBox from "./Components/MsgBox";
+import DevMsgBox from "./Components/HomePage/DevMsgBox";
+import MsgBox from "./Components/Misc/MsgBox";
 
 import {mainDomain} from "./configuration";
 
@@ -8,7 +9,7 @@ class HomePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      debug: false,
+      djangoDev: true,
     }
   }
 
@@ -21,26 +22,19 @@ class HomePage extends React.Component {
     }).then(response => {return response.json()})
       .then(response => {
         this.setState({
-          debug: response.debug
+          djangoDev: response.debug
         })
     })
   }
 
   render() {
-    if (this.state.debug) {
-      return (
-        <Container>
-          <MsgBox variant = "success" content = "You have created an alert."/>
-        </Container>
-      )
-    } else {
-      return (
-        <Container>
-          Nothing here =)
-        </Container>
-      )
-    }
-
+    return (
+      <Container>
+        <DevMsgBox djangoDev={this.state.djangoDev} reactDev={this.props.reactDev}/>
+        <MsgBox variant = "success" content = "You have created an alert."/>
+        Nothing here =)
+      </Container>
+    )
   }
 }
 
