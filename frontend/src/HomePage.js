@@ -30,7 +30,7 @@ class HomePage extends React.Component {
     if (this.state.debug) {
       return (
         <Container>
-          <MsgBox/>
+          <MsgBox variant = "success" content = "You have created an alert."/>
         </Container>
       )
     } else {
