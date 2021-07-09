@@ -12,6 +12,24 @@ import AboutPage from "./AboutPage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      reactDev: false,
+    }
+  }
+
+  componentDidMount() {
+    if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+      // dev code
+      console.log("reactjs dev mode")
+      this.setState({
+        reactDev: true
+      })
+    }
+  }
+
   render() {
     return(
       <Router>
@@ -23,7 +41,7 @@ class App extends React.Component {
               <AboutPage/>
             </Route>
             <Route path="/">
-              <HomePage/>
+              <HomePage reactDev={this.state.reactDev}/>
             </Route>
           </Switch>
         </div>
@@ -32,4 +50,4 @@ class App extends React.Component {
   }
 }
 
-export default App; // hi :)
+export default App;
