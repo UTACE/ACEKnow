@@ -16,7 +16,7 @@ class App extends React.Component {
     super();
 
     this.state = {
-      reactDev: false,
+      reactDev: true,
     }
   }
 
