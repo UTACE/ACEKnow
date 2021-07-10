@@ -33,7 +33,7 @@ class HomePage extends React.Component {
       <Container>
         <DevMsgBox djangoDev={this.state.djangoDev} reactDev={this.props.reactDev}/>
         <MsgBox variant = "success" content = "You have created an alert."/>
-        <SearchBar />
+        <SearchBar/>
         Nothing here =)
       </Container>
     )
