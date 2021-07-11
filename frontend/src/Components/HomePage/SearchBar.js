@@ -1,43 +1,58 @@
-import React from 'react';
-import {Container} from "react-bootstrap"
-import DevMsgBox from "./Components/HomePage/DevMsgBox";
-import MsgBox from "./Components/Misc/MsgBox";
+import React from "react";
+import '../../styles/SearchBar.css';
 
-import {mainDomain} from "./configuration";
-import SearchBar from "./Components/HomePage/SearchBar";
-
-class HomePage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      djangoDev: false,
-    }
-  }
-
-  componentDidMount() {
-    fetch(mainDomain + 'api/getDebugInfo/', {
-      method: 'GET',
-      headers: {
-        "Content-type": "application/json; charset=UTF-8"
+class SearchBar extends React.Component {
+  state = {
+    filter: "",
+    data: [
+      {
+        Info: "COVID-19 Tracker Canada",
+        Link: "https://covid19tracker.ca/vaccinationtracker.html"
+      },
+      {
+        Info: "University of Toronto ArtSci",
+        Link: "https://www.artsci.utoronto.ca"
+      },
+      {
+        Info: "University of Toronto Engineering",
+        Link: "https://www.engineering.utoronto.ca"
+      },
+      {
+        Info: "Canada Travel Policy",
+        Link: "https://travel.gc.ca/travel-covid/travel-restrictions/wizard-start"
+      },
+      {
+        Info: "Check out UTACE",
+        Link: "https://www.utace.club"
       }
-    }).then(response => {return response.json()})
-      .then(response => {
-        this.setState({
-          djangoDev: response.debug
-        })
-    })
-  }
+    ]
+  };
+
+  handleChange = event => {
+    this.setState({ filter: event.target.value });
+  };
 
   render() {
+    const { filter, data } = this.state;
+    const lowercasedFilter = filter.toLowerCase();
+    const filteredData = data.filter(item => {
+      return Object.keys(item).some(key =>
+        item[key].toLowerCase().startsWith(lowercasedFilter)
+      );
+    });
+
     return (
-      <Container>
-        <DevMsgBox djangoDev={this.state.djangoDev} reactDev={this.props.reactDev}/>
-        <MsgBox variant = "success" content = "You have created an alert."/>
-        <SearchBar/>
-      </Container>
-    )
+      <div className = "container">
+        <input value={filter} onChange={this.handleChange} placeholder="Search..."/>
+        {filteredData.map(item => (
+          <div>
+            <div>
+              {item.Info} <a href={item.Link}>Click here</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
   }
 }
-
-// ========================================
-export default HomePage;
+export default SearchBar;

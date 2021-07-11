@@ -71,6 +71,12 @@ Run frontend and backend in two instances
       
 Note: If you don’t need any frontend backend communication, you can test your change by only running the frontend.
 
+Note: pycache files should not be included, if the gitignore file is not working, run the following command in terminal:
+```bash
+git rm -r --cached . && git add . && git commit -m "fixing .gitignore"
+```
+This will remove the pycache stuff, add ., and commit. After running this command you are ready to push whatever branch to GitHub. 
+
 
 
 

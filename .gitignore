@@ -14,7 +14,7 @@ frontend/.pnp.js
 # django
 aceknow/secret.py
 /static
-backend/migrations/__pycache__
+backend/migrations/__pycache__/**
 
 #django cache
 /*/__pycache__/
