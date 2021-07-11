@@ -42,7 +42,7 @@ class SearchBar extends React.Component {
     });
 
     return (
-      <div className = "container">
+      <div className = "searchbar-container">
         <input value={filter} onChange={this.handleChange} placeholder="Search..."/>
         {filteredData.map(item => (
           <div>
