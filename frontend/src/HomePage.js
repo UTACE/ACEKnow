@@ -5,6 +5,7 @@ import MsgBox from "./Components/Misc/MsgBox";
 
 import {mainDomain} from "./configuration";
 import SearchBar from "./Components/HomePage/SearchBar";
+import Navbar from "./Components/Misc/Navbar";
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -31,6 +32,7 @@ class HomePage extends React.Component {
   render() {
     return (
       <Container>
+        <Navbar/>
         <DevMsgBox djangoDev={this.state.djangoDev} reactDev={this.props.reactDev}/>
         <MsgBox variant = "success" content = "You have created an alert."/>
         <SearchBar/>
