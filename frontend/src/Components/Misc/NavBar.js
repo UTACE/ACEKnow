@@ -5,10 +5,6 @@ import {Container, Nav, Navbar, NavDropdown} from 'react-bootstrap'
 
 class NavBar extends Component {
 
-    onClick() {
-        window.location.href = "https://www.utace.club/";
-    }
-
     render() {
         return (
             <div className="container">
@@ -45,7 +41,7 @@ class NavBar extends Component {
                                 </NavDropdown>
                             </Nav>
                             <Nav className="ml-auto">
-                                <button class="ml-auto btn btn-outline-info d-flex" onClick={this.onClick}>关于我们</button>
+                                <button class="ml-auto btn btn-outline-info d-flex" onClick={() => window.location.href = "https://www.utace.club/"}>关于我们</button>
                                 {' '}*/
                             </Nav>
                         </Navbar.Collapse>
