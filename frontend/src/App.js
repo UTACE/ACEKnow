@@ -8,6 +8,8 @@ import {
 
 import HomePage from "./HomePage";
 import AboutPage from "./AboutPage";
+import Footer from "./Components/HomePage/Footer";
+
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -16,7 +18,7 @@ class App extends React.Component {
     super();
 
     this.state = {
-      reactDev: true,
+      reactDev: false,
     }
   }
 
@@ -32,6 +34,7 @@ class App extends React.Component {
 
   render() {
     return(
+      <Footer>
       <Router>
         <div>
           {/* A <Switch> looks through its children <Route>s and
@@ -46,6 +49,7 @@ class App extends React.Component {
           </Switch>
         </div>
       </Router>
+      </Footer>
     )
   }
 }
