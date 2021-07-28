@@ -1,0 +1,14 @@
+
+/* Mobile view */
+@media screen and (max-width:1024px){
+    .mobile-hide{
+        display: none;
+    }
+}
+
+/* Desktop view */
+@media screen and (min-width:1024px){
+    .mobile-show{
+        display: none;
+    }
+}
