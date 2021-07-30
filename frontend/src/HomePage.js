@@ -5,7 +5,8 @@ import MsgBox from "./Components/Misc/MsgBox";
 
 import {mainDomain} from "./configuration";
 import SearchBar from "./Components/HomePage/SearchBar";
-
+import NavBar from "./Components/Misc/NavBar";
+import BootstrapCarousel from "./Components/HomePage/BootstrapCarousel";
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
@@ -31,9 +32,11 @@ class HomePage extends React.Component {
   render() {
     return (
       <Container>
+        <NavBar/>
         <DevMsgBox djangoDev={this.state.djangoDev} reactDev={this.props.reactDev}/>
         <MsgBox variant = "success" content = "You have created an alert."/>
         <SearchBar/>
+        <BootstrapCarousel/>
       </Container>
     )
   }

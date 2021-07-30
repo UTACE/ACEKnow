@@ -1,4 +1,18 @@
-.searchbar-container{
-    background-color:lightblue;
+.searchbar-container {
+    /*background-color:lightblue;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center !important;
+    align-items: center !important;
+    background: transparent;
     margin-top: 20vh; /* 1vh = 1% of viewport height */
+    z-index: 1;
+    /*top: 100px;*/
+    margin-left: auto;
+    position: absolute;
+    width: 78%;
+}
+
+.form-control search-form{
+    align-items: center!important;
 }
