@@ -1,5 +1,5 @@
 import React from "react";
-
+import img3 from "./img/search.png";
 import '../../styles/SearchBar.css';
 
 class SearchBar extends React.Component {
@@ -34,6 +34,10 @@ class SearchBar extends React.Component {
     this.setState({ filter: event.target.value });
   };
 
+  // setBgToDark = event => {
+  //
+  // }
+
 
   render() {
     const { filter, data } = this.state;
@@ -45,18 +49,33 @@ class SearchBar extends React.Component {
     });
 
     return (
-      <div className = "searchbar-container">
-        <div>
-          <input value={filter} onChange={this.handleChange} placeholder="Search..."/>
-          <button className="btn btn-primary my-2 my-sm-0" onClick={()=>{
-            this.setState({visible: true})
-          }}>Search</button>
+      <div className="box">
+      <div className="col-md-6 col-lg-6 col-11 mx-auto my-auto search-box">
+        <div className="input-group form container">
+          <input type="text"
+                 className="form-control search-input"
+                 name="search"
+                 onChange={this.handleChange}
+                 placeholder="Search..."
+                 color="white"
+                 // autofocus="autofocus"
+                 // autocomplete="off"
+                 // onclick={this.setBgToDark}
+          />
+          <span className="input-group-btn">
+            <button
+                className="btn btn-search"
+                onClick={()=>{this.setState({visible: true })
+            }}><img src={img3} width="40"/></button>
+
+          </span>
         </div>
         {this.state.visible ?  filteredData.map(item => (
           <div>
             {item.Info} <a href={item.Link}>Click here</a>
           </div>
         )): null}
+      </div>
       </div>
     );
   }

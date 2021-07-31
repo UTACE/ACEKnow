@@ -50,7 +50,7 @@ class HomePage extends React.Component {
           <MainPsg title="Bottom 2nd" src="https://images.dailyhive.com/20190401115942/shutterstock_1252186957.jpg" content="Bottom Second Passage"/>  
           <MainPsg title="Bottom 3rd" src="https://images.dailyhive.com/20190401115942/shutterstock_1252186957.jpg" content="Bottom Third Passage"/>  
         </div>
-        <Footer/>
+        {/*<Footer/>*/}
       </Container>
     )
   }

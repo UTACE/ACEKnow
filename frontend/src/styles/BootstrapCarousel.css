@@ -1,7 +1,7 @@
 .container-fluid {
   /*object-fit: cover;*/
   /*margin-top: 20vh;*/
-    position: relative;
+    position: static;
     /*top: 200px;*/
     /*left: 0;*/
     /*min-height: 300px;*/
@@ -10,11 +10,12 @@
     width: auto;
     /*overflow:hidden;*/
     /*align-items: center!important;*/
+
 }
 .carousel-caption{
     /*transform: translateY(-50%);*/
     /*bottom: initial;*/
     /*top: 50%;*/
-    position: relative;
+    position: absolute;
     align-items: center!important;
 }
