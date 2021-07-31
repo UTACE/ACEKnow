@@ -4,6 +4,7 @@ import '../../styles/SearchBar.css';
 
 class SearchBar extends React.Component {
   state = {
+    visible: false,
     filter: "",
     data: [
       {
@@ -29,13 +30,10 @@ class SearchBar extends React.Component {
     ]
   };
 
-  buttonState = {
-    visible: true
-  }
-
   handleChange = event => {
     this.setState({ filter: event.target.value });
   };
+
 
   render() {
     const { filter, data } = this.state;
@@ -50,13 +48,15 @@ class SearchBar extends React.Component {
       <div className = "searchbar-container">
         <div>
           <input value={filter} onChange={this.handleChange} placeholder="Search..."/>
-          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <button className="btn btn-outline-success my-2 my-sm-0" onClick={()=>{
+            this.setState({visible: true})
+          }}>Search</button>
         </div>
-        {filteredData.map(item => (
+        {this.state.visible ?  filteredData.map(item => (
           <div>
             {item.Info} <a href={item.Link}>Click here</a>
           </div>
-        ))}
+        )): null}
       </div>
     );
   }
