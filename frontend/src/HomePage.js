@@ -2,6 +2,7 @@ import React from 'react';
 import {Container} from "react-bootstrap"
 import DevMsgBox from "./Components/HomePage/DevMsgBox";
 import MsgBox from "./Components/Misc/MsgBox";
+import Footer from "./Components/HomePage/Footer";
 
 import {mainDomain} from "./configuration";
 
@@ -33,6 +34,7 @@ class HomePage extends React.Component {
         <DevMsgBox djangoDev={this.state.djangoDev} reactDev={this.props.reactDev}/>
         <MsgBox variant = "success" content = "You have created an alert."/>
         Nothing here =)
+        <Footer/>
       </Container>
     )
   }
