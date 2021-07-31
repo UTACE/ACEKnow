@@ -3,6 +3,8 @@ import Carousel from 'react-bootstrap/Carousel'
 import img1 from "./img/img1.jpg"
 import img2 from "./img/img2.jpg"
 import '../../styles/BootstrapCarousel.css';
+import SearchBar from "./SearchBar";
+
 export class BootstrapCarousel extends Component {
   render() {
     return (
@@ -13,6 +15,9 @@ export class BootstrapCarousel extends Component {
               {/*How To Use Bootstrap Carousel In ReactJS*/}
               {/*</div>*/}
             </div>
+          </div>
+          <div className='container'>
+            <SearchBar/>
           </div>
           <div className='container-fluid' >
             <Carousel>
@@ -37,7 +42,6 @@ export class BootstrapCarousel extends Component {
             </Carousel>
           </div>
         </div>
-
     )
   }
 }

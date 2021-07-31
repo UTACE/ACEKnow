@@ -1,4 +1,5 @@
 import React from "react";
+
 import '../../styles/SearchBar.css';
 
 class SearchBar extends React.Component {
@@ -28,6 +29,10 @@ class SearchBar extends React.Component {
     ]
   };
 
+  buttonState = {
+    visible: true
+  }
+
   handleChange = event => {
     this.setState({ filter: event.target.value });
   };
@@ -43,12 +48,13 @@ class SearchBar extends React.Component {
 
     return (
       <div className = "searchbar-container">
-        <input value={filter} onChange={this.handleChange} placeholder="Search..."/>
+        <div>
+          <input value={filter} onChange={this.handleChange} placeholder="Search..."/>
+          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </div>
         {filteredData.map(item => (
           <div>
-            <div>
-              {item.Info} <a href={item.Link}>Click here</a>
-            </div>
+            {item.Info} <a href={item.Link}>Click here</a>
           </div>
         ))}
       </div>
