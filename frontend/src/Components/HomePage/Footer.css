@@ -1,0 +1,47 @@
+
+/* Mobile view */
+@media screen and (max-width:1024px){
+    h5{
+        font-size: medium;
+    }
+    a,p{
+        font-size: small;
+    }
+    
+    .mobile-hide{
+        display: none;
+    }
+}
+
+/* Desktop view */
+@media screen and (min-width:1024px){
+    .mobile-show{
+        display: none;
+    }
+}
+
+.footer-middle {
+    padding-top: 3rem;
+}
+
+.footer-bottom{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.links{
+    color:black;
+}
+
+a.row{
+    margin-left: 0;
+}
+
+h5{
+    border-bottom: 2px solid black;
+    margin-top: 15px;
+}
+
+.rightsReserve{
+    text-align: center;
+}
