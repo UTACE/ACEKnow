@@ -35,8 +35,8 @@ class HomePage extends React.Component {
         <NavBar/>
         <DevMsgBox djangoDev={this.state.djangoDev} reactDev={this.props.reactDev}/>
         <MsgBox variant = "success" content = "You have created an alert."/>
-        <SearchBar/>
-        {/*<BootstrapCarousel/>*/}
+        {/*<SearchBar/>*/}
+        <BootstrapCarousel/>
       </Container>
     )
   }

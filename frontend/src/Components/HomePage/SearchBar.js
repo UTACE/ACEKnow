@@ -48,7 +48,7 @@ class SearchBar extends React.Component {
       <div className = "searchbar-container">
         <div>
           <input value={filter} onChange={this.handleChange} placeholder="Search..."/>
-          <button className="btn btn-outline-success my-2 my-sm-0" onClick={()=>{
+          <button className="btn btn-primary my-2 my-sm-0" onClick={()=>{
             this.setState({visible: true})
           }}>Search</button>
         </div>
