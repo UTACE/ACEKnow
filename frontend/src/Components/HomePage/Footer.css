@@ -1,10 +1,10 @@
 
 /* Mobile view */
 @media screen and (max-width:1024px){
-    h5{
+    .footerTitle{
         font-size: medium;
     }
-    a,p{
+    .footerContent, .rightsReserve{
         font-size: small;
     }
     
@@ -37,7 +37,7 @@ a.row{
     margin-left: 0;
 }
 
-h5{
+.footerTitle{
     border-bottom: 2px solid black;
     margin-top: 15px;
 }
