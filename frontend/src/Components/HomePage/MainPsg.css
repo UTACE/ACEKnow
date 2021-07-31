@@ -1,0 +1,29 @@
+.card{
+    width: 15%;
+    margin-left: 2%;
+    display: inline-block;
+}
+
+.card:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 11px rgba(33,33,33,.2);
+}
+
+.sideContainer{
+    float: left;
+    display: contents;
+}
+
+/* Mobile view */
+@media screen and (max-width:1024px){
+    .mobile-hide{
+        display: none;
+    }
+}
+
+/* Desktop view */
+@media screen and (min-width:1024px){
+    .mobile-show{
+        display: none;
+    }
+}
