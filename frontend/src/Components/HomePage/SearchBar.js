@@ -66,7 +66,13 @@ class SearchBar extends React.Component {
             <button
                 className="btn btn-search"
                 onClick={()=>{this.setState({visible: true })
-            }}><img src={img3} width="40"/></button>
+            }}>
+              <img
+                src={img3}
+                width="40"
+                alt="Demo"
+              />
+            </button>
 
           </span>
         </div>

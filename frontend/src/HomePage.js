@@ -5,10 +5,10 @@ import MainPsg from './Components/HomePage/MainPsg';
 import MainPsgSide from './Components/HomePage/MainPsgSide';
 import MsgBox from "./Components/Misc/MsgBox";
 import {mainDomain} from "./configuration";
-import SearchBar from "./Components/HomePage/SearchBar";
+// import SearchBar from "./Components/HomePage/SearchBar";
 import NavBar from "./Components/Misc/NavBar";
 import BootstrapCarousel from "./Components/HomePage/BootstrapCarousel";
-import Footer from "./Components/HomePage/Footer";
+// import Footer from "./Components/HomePage/Footer";
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -41,11 +41,11 @@ class HomePage extends React.Component {
         {/*<SearchBar/>*/}
         <BootstrapCarousel/>
         Nothing here =)
-        <div class="row">
+        <div className="row">
           <MainPsg title="1st" src="https://images.dailyhive.com/20190401115942/shutterstock_1252186957.jpg" content="First Passage"/>
           <MainPsgSide/>
         </div> 
-        <div class="row">
+        <div className="row">
           <MainPsg title="Bottom 1st" src="https://images.dailyhive.com/20190401115942/shutterstock_1252186957.jpg" content="Bottom First Passage"/>  
           <MainPsg title="Bottom 2nd" src="https://images.dailyhive.com/20190401115942/shutterstock_1252186957.jpg" content="Bottom Second Passage"/>  
           <MainPsg title="Bottom 3rd" src="https://images.dailyhive.com/20190401115942/shutterstock_1252186957.jpg" content="Bottom Third Passage"/>  

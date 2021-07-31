@@ -1,4 +1,4 @@
-import React, {Component, useEffect} from 'react'
+import React, {Component} from 'react'
 import Carousel from 'react-bootstrap/Carousel'
 import img1 from "./img/img1.jpg"
 import img2 from "./img/img2.jpg"
