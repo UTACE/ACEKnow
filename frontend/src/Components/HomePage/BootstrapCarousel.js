@@ -6,21 +6,13 @@ import '../../styles/BootstrapCarousel.css';
 import SearchBar from "./SearchBar";
 
 export class BootstrapCarousel extends Component {
-
   render() {
     return (
-
         <div>
           <div className='container-fluid'>
             <div className="row title" style={{marginBottom:"20px"}} >
-              {/*<div class="col-sm-12 btn btn-warning">*/}
-              {/*How To Use Bootstrap Carousel In ReactJS*/}
-              {/*</div>*/}
             </div>
           </div>
-          {/*<div className='container'>*/}
-          {/*  <SearchBar/>*/}
-          {/*</div>*/}
           <div className='container-fluid' >
               <SearchBar/>
             <Carousel>

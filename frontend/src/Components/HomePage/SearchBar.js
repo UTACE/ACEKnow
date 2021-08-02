@@ -34,16 +34,11 @@ class SearchBar extends React.Component {
     this.setState({ filter: event.target.value });
   };
 
-  // setBgToDark = event => {
-  //
-  // }
-
-
   render() {
     const { filter, data } = this.state;
     const lowercasedFilter = filter.toLowerCase();
     const filteredData = data.filter(item => {
-      return Object.keys(item).some(key =>
+    return Object.keys(item).some(key =>
         item[key].toLowerCase().startsWith(lowercasedFilter)
       );
     });
@@ -58,9 +53,6 @@ class SearchBar extends React.Component {
                  onChange={this.handleChange}
                  placeholder="Search..."
                  color="white"
-                 // autofocus="autofocus"
-                 // autocomplete="off"
-                 // onclick={this.setBgToDark}
           />
           <span className="input-group-btn">
             <button
