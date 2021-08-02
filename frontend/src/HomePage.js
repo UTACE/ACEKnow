@@ -5,10 +5,10 @@ import MainPsg from './Components/HomePage/MainPsg';
 import MainPsgSide from './Components/HomePage/MainPsgSide';
 import MsgBox from "./Components/Misc/MsgBox";
 import {mainDomain} from "./configuration";
-// import SearchBar from "./Components/HomePage/SearchBar";
+import SearchBar from "./Components/HomePage/SearchBar";
 import NavBar from "./Components/Misc/NavBar";
 import BootstrapCarousel from "./Components/HomePage/BootstrapCarousel";
-// import Footer from "./Components/HomePage/Footer";
+import Footer from "./Components/HomePage/Footer";
 
 class HomePage extends React.Component {
   constructor(props) {
