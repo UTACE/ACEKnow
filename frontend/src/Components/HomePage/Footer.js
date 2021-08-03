@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import '../../styles/Footer.css';
@@ -9,37 +9,37 @@ function Footer () {
         <footer>
             <div className="footer-middle">
                 <div className="container">
-                    <h5 className="footerTitle">外站链接</h5>
+                    <h5 className="footer-title">外站链接</h5>
                     <div className="mobile-hide row">
-                        <a className="footerContent col-md-6 col-sm-6" href="https://www.utace.club/">
-                            <div className="links">ACE官网</div>
+                        <a className="footer-content col-md-6 col-sm-6" href="https://www.utace.club/">
+                            <div className="footer-links">ACE官网</div>
                         </a>
-                        <a className="footerContent col-md-6 col-sm-6" href="https://github.com/UTACE">
-                            <div className="links">Github</div>
+                        <a className="footer-content col-md-6 col-sm-6" href="https://github.com/UTACE">
+                            <div className="footer-links">Github</div>
                         </a>
                     </div>
                     <div className="mobile-show">
-                        <a className="footerContent row" href="https://www.utace.club/">
-                            <div className="links">ACE官网</div>
+                        <a className="footer-content row" href="https://www.utace.club/">
+                            <div className="footer-links">ACE官网</div>
                         </a>
-                        <a className="footerContent row" href="https://github.com/UTACE">
-                            <div className="links">Github</div>
+                        <a className="footer-content row" href="https://github.com/UTACE">
+                            <div className="footer-links">Github</div>
                         </a>
                     </div>
-                    <h5 className="footerTitle">About Us</h5>
+                    <h5 className="footer-title">About Us</h5>
                     <div className="mobile-hide row">
-                        <Link className="footerContent col-md-6 col-sm-6 links" to="/about">
+                        <Link className="footer-content col-md-6 col-sm-6 footer-links" to="/about">
                             Team information
                         </Link>
-                        <Link className="footerContent col-md-6 col-sm-6 links" to="/about">
+                        <Link className="footer-content col-md-6 col-sm-6 footer-links" to="/about">
                             Sponsors
                         </Link>
                     </div>
                     <div className="mobile-show">
-                        <Link className="footerContent row links" to="/about">
+                        <Link className="footer-content row footer-links" to="/about">
                             Team information
                         </Link>
-                        <Link className="footerContent row links" to="/about">
+                        <Link className="footer-content row footer-links" to="/about">
                             Sponsors
                         </Link>
                     </div>
@@ -52,7 +52,7 @@ function Footer () {
 
                 {/* Footer-bottom */}
                 <div className="footer-bottom">
-                    <p className="rightsReserve">
+                    <p className="rights-reserve">
                         &copy;{new Date().getFullYear} ACEKnow - All Rights Reserved
                     </p>
                 </div>
