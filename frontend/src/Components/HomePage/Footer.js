@@ -1,11 +1,11 @@
 import React from 'react';
 import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "../HomePage/Footer.css";
+import '../../styles/Footer.css';
 
 function Footer () {
     return (
-        <footer className="fixed-bottom">
+        <footer>
             <div className="footer-middle">
                 <div className="container">
                     <h5 className="footerTitle">外站链接</h5>

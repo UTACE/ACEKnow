@@ -1,5 +1,4 @@
 .card{
-    width: 15%;
     margin-left: 2%;
     display: inline-block;
 }
@@ -14,10 +13,32 @@
     display: contents;
 }
 
+.bottom-passage{
+    width: 30%;
+}
+
 /* Mobile view */
 @media screen and (max-width:1024px){
     .mobile-hide{
         display: none;
+    }
+    .card-title{
+        font-size: small;
+    }
+    .card-text{
+        font-size: smaller;
+    }
+    .list-group{
+        width: 45%;
+    }
+    .list-title{
+        font-size: small;
+    }
+    .list-group-item{
+        font-size: smaller;
+    }
+    .top-passage{
+        width: 45%;
     }
 }
 
@@ -25,5 +46,8 @@
 @media screen and (min-width:1024px){
     .mobile-show{
         display: none;
+    }
+    .top-passage{
+        width: 20%;
     }
 }
