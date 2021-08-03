@@ -7,7 +7,7 @@ class MainPsg extends React.Component {
 
   render() {
     return(
-        <div class="sideContainer">
+        <div class="sideContainer col-lg-6">
             {this.props.content.slice(1).map((passage)=>(
             <div class="card mobile-hide top-passage">
                 <img class="card-img-top" src={passage.src} alt={passage.title}/>
@@ -17,7 +17,7 @@ class MainPsg extends React.Component {
                 </div>
             </div>
             ))}
-            <ul class="list-group mobile-show">
+            <ul class="list-group mobile-show top-passage">
                 {this.props.content.slice(1).map((passage)=>(
                 <li class="list-group-item">
                     <h5 class="list-title">{passage.title}</h5>
