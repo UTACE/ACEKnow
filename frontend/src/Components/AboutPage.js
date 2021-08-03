@@ -1,11 +1,13 @@
 import React from 'react';
-import './styles/AboutPage.css';
+import NavBar from "./Misc/NavBar";
+import Footer from "./HomePage/Footer"
+import '../styles/AboutPage.css';
 
 class AboutPage extends React.Component {
   render() {
     return (
       <div className="AboutUs">
-
+        <NavBar/>
         {/* Title */}
         <h1>About Us</h1>
 
@@ -73,6 +75,7 @@ class AboutPage extends React.Component {
             </div>
           </div>
         </div>
+        <Footer/>
       </div>
     );
   }

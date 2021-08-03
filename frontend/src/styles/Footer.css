@@ -1,10 +1,10 @@
 
 /* Mobile view */
 @media screen and (max-width:1024px){
-    .footerTitle{
+    .footer-title{
         font-size: medium;
     }
-    .footerContent, .rightsReserve{
+    .footer-content, .rights-reserve{
         font-size: small;
     }
     
@@ -29,7 +29,7 @@
     padding-bottom: 1rem;
 }
 
-.links{
+.footer-links{
     color:black;
 }
 
@@ -37,11 +37,11 @@ a.row{
     margin-left: 0;
 }
 
-.footerTitle{
+.footer-title{
     border-bottom: 2px solid black;
     margin-top: 15px;
 }
 
-.rightsReserve{
+.rights-reserve{
     text-align: center;
 }

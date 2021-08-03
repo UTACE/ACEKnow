@@ -1,25 +1,15 @@
 import React from 'react';
 import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "../HomePage/MainPsg.css";
+import '../../styles/MainPsg.css';
 
 class MainPsg extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      sidePassages:[
-        {title: "2nd", src:"https://images.dailyhive.com/20190401115942/shutterstock_1252186957.jpg", content: "Second Passage"},
-        {title: "3rd", src:"https://images.dailyhive.com/20190401115942/shutterstock_1252186957.jpg", content: "Third Passage"},
-        {title: "4th", src:"https://images.dailyhive.com/20190401115942/shutterstock_1252186957.jpg", content: "Forth Passage"}
-      ],
-    }
-  }
 
   render() {
     return(
-        <div class="sideContainer">
-            {this.state.sidePassages.map((passage)=>(
-            <div class="card mobile-hide">
+        <div class="sideContainer col-lg-6">
+            {this.props.content.slice(1).map((passage)=>(
+            <div class="card mobile-hide top-passage">
                 <img class="card-img-top" src={passage.src} alt={passage.title}/>
                 <div class="card-body">
                 <h5 class="card-title">{passage.title}</h5>
@@ -27,10 +17,10 @@ class MainPsg extends React.Component {
                 </div>
             </div>
             ))}
-            <ul class="list-group mobile-show">
-                {this.state.sidePassages.map((passage)=>(
+            <ul class="list-group mobile-show top-passage">
+                {this.props.content.slice(1).map((passage)=>(
                 <li class="list-group-item">
-                    <h5>{passage.title}</h5>
+                    <h5 class="list-title">{passage.title}</h5>
                     {passage.content}
                 </li>
                 ))}
