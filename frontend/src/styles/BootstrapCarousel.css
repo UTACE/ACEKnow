@@ -1,0 +1,10 @@
+.container-fluid {
+    position: static;
+    height: auto;
+    width: auto;
+}
+
+.carousel-caption{
+    position: absolute;
+    align-items: center!important;
+}
