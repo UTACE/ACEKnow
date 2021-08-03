@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import HomePage from "./HomePage";
-import AboutPage from "./AboutPage";
+import AboutPage from "./Components/AboutPage.js";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -37,11 +37,11 @@ class App extends React.Component {
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
           <Switch>
-            <Route path="/about">
-              <AboutPage/>
+            <Route path="/about" component={AboutPage}>
+              
             </Route>
-            <Route path="/">
-              <HomePage reactDev={this.state.reactDev}/>
+            <Route path="/" component={HomePage}>
+             
             </Route>
           </Switch>
         </div>

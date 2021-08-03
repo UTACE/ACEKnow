@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import '../../styles/Footer.css';
@@ -27,20 +28,20 @@ function Footer () {
                     </div>
                     <h5 className="footerTitle">About Us</h5>
                     <div className="mobile-hide row">
-                        <a className="footerContent col-md-6 col-sm-6" href="">
-                            <div className="links">Team</div>
-                        </a>
-                        <a className="footerContent col-md-6 col-sm-6" href="">
-                            <div className="links">Sponsors</div>
-                        </a>
+                        <Link className="footerContent col-md-6 col-sm-6 links" to="/about">
+                            Team information
+                        </Link>
+                        <Link className="footerContent col-md-6 col-sm-6 links" to="/about">
+                            Sponsors
+                        </Link>
                     </div>
                     <div className="mobile-show">
-                        <a className="footerContent row" href="">
-                            <div className="links">Team information</div>
-                        </a>
-                        <a className="footerContent row" href="">
-                            <div className="links">Sponsors</div>
-                        </a>
+                        <Link className="footerContent row links" to="/about">
+                            Team information
+                        </Link>
+                        <Link className="footerContent row links" to="/about">
+                            Sponsors
+                        </Link>
                     </div>
                 </div>
                     
