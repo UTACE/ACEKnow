@@ -10,19 +10,15 @@ class NavBar extends Component {
             <div className="container">
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
                     <Container>
-                        <Navbar.Brand href="#home">ACEKnow</Navbar.Brand>
+                        <Navbar.Brand href="/">ACEKnow</Navbar.Brand>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="me-auto">
-                                <NavDropdown title="返加相关">
-                                    <NavDropdown.Item href="#ca/1">1</NavDropdown.Item>
-                                    <NavDropdown.Item href="#ca/2">2</NavDropdown.Item>
-                                    <NavDropdown.Item href="#ca/3">3</NavDropdown.Item>
-                                </NavDropdown>
+                                <Nav.Link href="/tocanada">返加相关</Nav.Link>
                                 <NavDropdown title="回国相关">
-                                    <NavDropdown.Item href="#cn/1">1</NavDropdown.Item>
-                                    <NavDropdown.Item href="#cn/2">2</NavDropdown.Item>
-                                    <NavDropdown.Item href="#cn/3">3</NavDropdown.Item>
+                                    <NavDropdown.Item href="/tochina">1</NavDropdown.Item>
+                                    <NavDropdown.Item href="/tochina">2</NavDropdown.Item>
+                                    <NavDropdown.Item href="/tochina">3</NavDropdown.Item>
                                 </NavDropdown>
                                 <NavDropdown title="加拿大疫情情况">
                                     <NavDropdown.Item href="#covid/1">1</NavDropdown.Item>
