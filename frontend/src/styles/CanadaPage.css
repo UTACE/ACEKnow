@@ -1,0 +1,11 @@
+.survey{
+    display: block;
+    margin: auto;
+    width: 75%;
+}
+
+.sv_main input[type="button"], .sv_main button {
+    color: white;
+    background-color: #343a40!important;
+    font-size: medium;
+}
