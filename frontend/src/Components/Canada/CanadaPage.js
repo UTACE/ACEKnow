@@ -2,6 +2,9 @@ import React from 'react';
 import NavBar from "../Misc/NavBar";
 import Footer from "../HomePage/Footer";
 import * as Survey from "survey-react";
+import Tab from 'react-bootstrap/Tab';
+import Nav from 'react-bootstrap/Nav';
+import { Row, Col} from 'react-bootstrap';
 import "survey-react/survey.css";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -11,7 +14,6 @@ class CanadaPage extends React.Component {
 
   json = {
     title: "基本情况",
-    showProgressBar: "Top",
     startSurveyText: "开始填写",
     firstPageIsStarted: true,
     pages: [
@@ -26,10 +28,10 @@ class CanadaPage extends React.Component {
         questions: [
           {
               type: "radiogroup",
-              name: "firstArrive",
-              title: "请问这是否是你第一次来加拿大？",
+              name: "first-arrive",
+              title: "Have you ever entered Canada?",
               choices: [
-                "是", "否"
+                "Yes", "No"
               ],
               isRequired: true
           }
@@ -38,10 +40,23 @@ class CanadaPage extends React.Component {
         questions: [
           {
               type: "radiogroup",
-              name: "HasArrived",
-              title: "请问你是否已经抵达加拿大?",
+              name: "designated-country",
+              visibleIf: "{first-arrive} = 'No'",
+              title: "Will you have stayed in designated country for over six months at the time of next arrival to Canada?",
               choices: [
-                  "是", "否"
+                  "Yes", "No"
+              ],
+              isRequired: true
+          }
+        ]
+      },{
+        questions: [
+          {
+              type: "radiogroup",
+              name: "have-vaccinated",
+              title: "What will be your vaccination status 14 days before entry?",
+              choices: [
+                  "Vaccinated (including not partially vaccinated)", "Not vaccinated"
               ],
               isRequired: true
           }
@@ -50,19 +65,37 @@ class CanadaPage extends React.Component {
         questions: [
             {
               type: "radiogroup",
-              name: "vaccination",
-              title: "请问你是否注射了疫苗？",
+              name: "kind-vaccination",
+              title: "What vaccination have you done?",
+              visibleIf: "{have-vaccinated}='Vaccinated (including not partially vaccinated)'",
               choices: [
-                "是，注射了：Pfizer。。。。疫苗",
-                "是，注射了：XXX国内疫苗",
-                "否，我尚未注射疫苗"
+                "Two shots of mRNA (Pfizer, Moderna) vaccines / 两剂mRNA（辉瑞，摩德纳）疫苗",
+                "Two shots of AstraZeneca/COVISHIELD vaccines / 两剂阿兹利康疫苗",
+                "Two mixed shots of the above three vaccines / 以上三种疫苗的混接",
+                "One shot of Janssen/Johnson & Johnson / 一剂强生疫苗",
+                "Two shots of Sinopharm vaccines / 两剂国药疫苗",
+                "Two shots of Sinovac vaccines / 两剂科兴疫苗",
+                "Partially vaccinated or other"
               ],
               isRequired: true
             }
         ]
+      },{
+        questions: [
+          {
+              type: "radiogroup",
+              name: "quarantine",
+              visibleIf:"{have-vaccinated}='Not vaccinated' or {kind-vaccination}='Partially vaccinated or other'",
+              title: "Will you have a place to quarantine for 14 days upon your arrival?",
+              choices: [
+                  "Yes", "No"
+              ],
+              isRequired: true
+          }
+        ]
       }
   ],
-  completedHtml: "<h4>感谢你填写以上问题<br/>短暂加载后我们将为你提供所需信息</h4>"
+  completedHtml: "<h4 class='end-feedback'>感谢你填写以上问题<br/>短暂加载后我们将为你提供所需信息</h4>"
 };
   componentWillMount() {    
     Survey.Survey.cssType = "bootstrap";
@@ -70,7 +103,7 @@ class CanadaPage extends React.Component {
   }
 
   onComplete(survey, options) {
-  console.log("Result JSON:\n" + JSON.stringify(survey.data, null, 4));
+  console.log("Result JSON:\n" + JSON.stringify(survey.data, null, 5));
   }
 
   render() {
@@ -78,10 +111,44 @@ class CanadaPage extends React.Component {
     return (
       <div>
         <NavBar/>
-        <div className="survey">
-          <Survey.Survey model={model} onComplete={this.onComplete}/>
-        </div>
-        <div>Nothing for canada page yet</div>
+        <Tab.Container id="left-tabs-example" defaultActiveKey="survey">
+          <Row className="canada-main-content">
+            <Col sm={3}>
+              <Nav variant="pills" className="flex-column">
+                <Nav.Item>
+                  <Nav.Link eventKey="survey">Getting Started</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="before-arrival">Before Arriving Canada</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="Upon-arrival">Upon Arriving Canada</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="After-arrival">After Arriving Canada</Nav.Link>
+                </Nav.Item>
+              </Nav>
+            </Col>
+            <Col sm={9}>
+              <Tab.Content>
+                <Tab.Pane eventKey="survey">
+                  <div className="survey">
+                    <Survey.Survey model={model} onComplete={this.onComplete}/>
+                  </div>
+                </Tab.Pane>
+                <Tab.Pane eventKey="before-arrival">
+                  
+                </Tab.Pane>
+                <Tab.Pane eventKey="upon-arrival">
+                  
+                </Tab.Pane>
+                <Tab.Pane eventKey="after-arrival">
+                
+                </Tab.Pane>
+              </Tab.Content>
+            </Col>
+          </Row>
+        </Tab.Container>
         <Footer/>
       </div>
     );

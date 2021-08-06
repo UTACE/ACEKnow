@@ -1,11 +1,27 @@
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color:#343a40;
+}
+
+.nav-pills .nav-link{
+    color: #343a40;
+}
+
 .survey{
-    display: block;
+    float: left;
+    width:100%;
+}
+
+.canada-main-content{
+    width: 80%;
     margin: auto;
-    width: 75%;
 }
 
 .sv_main input[type="button"], .sv_main button {
     color: white;
     background-color: #343a40!important;
     font-size: medium;
+}
+
+.end-feedback{
+    text-align: center;
 }
