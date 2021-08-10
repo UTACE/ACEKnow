@@ -5,8 +5,13 @@ from django.http import HttpResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework import generics
+from rest_framework import filters
+from .models import Post
+from .serializers import PostSerializer
 
 import os
+
 
 class GetDebugInfoAPIView(APIView):
     def get(self, request):
@@ -35,3 +40,10 @@ class FrontendAppView(View):
                 """,
                 status=501,
             )
+
+
+class PostAPIView(generics.ListCreateAPIView):
+    search_fields = ['post_text']
+    filter_backends = (filters.SearchFilter,)
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
