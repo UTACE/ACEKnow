@@ -56,4 +56,4 @@ class AfterArrival extends React.Component {
 }
 
 // ========================================
-export default UponArrival;
+export default AfterArrival;
