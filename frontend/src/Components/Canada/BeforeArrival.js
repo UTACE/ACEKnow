@@ -129,17 +129,6 @@ class BeforeArrival extends React.Component {
             </li>
           </ul>
 
-          <Dropdown>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
-              Dropdown Button
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
           {/* Step 4 */}
           <div className = 'card border-success'>
             <div className = 'card-header text-success'><div className = 'h2-before'>STEP 4.</div></div>
