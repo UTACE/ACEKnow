@@ -16,12 +16,12 @@ class AfterArrival extends React.Component {
           <hr className = 'hr-after'></hr>
 
           {/* Step 1 */}
-          <div className = 'card border-primary'><div style = {{ width:'78vw' }}>
+          <div className = 'card border-primary'>
             <div className = 'card-header text-primary'><div className="h2-after">STEP 1.</div></div>
             <div className = 'card-body'>
                 <p className = 'p1-after text-primary'>Completing Your Full Quarantine</p>
             </div>
-          </div></div>
+          </div>
           <ul className = 'ul-after'>
             <a className = 'a1-after' href="https://travel.gc.ca/travel-covid/travel-restrictions/isolation/quarantine-start">Learn more about the quaratine plan here.</a>
           </ul>
@@ -38,12 +38,12 @@ class AfterArrival extends React.Component {
           </ul>
 
           {/* Step 2 */}
-          <div className = 'card border-success'><div style = {{ width:'78vw' }}>
+          <div className = 'card border-success'>
             <div className = 'card-header text-success'><div className = 'h2-after'>STEP 2.</div></div>
             <div className = 'card-body'>
                 <p className = 'p1-after text-success'>Check-in and Report Symptoms</p>
             </div>
-          </div></div>
+          </div>
           <ul className = 'ul-after'>
             <li className = 'p2-after'>Use ArriveCAN or call 1-833-641-0343 to check-in the day after you enter Canada and to report symptoms daily. You will be contacted by the Government of Canada and Provincial/territorial officials.</li>
           </ul>
