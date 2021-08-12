@@ -1,11 +1,3 @@
-.ace-img {
-    max-width: 90%;
-    height: auto;
-    display: block;
-    margin: auto;
-    box-shadow: 0 0.5vw 1vw 0 rgba(0, 0, 0, 0.2), 0 0.7vw 2.5vw 0 rgba(0, 0, 0, 0.19);
-}
-
 .h1-before {
     font-size: 2rem;
     margin-bottom: 1.5rem;
@@ -16,32 +8,6 @@
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     font-weight: bold;
-}
-
-.h2-before{
-    display: block;
-    font-weight: bold;
-    font-size: 1.45rem;
-}
-
-.h3-before{
-    display: block;
-    font-size: 0.8rem;
-}
-
-.p1-before {
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color:black;
-    margin:0px;
-    font-size: 1.3rem;
-}
-
-.p2-before {
-    font-family:Arial, Helvetica, sans-serif;
-    color:black;
-    margin: 0.5rem;
-    text-align: left;
-    font-size: 1.15rem;
 }
 
 .hr-before {
@@ -56,11 +22,66 @@
     border-width: 1px;
 }
 
-.ul-before{
+.h2-before{
+    display: block;
+    font-weight: bold;
+    font-size: 1.45rem;
+}
+
+.p1-before {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color:black;
+    margin:0px;
+    font-size: 1.3rem;
+}
+
+.ul-before {
     margin-block-start: 1rem;
     margin-block-end: 2rem;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
+}
+
+.a1-before {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin:0.5rem;
+    font-size: 1.15rem;
+    text-align: left;
+    color: gray;
+}
+
+.ol-before {
+    margin-block-start: 1rem;
+    margin-block-end: 2rem;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.p2-before {
+    font-family:Arial, Helvetica, sans-serif;
+    color:black;
+    margin: 0.5rem;
+    text-align: left;
+    font-size: 1.15rem;
+}
+
+.p3-before {
+    font-family:Arial, Helvetica, sans-serif;
+    color:black;
+    margin: 0.5rem;
+    text-align: left;
+    font-size: 1.15rem;
+    font-weight: bold;
+}
+
+.border-primary {
+    width: 78vw;
+    pointer-events: none;
+}
+
+.border-success {
+    width: 78vw;
+    pointer-events: none;
 }
 
 @media screen and (max-width: 768px) {
@@ -70,99 +91,13 @@
     .h2-before {
         font-size: 1.15rem;
     }
-    .h3-before {
-        font-size: 0.5rem;
-    }
     .p1-before {
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
     .p2-before {
         font-size: 0.9rem;
     }
-    .ul-before {
-        font-size: 0.9rem;
-    }
-}
-
-
-li {
-    font-size: 1vw;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color:black;
-    margin-bottom:0vw;
-}
-
-a {
-    font-size: 1vw;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color:rgb(81, 183, 243);
-}
-
-
-
-.text-center {
-    text-align: center;
-}
-
-.container {
-    max-width: 80vw;
-}
-
-.split {
-    padding: 3vw;
-}
-
-.info-column {
-    float: left;
-    width: 50%;
-    padding: 3vw;
-}
-
-.row {
-    margin-top: 0vw;
-}
-
-.border-right {
-    border-right: 2px solid black;
-}
-
-.ul-lg{
-    font-size: 3vw;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color:black;
-    margin: 1.5vw;
-    margin-bottom:0%;
-}
-  
-/* Remove extra left and right margins, due to padding in columns */
-.info-row {margin: 0 -5px;}
-  
-/* Clear floats after the columns */
-
-  
-/* Style the counter cards */
-.info-card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
-    padding: 16px;
-    text-align: center;
-    background-color: rgba(228, 241, 200, 0.831);
-}
-
-
-
-/* Responsive columns - one column layout (vertical) on small screens */
-@media screen and (max-width: 600px) {
-    .info-column {
-        width: 100%;
-        display: block;
-        margin-bottom: 20px;
-    }
-
-    button span{
-        display: none
-    }
-    
-    button{
-        padding: 10px;
+    .p3-before {
+        font-size: 1rem;
     }
 }
