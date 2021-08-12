@@ -102,5 +102,6 @@
     }
 }
 
-.copy-button {
+.copy-button{
+    float: right;
 }
