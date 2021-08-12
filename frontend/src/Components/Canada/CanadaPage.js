@@ -5,6 +5,9 @@ import * as Survey from "survey-react";
 import Tab from 'react-bootstrap/Tab';
 import Nav from 'react-bootstrap/Nav';
 import { Row, Col} from 'react-bootstrap';
+import BeforeArrival from "../Canada/BeforeArrival";
+import UponArrival from "../Canada/UponArrival";
+import AfterArrival from "../Canada/AfterArrival";
 import "survey-react/survey.css";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -95,7 +98,7 @@ class CanadaPage extends React.Component {
         ]
       }
   ],
-  completedHtml: "<h4 class='end-feedback'>感谢你填写以上问题<br/>短暂加载后我们将为你提供所需信息</h4>"
+  completedHtml: "<h4 class='end-feedback'>感谢你填写以上问题<br/>短暂加载后我们将为你提供所需信息</h4><br/><br/>"
 };
   componentWillMount() {    
     Survey.Survey.cssType = "bootstrap";
@@ -122,10 +125,10 @@ class CanadaPage extends React.Component {
                   <Nav.Link eventKey="before-arrival">Before Arriving Canada</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="Upon-arrival">Upon Arriving Canada</Nav.Link>
+                  <Nav.Link eventKey="upon-arrival">Upon Arriving Canada</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="After-arrival">After Arriving Canada</Nav.Link>
+                  <Nav.Link eventKey="after-arrival">After Arriving Canada</Nav.Link>
                 </Nav.Item>
               </Nav>
             </Col>
@@ -137,13 +140,13 @@ class CanadaPage extends React.Component {
                   </div>
                 </Tab.Pane>
                 <Tab.Pane eventKey="before-arrival">
-                  
+                  <BeforeArrival/>
                 </Tab.Pane>
                 <Tab.Pane eventKey="upon-arrival">
-                  
+                  <UponArrival/>
                 </Tab.Pane>
                 <Tab.Pane eventKey="after-arrival">
-                
+                  <AfterArrival/>
                 </Tab.Pane>
               </Tab.Content>
             </Col>
