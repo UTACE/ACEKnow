@@ -6,14 +6,14 @@
     box-shadow: 0 0.5vw 1vw 0 rgba(0, 0, 0, 0.2), 0 0.7vw 2.5vw 0 rgba(0, 0, 0, 0.19);
 }
 
-img {
+.img-about {
     max-width: 100%;
     height: auto;
     display: block;
     margin: auto;
 }
 
-h1 {
+.h1-about {
     text-align: center;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 6vw;
@@ -21,7 +21,7 @@ h1 {
     padding: 4vw;
 }
 
-h2 {
+.h2-about {
     width: 100%; 
     text-align: center;
     border-bottom: 0.25vw solid grey; 
@@ -31,12 +31,12 @@ h2 {
     color:grey;
 }
 
-h2 span {
+.h2-about span {
     background: white; 
     padding: 1.5vw; 
 }
 
-.p1 {
+.p1-about {
     font-size: 1.5vw;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color:black;
@@ -45,14 +45,6 @@ h2 span {
 
 .text-center {
     text-align: center;
-}
-
-.container {
-    max-width: 80vw;
-}
-
-.split {
-    padding: 3vw;
 }
 
 .contact-column {
@@ -78,12 +70,40 @@ h2 span {
     text-align: center;
     background-color: rgb(253, 253, 253);
 }
+
+.front-break {
+    height: 2vw;
+}
+
+.front-break1 {
+    height: 0.7vw;
+}
+
+.end-break {
+    height: 6vw;
+}
   
-/* Responsive columns - one column layout (vertical) on small screens */
+/* On screens that are 992px wide or less, the background color is blue */
+@media screen and (max-width: 992px) {
+    .end-break {
+      height:3.5vw;
+    }
+    .front-break {
+        height: 1vw;
+    }
+}
+  
+/* On screens that are 600px wide or less, the background color is olive */
 @media screen and (max-width: 600px) {
     .contact-column {
         width: 100%;
         display: block;
         margin-bottom: 20px;
+    }
+    .end-break {
+        height: 5vw;
+    }
+    .front-break {
+        height: 1vw;
     }
 }
