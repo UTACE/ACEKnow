@@ -14,7 +14,7 @@ class AboutPage extends React.Component {
         {/* ACEKknow Intro */}
         <div className="container">
           <h2 className="h2-about"><span>ACEKnow Intro</span></h2>
-          <div className="contianer-about"><div className="front-break1"></div></div>
+          <div className="front-break1"></div>
           <p className="p1-about text-center">
           His title, King of Heroes, is not meant to call him a king who is a hero, but instead implies that he is the king over all heroes. The heroes of various myths are derived from his legend, so his Gate of Babylon possesses all of their Noble Phantasms. Though there are numerous kings with titles such as the King of Knights or the King of Conquerors, he is the only one in all of heaven and earth crowned with the title of "King of All Heroes."
           </p>
@@ -26,7 +26,7 @@ class AboutPage extends React.Component {
         <div className="container">
           <h2 className="h2-about"><span>ACE Intro</span></h2>
 
-          <div className="contianer"><div className="front-break"></div></div>
+          <div className="front-break"></div>
 
           <div className="row align-items-center">
             <div className="col-lg-6">
@@ -43,7 +43,7 @@ class AboutPage extends React.Component {
           </div>
         </div>
 
-        <div className="contianer"><div className="end-break"></div></div>
+        <div className="end-break"></div>
 
         {/* Contact Us */}
         <div className="container">
@@ -69,13 +69,13 @@ class AboutPage extends React.Component {
               <div className="contact-column">
                 <div className="contact-card">
                 Other contact information list here XXXXX
-                <br></br>XXX<br></br>XXX
+                <br/>XXX<br/>XXX
                 </div>
               </div>
               <div className="contact-column">
                 <div className="contact-card">
                 Other contact information list here XXXXX
-                <br></br>XXX<br></br>XXX
+                <br/>XXX<br/>XXX
                 </div>
               </div>
             </div>
