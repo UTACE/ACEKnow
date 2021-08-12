@@ -74,6 +74,16 @@
     font-weight: bold;
 }
 
+.border-primary {
+    width: 78vw;
+    pointer-events: none;
+}
+
+.border-success {
+    width: 78vw;
+    pointer-events: none;
+}
+
 @media screen and (max-width: 768px) {
     .h1-after {
         font-size: 1.5rem;
