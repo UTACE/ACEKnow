@@ -23,7 +23,7 @@ class AfterArrival extends React.Component {
             </div>
           </div>
           <ul className = 'ul-after'>
-            <a className = 'a1-after' href="https://travel.gc.ca/travel-covid/travel-restrictions/isolation/quarantine-start">Learn more about the quaratine plan here.</a>
+            <a className = 'a1-after' href="https://travel.gc.ca/travel-covid/travel-restrictions/isolation/quarantine-start">Learn more about the plan.</a>
           </ul>
           <ol className = 'ol-after'>
               <li className = 'p2-after'>Stay for 14 days or possibly longer.</li>
