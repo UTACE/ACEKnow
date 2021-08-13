@@ -7,8 +7,6 @@ class AfterArrival extends React.Component {
   render() {
     return (
       <div>
-        <NavBar/>
-        
         <div className = 'container'>
           
           {/* Title */}
@@ -48,8 +46,6 @@ class AfterArrival extends React.Component {
             <li className = 'p2-after'>Use ArriveCAN or call 1-833-641-0343 to check-in the day after you enter Canada and to report symptoms daily. You will be contacted by the Government of Canada and Provincial/territorial officials.</li>
           </ul>
         </div>
-       
-        <Footer/>
       </div>
     );
   }

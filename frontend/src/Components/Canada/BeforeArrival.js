@@ -20,8 +20,7 @@ function copy(content) {
 class BeforeArrival extends React.Component {
   render() {
     return (
-      <div>
-        <NavBar/>
+      <div>    
         <div className = 'container'>
           
           {/* Title */}
@@ -44,9 +43,6 @@ class BeforeArrival extends React.Component {
               <li className = 'p2-before'>Backup Quarantine Plan.</li>
               <li className = 'p2-before'>At-Home Quarantine.</li>
           </ol>
-
-          
-
 
           {/* Step 2 */}
           <div className = 'card border-success'>
@@ -214,9 +210,6 @@ class BeforeArrival extends React.Component {
             <li className = 'p2-before'>a printout</li>
           </ul>
         </div>
-        
-
-        <Footer/>
       </div>
     );
   }
