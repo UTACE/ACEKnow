@@ -5,6 +5,8 @@ import * as Survey from "survey-react";
 import Tab from 'react-bootstrap/Tab';
 import Nav from 'react-bootstrap/Nav';
 import { Row, Col} from 'react-bootstrap';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown';
 import BeforeArrival from "../Canada/BeforeArrival";
 import UponArrival from "../Canada/UponArrival";
 import AfterArrival from "../Canada/AfterArrival";
@@ -14,6 +16,13 @@ import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../styles/CanadaPage.css";
 
 class CanadaPage extends React.Component {
+  constructor(){
+    super();
+    
+    this.state = {
+        title: "Getting Started"
+    }
+}
 
   json = {
     title: "基本情况",
@@ -24,7 +33,7 @@ class CanadaPage extends React.Component {
         questions: [
             {
                 type: "html",
-                html: "为了更准确的为你提供所需信息， 我们需要了解一些基本情况。<br/>点击<b>'开始填写'</b>进入问卷环节。<br/><br/>本问卷不含任何涉及隐私的问题。"
+                html: "为了更准确的为你提供所需信息， <br/> 我们需要了解一些基本情况。<br/>点击<b>'开始填写'</b>进入问卷环节。<br/><br/>本问卷不含任何涉及隐私的问题。"
             }
         ]
       }, {
@@ -109,6 +118,10 @@ class CanadaPage extends React.Component {
   console.log("Result JSON:\n" + JSON.stringify(survey.data, null, 5));
   }
 
+  titleChange(text){
+    this.setState({title: text})
+  }
+
   render() {
     var model = new Survey.Model(this.json);    
     return (
@@ -117,7 +130,7 @@ class CanadaPage extends React.Component {
         <Tab.Container id="left-tabs-example" defaultActiveKey="survey">
           <Row className="canada-main-content">
             <Col sm={3}>
-              <Nav variant="pills" className="flex-column">
+              <Nav variant="pills" className="flex-column mobile-hide">
                 <Nav.Item>
                   <Nav.Link eventKey="survey">Getting Started</Nav.Link>
                 </Nav.Item>
@@ -131,6 +144,15 @@ class CanadaPage extends React.Component {
                   <Nav.Link eventKey="after-arrival">After Arriving Canada</Nav.Link>
                 </Nav.Item>
               </Nav>
+              <DropdownButton variant="secondary" className="canada-menu mobile-show" alignCenter title={this.state.title}>
+                <Dropdown.Item eventKey="survey" onClick={(e)=> this.titleChange(e.target.textContent)}>Getting Started</Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item eventKey="before-arrival" onClick={(e)=> this.titleChange(e.target.textContent)}>Before Arriving Canada</Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item eventKey="upon-arrival" onClick={(e)=> this.titleChange(e.target.textContent)}>Upon Arriving Canada</Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item eventKey="after-arrival" onClick={(e)=> this.titleChange(e.target.textContent)}>After Arriving Canada</Dropdown.Item>
+              </DropdownButton>
             </Col>
             <Col sm={9}>
               <Tab.Content>

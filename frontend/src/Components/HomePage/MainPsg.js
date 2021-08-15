@@ -19,12 +19,12 @@ class MainPsg extends React.Component {
 
   render() {
     return(
-      <div class="row top-container">
-        <div class="card top-passage col-lg-6"> 
-          <img class="card-img-top" src={this.state.topPassages[0].src} alt={this.state.topPassages[0].title}/>
-          <div class="card-body">
-            <h5 class="card-title">{this.state.topPassages[0].title}</h5>
-            <p class="card-text">{this.state.topPassages[0].content}</p>
+      <div className="row top-container">
+        <div className="card top-passage col-lg-6"> 
+          <img className="card-img-top" src={this.state.topPassages[0].src} alt={this.state.topPassages[0].title}/>
+          <div className="card-body">
+            <h5 className="card-title">{this.state.topPassages[0].title}</h5>
+            <p className="card-text">{this.state.topPassages[0].content}</p>
           </div>
         </div>
         <MainPsgSide content= {this.state.topPassages}/>
