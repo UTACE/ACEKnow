@@ -37,7 +37,7 @@ class NavBar extends Component {
                                 </NavDropdown>
                             </Nav>
                             <Nav className="ml-auto">
-                                <button class="ml-auto btn btn-outline-info d-flex" onClick={() => window.location.href = "https://www.utace.club/"}>关于我们</button>
+                                <button class="ml-auto btn btn-outline-info d-flex" onClick={() => window.location.href = "/about"}>关于我们</button>
                                 {' '}*/
                             </Nav>
                         </Navbar.Collapse>
