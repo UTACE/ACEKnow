@@ -7,7 +7,7 @@ class NavBar extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="container-fullwidth">
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
                     <Container>
                         <Navbar.Brand href="/">ACEKnow</Navbar.Brand>
