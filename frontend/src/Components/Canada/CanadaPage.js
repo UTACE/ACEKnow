@@ -145,13 +145,13 @@ class CanadaPage extends React.Component {
                 </Nav.Item>
               </Nav>
               <DropdownButton variant="secondary" className="canada-menu mobile-show" alignCenter title={this.state.title}>
-                <Dropdown.Item eventKey="survey" onClick={(e)=> this.titleChange(e.target.textContent)}>Getting Started</Dropdown.Item>
+                <Dropdown.Item className="can-head-menu" eventKey="survey" onClick={(e)=> this.titleChange(e.target.textContent)}>Getting Started</Dropdown.Item>
                 <Dropdown.Divider />
-                <Dropdown.Item eventKey="before-arrival" onClick={(e)=> this.titleChange(e.target.textContent)}>Before Arriving Canada</Dropdown.Item>
+                <Dropdown.Item className="can-head-menu" eventKey="before-arrival" onClick={(e)=> this.titleChange(e.target.textContent)}>Before Arriving Canada</Dropdown.Item>
                 <Dropdown.Divider />
-                <Dropdown.Item eventKey="upon-arrival" onClick={(e)=> this.titleChange(e.target.textContent)}>Upon Arriving Canada</Dropdown.Item>
+                <Dropdown.Item className="can-head-menu" eventKey="upon-arrival" onClick={(e)=> this.titleChange(e.target.textContent)}>Upon Arriving Canada</Dropdown.Item>
                 <Dropdown.Divider />
-                <Dropdown.Item eventKey="after-arrival" onClick={(e)=> this.titleChange(e.target.textContent)}>After Arriving Canada</Dropdown.Item>
+                <Dropdown.Item className="can-head-menu" eventKey="after-arrival" onClick={(e)=> this.titleChange(e.target.textContent)}>After Arriving Canada</Dropdown.Item>
               </DropdownButton>
             </Col>
             <Col sm={9}>
