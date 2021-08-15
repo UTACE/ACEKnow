@@ -127,53 +127,55 @@ class CanadaPage extends React.Component {
     return (
       <div>
         <NavBar/>
-        <Tab.Container id="left-tabs-example" defaultActiveKey="survey">
-          <Row className="canada-main-content">
-            <Col sm={3}>
-              <Nav variant="pills" className="flex-column mobile-hide">
-                <Nav.Item>
-                  <Nav.Link eventKey="survey">Getting Started</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="before-arrival">Before Arriving Canada</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="upon-arrival">Upon Arriving Canada</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link eventKey="after-arrival">After Arriving Canada</Nav.Link>
-                </Nav.Item>
-              </Nav>
-              <DropdownButton variant="secondary" className="canada-menu mobile-show" alignCenter title={this.state.title}>
-                <Dropdown.Item className="can-head-menu" eventKey="survey" onClick={(e)=> this.titleChange(e.target.textContent)}>Getting Started</Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item className="can-head-menu" eventKey="before-arrival" onClick={(e)=> this.titleChange(e.target.textContent)}>Before Arriving Canada</Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item className="can-head-menu" eventKey="upon-arrival" onClick={(e)=> this.titleChange(e.target.textContent)}>Upon Arriving Canada</Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item className="can-head-menu" eventKey="after-arrival" onClick={(e)=> this.titleChange(e.target.textContent)}>After Arriving Canada</Dropdown.Item>
-              </DropdownButton>
-            </Col>
-            <Col sm={9}>
-              <Tab.Content>
-                <Tab.Pane eventKey="survey">
-                  <div className="survey">
-                    <Survey.Survey model={model} onComplete={this.onComplete}/>
-                  </div>
-                </Tab.Pane>
-                <Tab.Pane eventKey="before-arrival">
-                  <BeforeArrival/>
-                </Tab.Pane>
-                <Tab.Pane eventKey="upon-arrival">
-                  <UponArrival/>
-                </Tab.Pane>
-                <Tab.Pane eventKey="after-arrival">
-                  <AfterArrival/>
-                </Tab.Pane>
-              </Tab.Content>
-            </Col>
-          </Row>
-        </Tab.Container>
+        <div className ="container">
+          <Tab.Container id="canada-tabs" defaultActiveKey="survey">
+            <Row className="canada-main-content">
+              <Col lg={3} md={12}>
+                <Nav variant="pills" className="flex-column canada-mobile-hide">
+                  <Nav.Item>
+                    <Nav.Link eventKey="survey">Getting Started</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="before-arrival">Before Arriving Canada</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="upon-arrival">Upon Arriving Canada</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="after-arrival">After Arriving Canada</Nav.Link>
+                  </Nav.Item>
+                </Nav>
+                <DropdownButton variant="secondary" className="canada-menu canada-mobile-show" alignCenter title={this.state.title}>
+                  <Dropdown.Item className="can-head-menu" eventKey="survey" onClick={(e)=> this.titleChange(e.target.textContent)}>Getting Started</Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Item className="can-head-menu" eventKey="before-arrival" onClick={(e)=> this.titleChange(e.target.textContent)}>Before Arriving Canada</Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Item className="can-head-menu" eventKey="upon-arrival" onClick={(e)=> this.titleChange(e.target.textContent)}>Upon Arriving Canada</Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Item className="can-head-menu" eventKey="after-arrival" onClick={(e)=> this.titleChange(e.target.textContent)}>After Arriving Canada</Dropdown.Item>
+                </DropdownButton>
+              </Col>
+              <Col lg={9} md={12}>
+                <Tab.Content>
+                  <Tab.Pane eventKey="survey">
+                    <div className="survey">
+                      <Survey.Survey model={model} onComplete={this.onComplete}/>
+                    </div>
+                  </Tab.Pane>
+                  <Tab.Pane eventKey="before-arrival">
+                    <BeforeArrival/>
+                  </Tab.Pane>
+                  <Tab.Pane eventKey="upon-arrival">
+                    <UponArrival/>
+                  </Tab.Pane>
+                  <Tab.Pane eventKey="after-arrival">
+                    <AfterArrival/>
+                  </Tab.Pane>
+                </Tab.Content>
+              </Col>
+            </Row>
+          </Tab.Container>
+        </div>
         <Footer/>
       </div>
     );

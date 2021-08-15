@@ -12,7 +12,7 @@
 }
 
 .canada-main-content{
-    width: 80%;
+    width: 100%;
     margin: auto;
 }
 
@@ -48,5 +48,17 @@ button.dropdown-toggle{
 @media screen and (max-width: 768px) {
     .sv-string-viewer, .end-feedback{
         font-size: 1.1rem;
+    }
+}
+
+@media screen and (max-width: 991px){
+    .canada-mobile-hide{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 992px){
+    .canada-mobile-show{
+        display: none;
     }
 }
