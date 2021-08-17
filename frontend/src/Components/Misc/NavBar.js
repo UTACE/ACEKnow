@@ -38,7 +38,7 @@ class NavBar extends Component {
                             </Nav>
                             <Nav className="ml-auto">
                                 <button class="ml-auto btn btn-outline-info d-flex" onClick={() => window.location.href = "/about"}>关于我们</button>
-                                {' '}*/
+                                {' '}
                             </Nav>
                         </Navbar.Collapse>
                     </Container>
