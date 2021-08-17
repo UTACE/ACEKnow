@@ -110,8 +110,11 @@ class CanadaPage extends React.Component {
   completedHtml: "<h4 class='end-feedback'>感谢你填写以上问题<br/>短暂加载后我们将为你提供所需信息</h4><br/><br/>"
 };
   componentWillMount() {    
-    Survey.Survey.cssType = "bootstrap";
+    Survey.Survey.cssType = "default";
     Survey.defaultBootstrapCss.navigationButton = "btn btn-dark";
+    var defaultThemeColors = Survey.StylesManager.ThemeColors["default"];
+    defaultThemeColors["$background-dim"] = "#ffffff";
+    Survey.StylesManager.applyTheme("default");
   }
 
   onComplete(survey, options) {
