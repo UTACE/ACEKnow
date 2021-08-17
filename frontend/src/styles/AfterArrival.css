@@ -3,8 +3,6 @@
     margin-bottom: 1.5rem;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     display: block;
-    margin-block-start: 1rem;
-    margin-block-end: 1rem;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     font-weight: bold;
@@ -46,8 +44,9 @@
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin:0.5rem;
     font-size: 1.15rem;
-    text-align: left;
+    text-align: center;
     color: gray;
+    display: block;
 }
 
 .ol-after {
@@ -65,6 +64,10 @@
     font-size: 1.15rem;
 }
 
+.checkin-info{
+    margin: 1rem 0.5rem 1rem 0.5rem;
+}
+
 .p3-after {
     font-family:Arial, Helvetica, sans-serif;
     color:black;
@@ -75,13 +78,33 @@
 }
 
 .border-primary {
-    width: 78vw;
+    width: 100%;
     pointer-events: none;
 }
 
 .border-success {
-    width: 78vw;
+    width: 100%;
     pointer-events: none;
+}
+
+.accordion-card {
+    width: 100%;
+    transform: none;
+    box-shadow: none;
+}
+.accordion-card:hover{
+    width: 100%;
+    transform: none;
+    box-shadow: none;
+}
+
+.note-body{
+    padding: 0;
+}
+
+.expand-icon{
+    float: right;
+    margin-top: 4px;
 }
 
 @media screen and (max-width: 768px) {
@@ -91,6 +114,9 @@
     .h2-after {
         font-size: 1.15rem;
     }
+    .a1-after{
+        font-size: 1rem;
+    }
     .p1-after {
         font-size: 1rem;
     }
@@ -99,5 +125,11 @@
     }
     .p3-after {
         font-size: 1rem;
+    }
+    .ol-after, .ul-after{
+        padding-left: 15px;
+    }
+    .mobile-hide{
+        display: none;
     }
 }

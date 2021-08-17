@@ -7,7 +7,7 @@ class NavBar extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="container-fullwidth">
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
                     <Container>
                         <Navbar.Brand href="/">ACEKnow</Navbar.Brand>
@@ -37,8 +37,8 @@ class NavBar extends Component {
                                 </NavDropdown>
                             </Nav>
                             <Nav className="ml-auto">
-                                <button class="ml-auto btn btn-outline-info d-flex" onClick={() => window.location.href = "https://www.utace.club/"}>关于我们</button>
-                                {' '}*/
+                                <button class="ml-auto btn btn-outline-info d-flex" onClick={() => window.location.href = "/about"}>关于我们</button>
+                                {' '}
                             </Nav>
                         </Navbar.Collapse>
                     </Container>

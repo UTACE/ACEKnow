@@ -17,13 +17,13 @@ class MainPsgBot extends React.Component {
 
   render() {
     return(
-      <div class="row">
+      <div className="row">
         {this.state.bottomPassages.map((passage)=>(
-            <div class="card bottom-passage">
-                <img class="card-img-top" src={passage.src} alt={passage.title}/>
-                <div class="card-body">
-                <h5 class="card-title">{passage.title}</h5>
-                <p class="card-text">{passage.content}</p>
+            <div className="card bottom-passage">
+                <img className="card-img-top" src={passage.src} alt={passage.title}/>
+                <div className="card-body">
+                <h5 className="card-title">{passage.title}</h5>
+                <p className="card-text">{passage.content}</p>
                 </div>
             </div>
         ))}

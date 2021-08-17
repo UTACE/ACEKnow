@@ -31,14 +31,16 @@ class HomePage extends React.Component {
 
   render() {
     return (
-      <Container>
-        <NavBar/>
-        <BootstrapCarousel/>
-        <MainPsg/>
-        <h5>Sponsors info here</h5>
-        <MainPsgBot/>
-        <Footer/>
-      </Container>
+        <>
+          <NavBar/>
+          <Container>
+            <BootstrapCarousel/>
+            <MainPsg/>
+            <h5>Sponsors info here</h5>
+            <MainPsgBot/>
+            <Footer/>
+          </Container>
+        </>
     )
   }
 }

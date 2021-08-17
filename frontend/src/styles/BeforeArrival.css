@@ -46,6 +46,15 @@
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin:0.5rem;
     font-size: 1.15rem;
+    text-align: center;
+    color: gray;
+    display: block;
+}
+
+.a2-before {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin:0.3rem;
+    font-size: 1.15rem;
     text-align: left;
     color: gray;
 }
@@ -60,7 +69,7 @@
 .p2-before {
     font-family:Arial, Helvetica, sans-serif;
     color:black;
-    margin: 0.5rem;
+    margin: 0.4rem;
     text-align: left;
     font-size: 1.15rem;
 }
@@ -74,17 +83,39 @@
     font-weight: bold;
 }
 
-.border-primary {
-    width: 78vw;
-    pointer-events: none;
+.dropdown-item{
+    padding: 0;
 }
 
-.border-success {
-    width: 78vw;
-    pointer-events: none;
+.tabs-row{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.tabs-container{
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.tabs-col{
+    border-top: 1px solid lightgray;
+}
+
+.contact-method{
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    width: 100%;
+}
+
+.a3-before {
+    margin-left: 3px;
+    color: #212529;
 }
 
 @media screen and (max-width: 768px) {
+    .a1-before, .a2-before{
+        font-size: 1rem;
+    }
     .h1-before {
         font-size: 1.5rem;
     }
@@ -99,6 +130,21 @@
     }
     .p3-before {
         font-size: 1rem;
+    }
+    .mobile-hide{
+        display: none;
+    }
+    .tabs-col, .tabs-row{
+        font-size: 0.9rem;
+    }
+    .ol-before, .ul-before{
+        padding-left: 15px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .mobile-show{
+        display: none;
     }
 }
 

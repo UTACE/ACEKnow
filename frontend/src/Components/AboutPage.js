@@ -37,7 +37,12 @@ class AboutPage extends React.Component {
             </div>
             <div className="col-lg-6">
               <p className="p1-about">
-                Born with a body that was of the highest grade by mortal standards and knowledge reaching truth, Gilgamesh was born, designed, as king and the Wedge of Heaven to connect the rising humans and the fading gods. He was sent to ensure the humans and bind the earth slowly leaving the Age of Gods. He was a being embodying the two life sets of life forms, with the blood of those who had ruled and the blood of those who would rule from thereon.
+                ACE is a student-run, non-profit organization dedicated to promoting Chinese culture, 
+                as well as fostering friendship and communication between its members. 
+                As the unique Chinese culture club in the engineering faculty, 
+                ACE is a newly formed club merged from two original cultural clubs, 
+                Chinese Engineering Students Association (CESA) and Engineering Chinese Club (ECC) in 2016 summer, 
+                with 30 executives and around 600 active members annually from CESA and ECC in the past.
               </p>
             </div>
           </div>

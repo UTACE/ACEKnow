@@ -12,7 +12,7 @@
 }
 
 .canada-main-content{
-    width: 80%;
+    width: 100%;
     margin: auto;
 }
 
@@ -24,4 +24,41 @@
 
 .end-feedback{
     text-align: center;
+}
+
+button.dropdown-toggle{
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    background-color: #343a40;
+}
+
+.dropdown-menu{
+    width: 100%;
+    text-align: center;
+    background-color: #343a40;
+}
+
+.can-head-menu{
+    color: white;
+}
+
+@media screen and (max-width: 768px) {
+    .sv-string-viewer, .end-feedback{
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (max-width: 991px){
+    .canada-mobile-hide{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 992px){
+    .canada-mobile-show{
+        display: none;
+    }
 }
