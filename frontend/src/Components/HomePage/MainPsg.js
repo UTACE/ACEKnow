@@ -1,6 +1,5 @@
 import React from 'react';
-import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
-import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { Card, CardDeck} from 'react-bootstrap';
 import '../../styles/MainPsg.css';
 import MainPsgSide from '../HomePage/MainPsgSide';
 
@@ -19,16 +18,16 @@ class MainPsg extends React.Component {
 
   render() {
     return(
-      <div className="row top-container">
-        <div className="card top-passage col-lg-6"> 
-          <img className="card-img-top" src={this.state.topPassages[0].src} alt={this.state.topPassages[0].title}/>
-          <div className="card-body">
-            <h5 className="card-title">{this.state.topPassages[0].title}</h5>
-            <p className="card-text">{this.state.topPassages[0].content}</p>
-          </div>
-        </div>
+      <CardDeck className="top-container">
+          <Card lg={6} className="top-passage">
+            <Card.Img variant="top" src={this.state.topPassages[0].src} />
+            <Card.Body>
+              <Card.Title>{this.state.topPassages[0].title}</Card.Title>
+              <Card.Text>{this.state.topPassages[0].content}</Card.Text>
+            </Card.Body>
+          </Card>
         <MainPsgSide content= {this.state.topPassages}/>
-      </div>
+      </CardDeck>
     );
   }  
 }

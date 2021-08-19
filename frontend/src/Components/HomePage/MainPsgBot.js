@@ -1,6 +1,5 @@
 import React from 'react';
-import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
-import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import {Card, CardDeck} from 'react-bootstrap';
 import '../../styles/MainPsg.css';
 
 class MainPsgBot extends React.Component {
@@ -17,17 +16,17 @@ class MainPsgBot extends React.Component {
 
   render() {
     return(
-      <div className="row">
+      <CardDeck>
         {this.state.bottomPassages.map((passage)=>(
-            <div className="card bottom-passage">
-                <img className="card-img-top" src={passage.src} alt={passage.title}/>
-                <div className="card-body">
-                <h5 className="card-title">{passage.title}</h5>
-                <p className="card-text">{passage.content}</p>
-                </div>
-            </div>
+          <Card className="bottom-passage">
+            <Card.Img variant="top" src={passage.src} />
+            <Card.Body>
+            <Card.Title>{passage.title}</Card.Title>
+            <Card.Text>{passage.content}</Card.Text>
+            </Card.Body>
+          </Card>
         ))}
-      </div>
+      </CardDeck>
     );
   }  
 }

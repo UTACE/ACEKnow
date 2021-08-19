@@ -33,13 +33,13 @@
     color:black;
 }
 
-a.row{
-    margin-left: 0;
-}
-
 .footer-title{
     border-bottom: 2px solid black;
     margin-top: 15px;
+}
+
+.footer-row{
+    margin-left: 0;
 }
 
 .rights-reserve{

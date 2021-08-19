@@ -1,21 +1,20 @@
 import React from 'react';
-import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
-import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import {Col, Card} from 'react-bootstrap';
 import '../../styles/MainPsg.css';
 
 class MainPsg extends React.Component {
 
   render() {
     return(
-        <div className="sideContainer col-lg-6">
+        <Col lg={6} className="sideContainer">
             {this.props.content.slice(1).map((passage)=>(
-            <div className="card mobile-hide top-passage">
-                <img className="card-img-top" src={passage.src} alt={passage.title}/>
-                <div className="card-body">
-                <h5 className="card-title">{passage.title}</h5>
-                <p className="card-text">{passage.content}</p>
-                </div>
-            </div>
+                <Card className="mobile-hide top-passage">
+                    <Card.Img variant="top" src={passage.src} />
+                    <Card.Body>
+                    <Card.Title>{passage.title}</Card.Title>
+                    <Card.Text>{passage.content}</Card.Text>
+                    </Card.Body>
+                </Card>
             ))}
             <ul className="list-group mobile-show top-passage">
                 {this.props.content.slice(1).map((passage)=>(
@@ -25,7 +24,7 @@ class MainPsg extends React.Component {
                 </li>
                 ))}
             </ul>
-        </div>
+        </Col>
     );
   }  
 }

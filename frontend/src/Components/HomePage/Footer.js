@@ -1,7 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
-import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { Row, Col} from 'react-bootstrap';
 import '../../styles/Footer.css';
 
 function Footer () {
@@ -10,38 +9,38 @@ function Footer () {
             <div className="footer-middle">
                 <div className="container">
                     <h5 className="footer-title">外站链接</h5>
-                    <div className="mobile-hide row">
-                        <a className="footer-content col-md-6 col-sm-6" href="https://www.utace.club/">
-                            <div className="footer-links">ACE官网</div>
-                        </a>
-                        <a className="footer-content col-md-6 col-sm-6" href="https://github.com/UTACE">
-                            <div className="footer-links">Github</div>
-                        </a>
-                    </div>
+                    <Row className="mobile-hide">
+                        <Col sm={6} md={6}>
+                            <Link className="footer-content footer-links" to="https://www.utace.club/">ACE官网</Link>
+                        </Col>
+                        <Col sm={6} md={6}>
+                            <Link className="footer-content footer-links" to="https://github.com/UTACE">Github</Link>
+                        </Col>
+                    </Row>
                     <div className="mobile-show">
-                        <a className="footer-content row" href="https://www.utace.club/">
-                            <div className="footer-links">ACE官网</div>
-                        </a>
-                        <a className="footer-content row" href="https://github.com/UTACE">
-                            <div className="footer-links">Github</div>
-                        </a>
+                        <Row className="footer-row">
+                            <Link className="footer-content footer-links" to="https://www.utace.club/">ACE官网</Link>
+                        </Row>
+                        <Row className="footer-row">
+                            <Link className="footer-content footer-links" to="https://github.com/UTACE">Github</Link>
+                        </Row>
                     </div>
                     <h5 className="footer-title">About Us</h5>
-                    <div className="mobile-hide row">
-                        <Link className="footer-content col-md-6 col-sm-6 footer-links" to="/about">
-                            Team information
-                        </Link>
-                        <Link className="footer-content col-md-6 col-sm-6 footer-links" to="/about">
-                            Sponsors
-                        </Link>
-                    </div>
+                    <Row className="mobile-hide">
+                        <Col sm={6} md={6}>
+                            <Link className="footer-content footer-links" to="/about">Team information</Link>
+                        </Col>
+                        <Col sm={6} md={6}>
+                            <Link className="footer-content footer-links" to="/about">Sponsors</Link>
+                        </Col>
+                    </Row>
                     <div className="mobile-show">
-                        <Link className="footer-content row footer-links" to="/about">
-                            Team information
-                        </Link>
-                        <Link className="footer-content row footer-links" to="/about">
-                            Sponsors
-                        </Link>
+                        <Row className="footer-row">
+                            <Link className="footer-content footer-links" to="/about">Team information</Link>
+                        </Row>
+                        <Row className="footer-row">
+                            <Link className="footer-content footer-links" to="/about">Sponsors</Link>
+                        </Row>
                     </div>
                 </div>
                     
