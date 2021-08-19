@@ -39,23 +39,23 @@ class VirusMap extends React.Component {
 
     if (num < 1.5)
     {
-      return { fillOption: fillGreenOptions, str: "Low Risk" }
+      return { fillOption: fillGreenOptions, str: "Low" }
     }
     else if (num < 3)
     {
-      return { fillOption: fillBlueOptions, str: "Medium-low Risk" }
+      return { fillOption: fillBlueOptions, str: "Medium-low" }
     }
     else if (num < 5)
     {
-      return { fillOption: fillYellowOptions, str: "Medium Risk" }
+      return { fillOption: fillYellowOptions, str: "Medium" }
     }
-    else if (num < 10)
+    else if (num < 12)
     {
-      return { fillOption: fillRedOptions, str: "Medium-high Risk" }
+      return { fillOption: fillRedOptions, str: "Medium-high" }
     }
-    else if (num >= 10)
+    else if (num >= 12)
     {
-      return { fillOption: fillPurpleOptions, str: "High Risk" }
+      return { fillOption: fillPurpleOptions, str: "High" }
     }
   }
 
@@ -72,7 +72,7 @@ class VirusMap extends React.Component {
       let fillOption
       let regionID = parseInt(TorontoNeighborFeatures[i].properties.AREA_S_CD)
 
-      fillOption = this.regionLevelStr(covidData[regionID.toString()]).fillOption
+      fillOption = this.regionLevelStr(covidData[regionID.toString()].Indicator).fillOption
 
       var reversed = TorontoNeighborFeatures[i].geometry.coordinates[0].map(function reverse(item) {
         return [item[1], item[0]];
@@ -87,9 +87,32 @@ class VirusMap extends React.Component {
       )
     }
 
-    let riskStr = <h5>Please Select a Region</h5>;
+    let rightPanel = []
     if (this.state.selectedAREA_S_CD !== "") {
-      riskStr = this.beautifiedRiskStr(covidData[parseInt(this.state.selectedAREA_S_CD).toString()])
+      rightPanel.push(<Row key="riskStr">
+                <div style={{width: "100%", textAlign: "center", fontSize: "40px"}}>
+                  Risk
+                </div>
+                <div style={{width: "100%", textAlign: "center"}}>
+                  {this.beautifiedRiskStr(covidData[parseInt(this.state.selectedAREA_S_CD).toString()].Indicator)}
+                </div>
+              </Row>)
+      rightPanel.push(
+        <Row key="newCase">
+          <div style={{fontSize: "32px"}}>{covidData[parseInt(this.state.selectedAREA_S_CD).toString()].newCase} cases</div>
+          were reported in the last 14 days
+        </Row>
+      )
+      rightPanel.push(
+        <Row key="caseDensity" style={{marginTop: "20px"}}>
+          <h5>New COVID cases density (case/km2)</h5>
+          {covidData[parseInt(this.state.selectedAREA_S_CD).toString()].caseDensity.toFixed(1)}
+        </Row>
+      )
+    } else {
+      rightPanel.push(
+        <Row><h5>Please Select a Region</h5></Row>
+      )
     }
 
     return (
@@ -119,11 +142,8 @@ class VirusMap extends React.Component {
                 <h5>{this.state.selectedRegionName}</h5>
               </Row>
               <hr/>
-              <Row>
-                {riskStr}
-              </Row>
+              {rightPanel}
               <hr/>
-
             </Col>
           </Row>
           <Row style={{marginTop: "20px"}}>
@@ -160,8 +180,8 @@ class VirusMap extends React.Component {
               death decision based on this indicator.</strong>
             </p>
           </Row>
-          <Footer/>
         </Container>
+        <Footer/>
       </div>
     )
   }
