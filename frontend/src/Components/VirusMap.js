@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup, Polygon } from 'react-leaflet'
+import { MapContainer, TileLayer, Polygon } from 'react-leaflet'
 import { Row, Col, Container } from 'react-bootstrap';
 
 import NavBar from "./Misc/NavBar";
