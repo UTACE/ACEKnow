@@ -39,7 +39,7 @@
 }
 
 .footer-row{
-    margin-left: 0;
+    margin-left: 0 !important;
 }
 
 .rights-reserve{
