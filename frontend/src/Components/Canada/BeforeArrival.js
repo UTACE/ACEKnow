@@ -1,7 +1,7 @@
 import React from 'react';
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import '../../styles/BeforeArrival.css';
-import {Dropdown} from "react-bootstrap";
+import {Card, Container, Dropdown} from "react-bootstrap";
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 
@@ -18,21 +18,19 @@ class BeforeArrival extends React.Component {
   render() {
     return (
       <div>    
-        <div className = 'container'>
+        <Container>
           
           {/* Title */}
           <div className = 'h1-before mobile-hide'>Before Arrival</div>
           <hr className = 'hr-before mobile-hide'/>
 
           {/* Step 1 */}
-          <div className = 'card border-primary'>
-            <div className = 'card-header text-primary'>
-              <div className="h2-before">STEP 1.</div>
-            </div>
-            <div className = 'card-body'>
-                <p className = 'p1-before text-primary'>Plan Your Quarantine</p>
-            </div>
-          </div>
+          <Card className="border-primary">
+            <Card.Header className="text-primary"><div className="h2-before">STEP 1.</div></Card.Header>
+            <Card.Body>
+                <p className="p1-before text-primary">Plan Your Quarantine</p>
+            </Card.Body>
+          </Card>
 
           <a className = 'a1-before' href="https://travel.gc.ca/travel-covid/travel-restrictions/isolation/quarantine-start">Click here to assess your quarantine plan before travel.</a>
           <p className = 'p2-before'>Apply UofT Quarantine Plan</p>
@@ -43,28 +41,24 @@ class BeforeArrival extends React.Component {
           </ol>
 
           {/* Step 2 */}
-          <div className = 'card border-success'>
-            <div className = 'card-header text-success'>
-              <div className = 'h2-before'>STEP 2.</div>
-            </div>
-            <div className = 'card-body'>
-                <p className = 'p1-before text-success'>Take a COVID-19 Test</p>
-            </div>
-          </div>
+          <Card className="border-success">
+            <Card.Header className="text-success"><div className="h2-before">STEP 2.</div></Card.Header>
+            <Card.Body>
+                <p className="p1-before text-success">Take a COVID-19 Test</p>
+            </Card.Body>
+          </Card>
 
           <p className = 'p2-before'>
             You MUST take a COVID-19 molecular test within <strong>72 hours</strong> before the scheduled departure time of your flight to Canada
           </p>
 
           {/* Step 3 */}
-          <div className = 'card border-primary'>
-            <div className = 'card-header text-primary'>
-              <div className = 'h2-before'>STEP 3.</div>
-            </div>
-            <div className = 'card-body'>
-                <p className = 'p1-before text-primary'>Create an Account for Arrival Test</p>
-            </div>
-          </div>
+          <Card className="border-primary">
+            <Card.Header className="text-primary"><div className="h2-before">STEP 3.</div></Card.Header>
+            <Card.Body>
+                <p className="p1-before text-primary">Create an Account for Arrival Test</p>
+            </Card.Body>
+          </Card>
 
           <p className = 'p2-before'>
             You must create an account to perform your arrival test and access your results. Use the same email address you used for ArriveCAN.
@@ -244,14 +238,12 @@ class BeforeArrival extends React.Component {
           <br/>
 
           {/* Step 4 */}
-          <div className = 'card border-success'>
-            <div className = 'card-header text-success'>
-              <div className = 'h2-before'>STEP 4.</div>
-            </div>
-            <div className = 'card-body'>
-                <p className = 'p1-before text-success'>Submit ArriveCAN Form</p>
-            </div>
-          </div>
+          <Card className="border-success">
+            <Card.Header className="text-success"><div className="h2-before">STEP 4.</div></Card.Header>
+            <Card.Body>
+                <p className="p1-before text-success">Submit ArriveCAN Form</p>
+            </Card.Body>
+          </Card>
 
           <p className = 'p2-before'>Use 
             <a className = 'a2-before' href="https://www.canada.ca/en/public-health/services/diseases/coronavirus-disease-covid-19/arrivecan.html#a3">
@@ -260,14 +252,12 @@ class BeforeArrival extends React.Component {
           to submit your travel details up to 72 hours before arrival</p>
           
           {/* Step 5 */}
-          <div className = 'card border-primary'>
-            <div className = 'card-header text-primary'>
-              <div className = 'h2-before'>STEP 5.</div>
-            </div>
-            <div className = 'card-body'>
-                <p className = 'p1-before text-primary'>Have Documents Ready</p>
-            </div>
-          </div>
+          <Card className="border-primary">
+            <Card.Header className="text-primary"><div className="h2-before">STEP 5.</div></Card.Header>
+            <Card.Body>
+                <p className="p1-before text-primary">Have Documents Ready</p>
+            </Card.Body>
+          </Card>
 
           <p className="p2-before">
             Once you submit your information through ArriveCAN, a receipt will be displayed and emailed to you show the receipt to a Canadian border services officer when you enter you can show your ArriveCAN receipt from:
@@ -278,7 +268,7 @@ class BeforeArrival extends React.Component {
             <li className = 'p2-before'>your email</li>
             <li className = 'p2-before'>a printout</li>
           </ul>
-        </div>
+        </Container>
       </div>
     );
   }
