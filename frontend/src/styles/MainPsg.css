@@ -33,24 +33,24 @@
         display: none;
     }
     .card-title{
-        font-size: small;
+        font-size: small !important;
     }
     .card-text{
-        font-size: smaller;
+        font-size: smaller !important;
     }
     .list-title{
-        font-size: small;
+        font-size: small !important;
     }
     .list-group-item{
-        font-size: smaller;
-        overflow: hidden; 
-        text-overflow: ellipsis; 
-        white-space: nowrap;
+        font-size: smaller !important;
+        overflow: hidden !important; 
+        text-overflow: ellipsis !important; 
+        white-space: nowrap !important;
     }
     .top-passage{
-        width: 50%;
-        float: left;
-        padding: 0;
+        width: 50% !important;
+        float: left !important;
+        padding: 0 !important;
     }
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
-import {Card} from 'react-bootstrap';
+import {Card, Container} from "react-bootstrap";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import '../../styles/AfterArrival.css';
 
@@ -9,7 +9,7 @@ class AfterArrival extends React.Component {
   render() {
     return (
       <div>
-        <div className = 'container'>
+        <Container>
           
           {/* Title */}
           <div className = 'h1-after mobile-hide'>
@@ -17,12 +17,13 @@ class AfterArrival extends React.Component {
             <hr className = 'hr-after' />
           </div>
           {/* Step 1 */}
-          <div className = 'card border-primary'>
-            <div className = 'card-header text-primary'><div className="h2-after">STEP 1.</div></div>
-            <div className = 'card-body'>
-                <p className = 'p1-after text-primary'>Completing Your Full Quarantine</p>
-            </div>
-          </div>
+          <Card className="border-primary">
+            <Card.Header className="text-primary"><div className="h2-after">STEP 1.</div></Card.Header>
+            <Card.Body>
+                <p className="p1-after text-primary">Completing Your Full Quarantine</p>
+            </Card.Body>
+          </Card>
+
           <a className = 'a1-after' href="https://travel.gc.ca/travel-covid/travel-restrictions/isolation/quarantine-start">Click here to learn more about the plan.</a>
           <ol className = 'ol-after'>
               <li className = 'p2-after'>Stay for 14 days or possibly longer.</li>
@@ -64,16 +65,17 @@ class AfterArrival extends React.Component {
           </ul>
 
           {/* Step 2 */}
-          <div className = 'card border-success'>
-            <div className = 'card-header text-success'><div className = 'h2-after'>STEP 2.</div></div>
-            <div className = 'card-body'>
-                <p className = 'p1-after text-success'>Check-in and Report Symptoms</p>
-            </div>
-          </div>
+          <Card className="border-success">
+            <Card.Header className="text-success"><div className="h2-after">STEP 2.</div></Card.Header>
+            <Card.Body>
+                <p className="p1-after text-success">Check-in and Report Symptoms</p>
+            </Card.Body>
+          </Card>
+         
           <p className = 'p2-after checkin-info'>
             Use ArriveCAN or call 1-833-641-0343 to check-in the day after you enter Canada and to report symptoms daily. You will be contacted by the Government of Canada and Provincial/territorial officials.
           </p>
-        </div>
+        </Container>
       </div>
     );
   }

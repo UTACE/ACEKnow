@@ -20,7 +20,14 @@ class CanadaPage extends React.Component {
     super();
     
     this.state = {
-        title: "Getting Started"
+        title: "Getting Started",
+        result:{
+          firstArrive: "",
+          designatedCountry:"",
+          haveVaccinated: "",
+          typeVaccination: "",
+          quarantine: "",
+        }
     }
 }
 
@@ -28,6 +35,7 @@ class CanadaPage extends React.Component {
     title: "基本情况",
     startSurveyText: "开始填写",
     firstPageIsStarted: true,
+    goNextPageAutomatic: true,
     pages: [
       {
         questions: [
@@ -40,7 +48,7 @@ class CanadaPage extends React.Component {
         questions: [
           {
               type: "radiogroup",
-              name: "first-arrive",
+              name: "firstArrive",
               title: "Have you ever entered Canada?",
               choices: [
                 "Yes", "No"
@@ -52,8 +60,8 @@ class CanadaPage extends React.Component {
         questions: [
           {
               type: "radiogroup",
-              name: "designated-country",
-              visibleIf: "{first-arrive} = 'No'",
+              name: "designatedCountry",
+              visibleIf: "{firstArrive} = 'No'",
               title: "Will you have stayed in designated country for over six months at the time of next arrival to Canada?",
               choices: [
                   "Yes", "No"
@@ -65,7 +73,7 @@ class CanadaPage extends React.Component {
         questions: [
           {
               type: "radiogroup",
-              name: "have-vaccinated",
+              name: "haveVaccinated",
               title: "What will be your vaccination status 14 days before entry?",
               choices: [
                   "Vaccinated (including not partially vaccinated)", "Not vaccinated"
@@ -77,9 +85,9 @@ class CanadaPage extends React.Component {
         questions: [
             {
               type: "radiogroup",
-              name: "kind-vaccination",
+              name: "typeVaccination",
               title: "What vaccination have you done?",
-              visibleIf: "{have-vaccinated}='Vaccinated (including not partially vaccinated)'",
+              visibleIf: "{haveVaccinated}='Vaccinated (including not partially vaccinated)'",
               choices: [
                 "Two shots of mRNA (Pfizer, Moderna) vaccines / 两剂mRNA（辉瑞，摩德纳）疫苗",
                 "Two shots of AstraZeneca/COVISHIELD vaccines / 两剂阿兹利康疫苗",
@@ -97,7 +105,7 @@ class CanadaPage extends React.Component {
           {
               type: "radiogroup",
               name: "quarantine",
-              visibleIf:"{have-vaccinated}='Not vaccinated' or {kind-vaccination}='Partially vaccinated or other'",
+              visibleIf:"{haveVaccinated}='Not vaccinated' or {typeVaccination}='Partially vaccinated or other'",
               title: "Will you have a place to quarantine for 14 days upon your arrival?",
               choices: [
                   "Yes", "No"
@@ -109,7 +117,7 @@ class CanadaPage extends React.Component {
   ],
   completedHtml: "<h4 class='end-feedback'>感谢你填写以上问题<br/>短暂加载后我们将为你提供所需信息</h4><br/><br/>"
 };
-  componentWillMount() {    
+  componentDidMount() {    
     Survey.Survey.cssType = "default";
     Survey.defaultBootstrapCss.navigationButton = "btn btn-dark";
     var defaultThemeColors = Survey.StylesManager.ThemeColors["default"];
@@ -117,14 +125,21 @@ class CanadaPage extends React.Component {
     Survey.StylesManager.applyTheme("default");
   }
 
-  onComplete(survey, options) {
+  printResult(){
+    console.log(this.state.result);
+  }
+
+  onComplete = (survey, options) => {
+  console.log('Updating State');
   console.log("Result JSON:\n" + JSON.stringify(survey.data, null, 5));
+  this.setState({result: survey.data
+  },()=>{console.log(this.state.result);})
   }
 
   titleChange(text){
     this.setState({title: text})
   }
-
+  
   render() {
     var model = new Survey.Model(this.json);    
     return (
