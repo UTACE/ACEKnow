@@ -19,14 +19,8 @@ export class BootstrapCarousel extends Component {
               <Carousel.Item style={{'height':"600px"}} >
                 <div className='bg-image' >
                     <img src={img1} style={{'height':"600px"}}
-                         className="d-block align-items-center w-100"
+                         className="d-block align-items-center w-80"
                          alt="First Demo"  />
-                      <div className='mask'
-                          style={{
-                          padding: '2px 10px',
-                          color: 'white',
-                          borderRadius: 3,
-                      }}/>
                 </div>
                   <Carousel.Caption>
                     <h3>First Slide</h3>
