@@ -20,11 +20,12 @@ class NavBar extends Component {
                                     <NavDropdown.Item href="/tochina">2</NavDropdown.Item>
                                     <NavDropdown.Item href="/tochina">3</NavDropdown.Item>
                                 </NavDropdown>
-                                <NavDropdown title="加拿大疫情情况">
-                                    <NavDropdown.Item href="#covid/1">1</NavDropdown.Item>
-                                    <NavDropdown.Item href="#covid/2">2</NavDropdown.Item>
-                                    <NavDropdown.Item href="#covid/3">3</NavDropdown.Item>
-                                </NavDropdown>
+                                {/*<NavDropdown title="加拿大疫情情况">*/}
+                                {/*    <NavDropdown.Item href="#covid/1">1</NavDropdown.Item>*/}
+                                {/*    <NavDropdown.Item href="#covid/2">2</NavDropdown.Item>*/}
+                                {/*    <NavDropdown.Item href="#covid/3">3</NavDropdown.Item>*/}
+                                {/*</NavDropdown>*/}
+                                <Nav.Link href="/virusmap">加拿大疫情情况</Nav.Link>
                                 <NavDropdown title="航班线路">
                                     <NavDropdown.Item href="#flight/1">1</NavDropdown.Item>
                                     <NavDropdown.Item href="#flight/2">2</NavDropdown.Item>
@@ -37,7 +38,7 @@ class NavBar extends Component {
                                 </NavDropdown>
                             </Nav>
                             <Nav className="ml-auto">
-                                <button class="ml-auto btn btn-outline-info d-flex" onClick={() => window.location.href = "/about"}>关于我们</button>
+                                <button className="ml-auto btn btn-outline-info d-flex" onClick={() => window.location.href = "/about"}>关于我们</button>
                                 {' '}
                             </Nav>
                         </Navbar.Collapse>
