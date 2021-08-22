@@ -29,7 +29,6 @@
 .h1-about {
     text-align: center;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 3vw;
     font-weight: bold;
     color:black;
 }
@@ -39,7 +38,7 @@
     text-align: center;
     border-bottom: 0.25vw solid grey; 
     line-height: 0.25vw;
-    font-size: 2vw;
+    font-size: 160%;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color:grey;
     margin-bottom: 1vw;
@@ -52,7 +51,6 @@
 }
 
 .p1-about {
-    font-size: 1.3vw;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color:black;
 }

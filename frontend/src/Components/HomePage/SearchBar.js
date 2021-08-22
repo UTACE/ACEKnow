@@ -45,7 +45,7 @@ class SearchBar extends React.Component {
 
     return (
       <div className="box">
-      <div className="col-md-6 col-lg-6 mx-auto my-auto search-box">
+      <div className="col-md-6 col-lg-6 search-box">
         <div className="input-group form container">
           <input type="text"
                  className="form-control search-input"
