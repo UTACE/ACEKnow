@@ -1,7 +1,7 @@
 import React from 'react';
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import '../../styles/BeforeArrival.css';
-import {Card, Container, Dropdown} from "react-bootstrap";
+import {Card, Container, Dropdown, Alert} from "react-bootstrap";
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 
@@ -16,6 +16,160 @@ function copy(content) {
 
 class BeforeArrival extends React.Component {
   render() {
+    let physicalExam;
+    if (this.props.selectionResult.firstArrive === "Yes" ||
+      (this.props.selectionResult.firstArrive === "No" && this.props.selectionResult.designatedCountry === "Yes")
+    ) {
+      physicalExam = (
+        <div>
+          <Card className="border-primary">
+            <Card.Header className="text-primary"><div className="h2-before">STEP 1.</div></Card.Header>
+            <Card.Body>
+                <p className="p1-before text-primary">You need to provide a physical body exam.</p>
+            </Card.Body>
+          </Card>
+        </div>
+      )
+    } else {
+      physicalExam = (
+        <div>
+          <Card className="border-success">
+            <Card.Header className="text-success"><div className="h2-before">No physical body exam required</div></Card.Header>
+            <Card.Body>
+              <p className="p1-before text-success">You do not need to provide a physical body exam.</p>
+            </Card.Body>
+          </Card>
+        </div>
+      )
+    }
+
+    console.log(this.props.selectionResult.typeVaccination)
+
+    let findAResidenceWarning;
+    let planQuarantinePlan;
+    let beforeTravelTest;
+
+    if ((this.props.selectionResult.typeVaccination === "Two shots of Sinopharm vaccines / 两剂国药疫苗" ||
+        this.props.selectionResult.typeVaccination === "Two shots of Sinovac vaccines / 两剂科兴疫苗" ||
+        this.props.selectionResult.typeVaccination === "Partially vaccinated or other") &&
+        (this.props.selectionResult.quarantine === "No")
+    ) {
+      findAResidenceWarning = (
+        <div>
+          <Alert variant='danger' style={{marginTop: "20px"}}>
+            Note: You MUST find a place to quarantine before your arrival. Otherwise, you <strong>MAY BE REJECTED</strong> to enter Canada at the border.
+          </Alert>
+        </div>
+      )
+    }
+
+    if (this.props.selectionResult.typeVaccination === "Two shots of mRNA (Pfizer, Moderna) vaccines / 两剂mRNA（辉瑞，摩德纳）疫苗" ||
+        this.props.selectionResult.typeVaccination === "Two shots of AstraZeneca/COVISHIELD vaccines / 两剂阿兹利康疫苗" ||
+        this.props.selectionResult.typeVaccination === "Two mixed shots of the above three vaccines / 以上三种疫苗的混接" ||
+        this.props.selectionResult.typeVaccination === "One shot of Janssen/Johnson & Johnson / 一剂强生疫苗"
+    ) {
+      planQuarantinePlan = (
+        <div>
+          <Card className="border-primary">
+            <Card.Header className="text-primary"><div className="h2-before">STEP 2.</div></Card.Header>
+            <Card.Body>
+                <p className="p1-before text-primary">Exempt From Mandatory Quarantine</p>
+            </Card.Body>
+          </Card>
+
+          <p className = 'p2-before'>
+            You have already received vaccines that are approved by Canada Border Service. You can be exempted from mandatory
+            quarantine.
+          </p>
+        </div>
+      )
+    } else if (this.props.selectionResult.typeVaccination === "Two shots of Sinopharm vaccines / 两剂国药疫苗" ||
+               this.props.selectionResult.typeVaccination === "Two shots of Sinovac vaccines / 两剂科兴疫苗"
+    ) {
+      planQuarantinePlan = (
+        <div>
+          <Card className="border-primary">
+            <Card.Header className="text-primary"><div className="h2-before">STEP 2.</div></Card.Header>
+            <Card.Body>
+                <p className="p1-before text-primary">Plan Your Quarantine</p>
+            </Card.Body>
+          </Card>
+
+          <Alert variant='danger' style={{marginTop: "20px"}}>
+            Note: You received vaccines that have not yet been approved by Canada Border Service. You have to make your quarantine plan.
+          </Alert>
+
+          <a className = 'a1-before' href="https://travel.gc.ca/travel-covid/travel-restrictions/isolation/quarantine-start">Click here to assess your quarantine plan before travel.</a>
+          <ol className = 'ol-before'>
+              <li className = 'p2-before'>Full Quarantine Accommodations.</li>
+              <li className = 'p2-before'>Backup Quarantine Plan.</li>
+              <li className = 'p2-before'>At-Home Quarantine.</li>
+          </ol>
+        </div>
+      )
+    } else {
+      planQuarantinePlan = (
+        <div>
+          <Card className="border-primary">
+            <Card.Header className="text-primary"><div className="h2-before">STEP 2.</div></Card.Header>
+            <Card.Body>
+                <p className="p1-before text-primary">Plan Your Quarantine</p>
+            </Card.Body>
+          </Card>
+
+          <a className = 'a1-before' href="https://travel.gc.ca/travel-covid/travel-restrictions/isolation/quarantine-start">Click here to assess your quarantine plan before travel.</a>
+          <ol className = 'ol-before'>
+              <li className = 'p2-before'>Full Quarantine Accommodations.</li>
+              <li className = 'p2-before'>Backup Quarantine Plan.</li>
+              <li className = 'p2-before'>At-Home Quarantine.</li>
+          </ol>
+        </div>
+      )
+    }
+
+
+    if (this.props.selectionResult.typeVaccination === "Two shots of mRNA (Pfizer, Moderna) vaccines / 两剂mRNA（辉瑞，摩德纳）疫苗" ||
+        this.props.selectionResult.typeVaccination === "Two shots of AstraZeneca/COVISHIELD vaccines / 两剂阿兹利康疫苗" ||
+        this.props.selectionResult.typeVaccination === "Two mixed shots of the above three vaccines / 以上三种疫苗的混接" ||
+        this.props.selectionResult.typeVaccination === "One shot of Janssen/Johnson & Johnson / 一剂强生疫苗"
+    ) {
+      beforeTravelTest = (
+        <div>
+          <Card className="border-primary">
+            <Card.Header className="text-primary"><div className="h2-before">STEP 4.</div></Card.Header>
+            <Card.Body>
+                <p className="p1-before text-primary">Take a COVID-19 Test</p>
+            </Card.Body>
+          </Card>
+
+          <Alert variant='danger' style={{marginTop: "20px"}}>
+            Note: You have already received vaccines that are approved by Canada Border Service. However, you still need to
+            take a COVID-19 test.
+          </Alert>
+
+          <p className = 'p2-before'>
+            You MUST take a COVID-19 molecular test within <strong>72 hours</strong> before the scheduled departure time of your flight to Canada.
+          </p>
+        </div>
+      )
+    } else {
+      beforeTravelTest = (
+        <div>
+          <Card className="border-primary">
+            <Card.Header className="text-primary"><div className="h2-before">STEP 4.</div></Card.Header>
+            <Card.Body>
+                <p className="p1-before text-primary">Take a COVID-19 Test</p>
+            </Card.Body>
+          </Card>
+
+          <p className = 'p2-before'>
+            You MUST take a COVID-19 molecular test within <strong>72 hours</strong> before the scheduled departure time of your flight to Canada
+          </p>
+        </div>
+      )
+    }
+
+
     return (
       <div>    
         <Container>
@@ -23,38 +177,31 @@ class BeforeArrival extends React.Component {
           {/* Title */}
           <div className = 'h1-before mobile-hide'>Before Arrival</div>
           <hr className = 'hr-before mobile-hide'/>
+          {findAResidenceWarning}
 
           {/* Step 1 */}
-          <Card className="border-primary">
-            <Card.Header className="text-primary"><div className="h2-before">STEP 1.</div></Card.Header>
-            <Card.Body>
-                <p className="p1-before text-primary">Plan Your Quarantine</p>
-            </Card.Body>
-          </Card>
-
-          <a className = 'a1-before' href="https://travel.gc.ca/travel-covid/travel-restrictions/isolation/quarantine-start">Click here to assess your quarantine plan before travel.</a>
-          <p className = 'p2-before'>Apply UofT Quarantine Plan</p>
-          <ol className = 'ol-before'>
-              <li className = 'p2-before'>Full Quarantine Accommodations.</li>
-              <li className = 'p2-before'>Backup Quarantine Plan.</li>
-              <li className = 'p2-before'>At-Home Quarantine.</li>
-          </ol>
+          {physicalExam}
 
           {/* Step 2 */}
-          <Card className="border-success">
-            <Card.Header className="text-success"><div className="h2-before">STEP 2.</div></Card.Header>
-            <Card.Body>
-                <p className="p1-before text-success">Take a COVID-19 Test</p>
-            </Card.Body>
-          </Card>
-
-          <p className = 'p2-before'>
-            You MUST take a COVID-19 molecular test within <strong>72 hours</strong> before the scheduled departure time of your flight to Canada
-          </p>
+          {planQuarantinePlan}
 
           {/* Step 3 */}
           <Card className="border-primary">
             <Card.Header className="text-primary"><div className="h2-before">STEP 3.</div></Card.Header>
+            <Card.Body>
+                <p className="p1-before text-primary">Register For a University of Toronto Quarantine Program</p>
+            </Card.Body>
+          </Card>
+
+          <p className = 'p2-before'>All students arriving by air or land must register for a University of Toronto Quarantine Program 72 hours prior to arrival in Canada.
+            Register for the U of T 14-day quarantine program through <a href="https://starportal.utoronto.ca/StarRezPortalX/923B5FD6/1/1/Home-StarRez___University">StarRez</a>.</p>
+
+          {/* Step 4 */}
+          {beforeTravelTest}
+
+          {/* Step 5 */}
+          <Card className="border-primary">
+            <Card.Header className="text-primary"><div className="h2-before">STEP 5.</div></Card.Header>
             <Card.Body>
                 <p className="p1-before text-primary">Create an Account for Arrival Test</p>
             </Card.Body>
@@ -136,7 +283,7 @@ class BeforeArrival extends React.Component {
                   <Dropdown.Item>
                     <p>
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" 
-                      class="bi bi-link-45deg" viewBox="0 0 16 16">
+                      className="bi bi-link-45deg" viewBox="0 0 16 16">
                         <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
                         <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
                       </svg>
@@ -237,23 +384,25 @@ class BeforeArrival extends React.Component {
           </div>
           <br/>
 
-          {/* Step 4 */}
-          <Card className="border-success">
-            <Card.Header className="text-success"><div className="h2-before">STEP 4.</div></Card.Header>
+
+
+          {/* Step 6 */}
+          <Card className="border-primary">
+            <Card.Header className="text-primary"><div className="h2-before">STEP 6.</div></Card.Header>
             <Card.Body>
-                <p className="p1-before text-success">Submit ArriveCAN Form</p>
+                <p className="p1-before text-primary">Submit ArriveCAN Form</p>
             </Card.Body>
           </Card>
 
-          <p className = 'p2-before'>Use 
-            <a className = 'a2-before' href="https://www.canada.ca/en/public-health/services/diseases/coronavirus-disease-covid-19/arrivecan.html#a3">
-              ArriveCAN (click to visit website)
+          <p className = 'p2-before'>Use
+            <a href="https://www.canada.ca/en/public-health/services/diseases/coronavirus-disease-covid-19/arrivecan.html#a3">
+              &nbsp;ArriveCAN&nbsp;
             </a> 
           to submit your travel details up to 72 hours before arrival</p>
           
-          {/* Step 5 */}
+          {/* Step 7 */}
           <Card className="border-primary">
-            <Card.Header className="text-primary"><div className="h2-before">STEP 5.</div></Card.Header>
+            <Card.Header className="text-primary"><div className="h2-before">STEP 7.</div></Card.Header>
             <Card.Body>
                 <p className="p1-before text-primary">Have Documents Ready</p>
             </Card.Body>

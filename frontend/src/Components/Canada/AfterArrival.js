@@ -1,22 +1,49 @@
 import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
-import {Card, Container} from "react-bootstrap";
+import {Card, Container, Alert} from "react-bootstrap";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import '../../styles/AfterArrival.css';
 
 class AfterArrival extends React.Component {
 
   render() {
-    return (
-      <div>
+    if (this.props.selectionResult.typeVaccination === "Two shots of mRNA (Pfizer, Moderna) vaccines / 两剂mRNA（辉瑞，摩德纳）疫苗" ||
+        this.props.selectionResult.typeVaccination === "Two shots of AstraZeneca/COVISHIELD vaccines / 两剂阿兹利康疫苗" ||
+        this.props.selectionResult.typeVaccination === "Two mixed shots of the above three vaccines / 以上三种疫苗的混接" ||
+        this.props.selectionResult.typeVaccination === "One shot of Janssen/Johnson & Johnson / 一剂强生疫苗"
+    ) {
+      return (
+        <div>
         <Container>
-          
           {/* Title */}
           <div className = 'h1-after mobile-hide'>
             After Arrival
             <hr className = 'hr-after' />
           </div>
           {/* Step 1 */}
+          <Card className="border-success">
+            <Card.Header className="text-success"><div className="h2-after">You are exempted from quarantine</div></Card.Header>
+            <Card.Body>
+                <p className="p1-after text-success">You have already received vaccines that are approved by Canada Border Service. You can be exempted from mandatory
+            quarantine.</p>
+            </Card.Body>
+          </Card>
+
+        </Container>
+      </div>
+      )
+    }
+
+    return (
+      <div>
+        <Container>
+          {/* Title */}
+          <div className = 'h1-after mobile-hide'>
+            After Arrival
+            <hr className = 'hr-after' />
+          </div>
+          {/* Step 1 */}
+          <Alert variant='danger' style={{marginTop: "20px"}}>If you do not follow the 14-days mandatory quarantine, <strong>you may face fine or possibly jail time</strong>.</Alert>
           <Card className="border-primary">
             <Card.Header className="text-primary"><div className="h2-after">STEP 1.</div></Card.Header>
             <Card.Body>
@@ -26,7 +53,7 @@ class AfterArrival extends React.Component {
 
           <a className = 'a1-after' href="https://travel.gc.ca/travel-covid/travel-restrictions/isolation/quarantine-start">Click here to learn more about the plan.</a>
           <ol className = 'ol-after'>
-              <li className = 'p2-after'>Stay for 14 days or possibly longer.</li>
+              <li className = 'p2-after'>Stay for 14 days within your residency listed in your quarantine plan.</li>
               <li className = 'p2-after'>Have access to the necessities of life, including water, food, medication and heat without leaving quarantine.</li>
               <li className = 'p2-after'>Avoid contact with others who did not travel with you.</li>
               <li className = 'p2-after'>Have no visits from family or guests.</li>
@@ -49,8 +76,7 @@ class AfterArrival extends React.Component {
                     You must stay in your place of quarantine while you await the results from this test.
                     </li>
                     <li className = 'p2-after'>
-                      You can only leave your place of quarantine if you receive a negative result from your Day-8 test AND you have completed your mandatory 14-day quarantine. 
-                      The 14-day quarantine period includes the days you spent at your government-authorized hotel.
+                      You can only leave your place of quarantine if you receive a negative result from your Day-8 test AND you have completed your mandatory 14-day quarantine.
                     </li>
                   </ul>
                 </Card.Body>
@@ -61,14 +87,14 @@ class AfterArrival extends React.Component {
           <p className = 'p3-after mobile-hide'>Note:</p>
           <ul className = 'ul-after mobile-hide'>
             <li className = 'p2-after'>On day 8 of your quarantine, you will take another test, following the instructions provided to you. You must stay in your place of quarantine while you await the results from this test.</li>
-            <li className = 'p2-after'>You can only leave your place of quarantine if you receive a negative result from your Day-8 test AND you have completed your mandatory 14-day quarantine. The 14-day quarantine period includes the days you spent at your government-authorized hotel.</li>
+            <li className = 'p2-after'>You can only leave your place of quarantine if you receive a negative result from your Day-8 test AND you have completed your mandatory 14-day quarantine.</li>
           </ul>
 
           {/* Step 2 */}
-          <Card className="border-success">
-            <Card.Header className="text-success"><div className="h2-after">STEP 2.</div></Card.Header>
+          <Card className="border-primary">
+            <Card.Header className="text-primary"><div className="h2-after">STEP 2.</div></Card.Header>
             <Card.Body>
-                <p className="p1-after text-success">Check-in and Report Symptoms</p>
+                <p className="p1-after text-primary">Check-in and Report Symptoms</p>
             </Card.Body>
           </Card>
          
