@@ -6,7 +6,7 @@ import NavBar from "./Misc/NavBar";
 import Footer from "./HomePage/Footer";
 
 import { TorontoNeighborFeatures } from './VirusMap/toronto_crs84'
-import { covidData } from './VirusMap/covid_case'
+import { mainDomain } from "../configuration";
 
 
 class VirusMap extends React.Component {
@@ -14,10 +14,27 @@ class VirusMap extends React.Component {
     super(props)
 
     this.state = {
+      updateDate: "Getting Data..",
+      covidData: {},
       selectedRegion: 0,
       selectedRegionName: "",
       selectedAREA_S_CD: "",
     }
+  }
+
+  componentDidMount() {
+    fetch(mainDomain + 'api/getCovidData/', {
+      method: 'GET',
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    }).then(response => {return response.json()})
+      .then(response => {
+        this.setState({
+          updateDate: response.data.time,
+          covidData: response.data.data
+        })
+    })
   }
 
   regionClick(e) {
@@ -36,26 +53,20 @@ class VirusMap extends React.Component {
     const fillYellowOptions = { fillColor: 'yellow' }
     const fillBlueOptions = { fillColor: 'blue' }
     const fillGreenOptions = { fillColor: 'green' }
+    const fillUndefOptions = { fillColor: 'gray' }
 
-    if (num < 1.5)
-    {
+    if (num < 1.5) {
       return { fillOption: fillGreenOptions, str: "Low" }
-    }
-    else if (num < 3)
-    {
+    } else if (num < 3) {
       return { fillOption: fillBlueOptions, str: "Medium-low" }
-    }
-    else if (num < 5)
-    {
+    } else if (num < 5) {
       return { fillOption: fillYellowOptions, str: "Medium" }
-    }
-    else if (num < 12)
-    {
+    } else if (num < 12) {
       return { fillOption: fillRedOptions, str: "Medium-high" }
-    }
-    else if (num >= 12)
-    {
+    } else if (num >= 12 && num !== 9999) {
       return { fillOption: fillPurpleOptions, str: "High" }
+    } else if (num === 9999) {
+      return { fillOption: fillUndefOptions, str: "No Info" }
     }
   }
 
@@ -72,7 +83,11 @@ class VirusMap extends React.Component {
       let fillOption
       let regionID = parseInt(TorontoNeighborFeatures[i].properties.AREA_S_CD)
 
-      fillOption = this.regionLevelStr(covidData[regionID.toString()].Indicator).fillOption
+      if (this.state.covidData[regionID.toString()] === undefined) {
+        fillOption = this.regionLevelStr(9999).fillOption
+      } else {
+        fillOption = this.regionLevelStr(this.state.covidData[regionID.toString()].Indicator).fillOption
+      }
 
       var reversed = TorontoNeighborFeatures[i].geometry.coordinates[0].map(function reverse(item) {
         return [item[1], item[0]];
@@ -94,19 +109,19 @@ class VirusMap extends React.Component {
                   Risk
                 </div>
                 <div style={{width: "100%", textAlign: "center"}}>
-                  {this.beautifiedRiskStr(covidData[parseInt(this.state.selectedAREA_S_CD).toString()].Indicator)}
+                  {this.beautifiedRiskStr(this.state.covidData[parseInt(this.state.selectedAREA_S_CD).toString()].Indicator)}
                 </div>
               </Row>)
       rightPanel.push(
         <Row key="newCase">
-          <div style={{fontSize: "32px"}}>{covidData[parseInt(this.state.selectedAREA_S_CD).toString()].newCase} cases</div>
+          <div style={{fontSize: "32px"}}>{this.state.covidData[parseInt(this.state.selectedAREA_S_CD).toString()].newCase} cases</div>
           were reported in the last 14 days
         </Row>
       )
       rightPanel.push(
         <Row key="caseDensity" style={{marginTop: "20px"}}>
           <h5>New COVID cases density (case/km2)</h5>
-          {covidData[parseInt(this.state.selectedAREA_S_CD).toString()].caseDensity.toFixed(1)}
+          {this.state.covidData[parseInt(this.state.selectedAREA_S_CD).toString()].caseDensity.toFixed(1)}
         </Row>
       )
     } else {
@@ -138,6 +153,9 @@ class VirusMap extends React.Component {
             </Col>
 
             <Col md={3} style={{ paddingTop: "20px" }}>
+              <Row>
+                Last updated at: {this.state.updateDate}
+              </Row>
               <Row>
                 <h5>{this.state.selectedRegionName}</h5>
               </Row>

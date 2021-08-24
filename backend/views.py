@@ -6,7 +6,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-import os
+import os, json
 
 class GetDebugInfoAPIView(APIView):
     def get(self, request):
@@ -17,6 +17,21 @@ class GetDebugInfoAPIView(APIView):
             status=status.HTTP_200_OK
         )
 
+
+class GetCovidDataAPIView(APIView):
+    def get(self, request):
+        with open('backend/covid_data/covid_data.json', 'r') as covidDataFile:
+            covidData = covidDataFile.read()
+            covidJson = json.loads(covidData)
+
+            print(covidJson)
+
+            return Response(
+                data={
+                    "data": covidJson
+                },
+                status=status.HTTP_200_OK
+            )
 
 # Create your views here.
 class FrontendAppView(View):
