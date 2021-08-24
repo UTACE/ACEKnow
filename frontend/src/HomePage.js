@@ -1,11 +1,8 @@
 import React from 'react';
-import {Container} from "react-bootstrap"
-import MainPsg from './Components/HomePage/MainPsg';
-import MainPsgBot from './Components/HomePage/MainPsgBot';
 import {mainDomain} from "./configuration";
-import NavBar from "./Components/Misc/NavBar";
-import BootstrapCarousel from "./Components/HomePage/BootstrapCarousel";
-import Footer from "./Components/HomePage/Footer";
+
+import VirusMap from "./Components/VirusMap";
+
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -31,16 +28,7 @@ class HomePage extends React.Component {
 
   render() {
     return (
-        <>
-          <NavBar/>
-          <Container>
-            <BootstrapCarousel/>
-            <MainPsg/>
-            <h5>Sponsors info here</h5>
-            <MainPsgBot/>
-            <Footer/>
-          </Container>
-        </>
+        <VirusMap/>
     )
   }
 }

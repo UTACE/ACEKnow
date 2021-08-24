@@ -24,8 +24,6 @@ class GetCovidDataAPIView(APIView):
             covidData = covidDataFile.read()
             covidJson = json.loads(covidData)
 
-            print(covidJson)
-
             return Response(
                 data={
                     "data": covidJson
