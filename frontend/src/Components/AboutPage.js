@@ -3,6 +3,7 @@ import NavBar from "./Misc/NavBar";
 import Footer from "./HomePage/Footer";
 import {Row, Col, Card, Button, Container} from "react-bootstrap";
 import ACEQR from '../ACE-QR.jpg';
+import ace_group_photo from '../ace_group_photo.jpeg'
 import '../styles/AboutPage.css';
 
 class AboutPage extends React.Component {
@@ -29,7 +30,7 @@ class AboutPage extends React.Component {
             <Col lg={6} className="intro-column">
               <img
               className="ace-img"
-              src="https://media-exp1.licdn.com/dms/image/C561BAQFMxRUPohW0SA/company-background_10000/0/1554158299698?e=2159024400&v=beta&t=SC7lOclAPupM8ipIbylrAIpm7MTW5mBvIKG9ifiMM6w"
+              src={ace_group_photo}
               alt="ACE" />
             </Col>
             <Col lg={6} className="intro-column">
