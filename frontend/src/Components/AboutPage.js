@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBar from "./Misc/NavBar";
 import Footer from "./HomePage/Footer";
-import {Row, Col, Card, Button, Container} from "react-bootstrap";
+import {Row, Col, Card, Container} from "react-bootstrap";
 import ACEQR from '../ACE-QR.jpg';
 import ace_group_photo from '../ace_group_photo.jpeg'
 import '../styles/AboutPage.css';
@@ -52,8 +52,6 @@ class AboutPage extends React.Component {
           <Card className="contact-card">
             <Card.Img variant="top" className="QR-img" src={ACEQR}/>
             <Card.Title>ACE WeChat</Card.Title>
-            {/*<Card.Text>Want join us? We Are Waiting For You!!</Card.Text>*/}
-            {/*<Button href="https://mp.weixin.qq.com/s/owiSdQJ0g3IBPQYt9edDIg" variant="outline-primary">I AM IN !</Button>*/}
           </Card>
         </div>
       </Container>
