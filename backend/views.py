@@ -31,6 +31,19 @@ class GetCovidDataAPIView(APIView):
                 status=status.HTTP_200_OK
             )
 
+class GetNeighborhoodDataAPIView(APIView):
+    def get(self, request):
+        with open('backend/covid_data/neighborhood.json', 'r') as neighborhoodDataFile:
+            neighborhoodData = neighborhoodDataFile.read()
+            neighborhoodData = json.loads(neighborhoodData)
+
+            return Response(
+                data={
+                    "data": neighborhoodData
+                },
+                status=status.HTTP_200_OK
+            )
+
 # Create your views here.
 class FrontendAppView(View):
     def get(self, request):

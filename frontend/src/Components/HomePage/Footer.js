@@ -30,22 +30,15 @@ function Footer () {
                         <Col sm={6} md={6}>
                             <Link className="footer-content footer-links" to="/about">Team information</Link>
                         </Col>
-                        <Col sm={6} md={6}>
-                            <Link className="footer-content footer-links" to="/about">Sponsors</Link>
-                        </Col>
                     </Row>
                     <div className="mobile-show">
                         <Row className="footer-row">
                             <Link className="footer-content footer-links" to="/about">Team information</Link>
                         </Row>
-                        <Row className="footer-row">
-                            <Link className="footer-content footer-links" to="/about">Sponsors</Link>
-                        </Row>
                     </div>
                     <Image style={{height: "80px", width: "auto"}} src="/static/logo540.png"></Image>
                 </div>
                     
-
 
                 {/* Footer-bottom */}
                 <div className="footer-bottom">
