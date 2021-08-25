@@ -11,18 +11,18 @@ function Footer () {
                     <h5 className="footer-title">外站链接</h5>
                     <Row className="mobile-hide">
                         <Col sm={6} md={6}>
-                            <Link className="footer-content footer-links" to="https://www.utace.club/">ACE官网</Link>
+                            <a className="footer-content footer-links" href="https://www.utace.club/">ACE官网</a>
                         </Col>
                         <Col sm={6} md={6}>
-                            <Link className="footer-content footer-links" to="https://github.com/UTACE">Github</Link>
+                            <a className="footer-content footer-links" href="https://github.com/UTACE">Github</a>
                         </Col>
                     </Row>
                     <div className="mobile-show">
                         <Row className="footer-row">
-                            <Link className="footer-content footer-links" to="https://www.utace.club/">ACE官网</Link>
+                            <a className="footer-content footer-links" href="https://www.utace.club/">ACE官网</a>
                         </Row>
                         <Row className="footer-row">
-                            <Link className="footer-content footer-links" to="https://github.com/UTACE">Github</Link>
+                            <a className="footer-content footer-links" href="https://github.com/UTACE">Github</a>
                         </Row>
                     </div>
                     <h5 className="footer-title">About Us</h5>
@@ -38,7 +38,7 @@ function Footer () {
                     </div>
                     <Image style={{height: "80px", width: "auto"}} src="/static/logo540.png"></Image>
                 </div>
-                    
+
 
                 {/* Footer-bottom */}
                 <div className="footer-bottom">
