@@ -1,9 +1,6 @@
 import React from 'react';
-import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import '../../styles/BeforeArrival.css';
-import {Card, Container, Dropdown, Alert} from "react-bootstrap";
-import Tabs from 'react-bootstrap/Tabs'
-import Tab from 'react-bootstrap/Tab'
+import {Card, Container, Dropdown, Alert, Tabs, Tab} from "react-bootstrap";
 
 function copy(content) {
   const el = document.createElement('input');
@@ -17,9 +14,9 @@ function copy(content) {
 class BeforeArrival extends React.Component {
   render() {
     let physicalExam;
-    if (this.props.selectionResult.firstArrive === "Yes" ||
-      (this.props.selectionResult.firstArrive === "No" && this.props.selectionResult.designatedCountry === "Yes")
-    ) {
+    // firstArrive: whether you ever arrived in Canada, so "yes" means arrived in Canada before
+    if ((this.props.selectionResult.firstArrive === "Yes" && this.props.selectionResult.designatedCountry === "Yes") ||
+      this.props.selectionResult.firstArrive === "No") {
       physicalExam = (
         <div>
           <Card className="border-primary">

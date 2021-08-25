@@ -2,17 +2,12 @@ import React from 'react';
 import NavBar from "../Misc/NavBar";
 import Footer from "../HomePage/Footer";
 import * as Survey from "survey-react";
-import Tab from 'react-bootstrap/Tab';
-import Nav from 'react-bootstrap/Nav';
-import { Row, Col} from 'react-bootstrap';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Dropdown from 'react-bootstrap/Dropdown';
+import { Container, Row, Col, DropdownButton, Dropdown, Nav, Tab} from 'react-bootstrap';
 import BeforeArrival from "../Canada/BeforeArrival";
 import UponArrival from "../Canada/UponArrival";
 import AfterArrival from "../Canada/AfterArrival";
+
 import "survey-react/survey.css";
-import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
-import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../styles/CanadaPage.css";
 
 class CanadaPage extends React.Component {
@@ -161,7 +156,7 @@ class CanadaPage extends React.Component {
       return (
         <div>
           <NavBar/>
-          <div className ="container">
+          <Container>
             <Tab.Container id="canada-tabs" defaultActiveKey="Getting Started" onSelect={this.handleSelect}>
               <Row className="canada-main-content">
                 <Col lg={3} md={12}>
@@ -188,7 +183,7 @@ class CanadaPage extends React.Component {
               </Row>
 
             </Tab.Container>
-          </div>
+          </Container>
           <Footer/>
         </div>
       )
@@ -196,7 +191,7 @@ class CanadaPage extends React.Component {
       return (
         <div>
           <NavBar/>
-          <div className ="container">
+          <Container>
             <Tab.Container id="canada-tabs2" onSelect={this.handleSelect} activeKey={this.state.selectedKey}>
               <Row className="canada-main-content">
                 <Col lg={3} md={12}>
@@ -234,7 +229,7 @@ class CanadaPage extends React.Component {
                 </Col>
               </Row>
             </Tab.Container>
-          </div>
+          </Container>
           <Footer/>
         </div>
       )

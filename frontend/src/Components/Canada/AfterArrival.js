@@ -1,7 +1,5 @@
 import React from 'react';
-import Accordion from 'react-bootstrap/Accordion';
-import {Card, Container, Alert} from "react-bootstrap";
-import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import {Card, Container, Alert, Accordion} from "react-bootstrap";
 import '../../styles/AfterArrival.css';
 
 class AfterArrival extends React.Component {
