@@ -19,7 +19,7 @@ class AboutPage extends React.Component {
         <div className="about-section">
           <h2 className="h2-about"><span>ACEKnow Intro</span></h2>
           <p className="p1-about text-center">
-          Waiting for Intro
+           ACEKnow provides an easy access point for all new/return students where they can find useful information.
           </p>
         </div>
 
@@ -52,8 +52,8 @@ class AboutPage extends React.Component {
           <Card className="contact-card">
             <Card.Img variant="top" className="QR-img" src={ACEQR}/>
             <Card.Title>ACE WeChat</Card.Title>
-            <Card.Text>Want join us? We Are Waiting For You!!</Card.Text>
-            <Button href="https://mp.weixin.qq.com/s/owiSdQJ0g3IBPQYt9edDIg" variant="outline-primary">I AM IN !</Button>
+            {/*<Card.Text>Want join us? We Are Waiting For You!!</Card.Text>*/}
+            {/*<Button href="https://mp.weixin.qq.com/s/owiSdQJ0g3IBPQYt9edDIg" variant="outline-primary">I AM IN !</Button>*/}
           </Card>
         </div>
       </Container>

@@ -8,10 +8,10 @@ function Footer () {
         <footer>
             <div className="footer-middle">
                 <div className="container">
-                    <h5 className="footer-title">外站链接</h5>
+                    <h5 className="footer-title">External Links</h5>
                     <Row className="mobile-hide">
                         <Col sm={6} md={6}>
-                            <a className="footer-content footer-links" href="https://www.utace.club/">ACE官网</a>
+                            <a className="footer-content footer-links" href="https://www.utace.club/">ACE Official Website</a>
                         </Col>
                         <Col sm={6} md={6}>
                             <a className="footer-content footer-links" href="https://github.com/UTACE">Github</a>
