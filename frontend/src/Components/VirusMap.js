@@ -1,6 +1,6 @@
 import React from 'react';
 import { MapContainer, TileLayer, Polygon } from 'react-leaflet'
-import { Row, Col, Container } from 'react-bootstrap';
+import { Row, Col, Container, Spinner } from 'react-bootstrap';
 
 import NavBar from "./Misc/NavBar";
 import Footer from "./HomePage/Footer";
@@ -13,6 +13,7 @@ class VirusMap extends React.Component {
     super(props)
 
     this.state = {
+      isloaded: false,
       updateDate: "Getting Data..",
       covidData: {},
       neighborhoodData: [],
@@ -45,6 +46,7 @@ class VirusMap extends React.Component {
       .then(response => {
         this.setState({
           neighborhoodData: response.data.neighborhood,
+          isloaded: true
         })
     })
   }
@@ -90,6 +92,13 @@ class VirusMap extends React.Component {
 
 
   render() {
+    let spinner
+    if (!this.state.isloaded) {
+      spinner = <div>
+        <Spinner animation="border" variant="primary" /> Map Data Loading... Hang on
+      </div>
+    }
+
     var areaLayer = []
     if (this.state.neighborhoodData.length !== 0) {
       for (let i = 0; i < this.state.neighborhoodData.length; i++) {
@@ -159,6 +168,7 @@ class VirusMap extends React.Component {
         <NavBar/>
         <Container>
           <h4 style={{marginTop: "20px", marginBottom: "20px"}}>COVID Neighborhood Risk Map</h4>
+          {spinner}
           <Row>
             <Col md={9}>
               <MapContainer center={[43.71, -79.38]} zoom={11} style={{ height: "60vh" }}>
