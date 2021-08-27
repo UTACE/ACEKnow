@@ -1,10 +1,10 @@
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-    background-color:#343a40;
+    background-color: #343a40 !important;
 }
 
-.nav-pills .nav-link{
-    color: #343a40;
-}
+/*.nav-pills .nav-link{*/
+/*    color: #343a40 !important;*/
+/*}*/
 
 .survey{
     float: left;
@@ -17,8 +17,8 @@
 }
 
 .sv_main input[type="button"], .sv_main button {
-    color: white;
-    background-color: #343a40!important;
+    color: white !important;
+    background-color: #343a40 !important;
     font-size: medium;
 }
 
@@ -32,33 +32,22 @@ button.dropdown-toggle{
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: 1.2rem;
-    background-color: #343a40;
+    color: white  !important;
+    background-color: #343a40  !important;
 }
 
 .dropdown-menu{
     width: 100%;
     text-align: center;
-    background-color: #343a40;
+    background-color: #343a40  !important;
 }
 
 .can-head-menu{
-    color: white;
+    color: gray  !important;
 }
 
 @media screen and (max-width: 768px) {
     .sv-string-viewer, .end-feedback{
         font-size: 1.1rem;
-    }
-}
-
-@media screen and (max-width: 991px){
-    .canada-mobile-hide{
-        display: none;
-    }
-}
-
-@media screen and (min-width: 992px){
-    .canada-mobile-show{
-        display: none;
     }
 }

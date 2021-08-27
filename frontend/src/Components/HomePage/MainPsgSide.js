@@ -1,9 +1,10 @@
-import React from 'react';
-import {Col, Card} from 'react-bootstrap';
-import '../../styles/MainPsg.css';
+import React from 'react'
+import {Col, Card} from 'react-bootstrap'
+
+import '../../styles/MainPsg.css'
+import '../../styles/Misc/Misc.css'
 
 class MainPsg extends React.Component {
-
   render() {
     return(
         <Col lg={6} className="sideContainer">

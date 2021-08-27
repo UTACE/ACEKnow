@@ -1,7 +1,7 @@
 .about-section{
-    padding-bottom: 1vw;
-    padding-top: 1vw;
-    margin-top: 1vw;
+    padding-bottom: 10px;
+    padding-top: 20px;
+    margin-top: 20px;
 }
 
 .ace-img {
@@ -41,7 +41,7 @@
     font-size: 160%;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color:grey;
-    margin-bottom: 2px;
+    margin-bottom: 20px;
     min-height: 14px;
 }
 

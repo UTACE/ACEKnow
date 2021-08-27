@@ -131,20 +131,11 @@
     .p3-before {
         font-size: 1rem;
     }
-    .mobile-hide{
-        display: none;
-    }
     .tabs-col, .tabs-row{
         font-size: 0.9rem;
     }
     .ol-before, .ul-before{
         padding-left: 15px;
-    }
-}
-
-@media screen and (min-width: 768px) {
-    .mobile-show{
-        display: none;
     }
 }
 

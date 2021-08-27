@@ -1,6 +1,6 @@
-import React from 'react';
-import {Row, Col, Alert} from "react-bootstrap";
-import {ExclamationDiamondFill} from 'react-bootstrap-icons';
+import React from 'react'
+import {Row, Col, Alert} from "react-bootstrap"
+import {ExclamationDiamondFill} from 'react-bootstrap-icons'
 
 class MsgBox extends React.Component {
   render() {

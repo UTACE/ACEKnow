@@ -1,6 +1,8 @@
-import React from 'react';
-import '../../styles/BeforeArrival.css';
-import {Card, Container, Dropdown, Alert, Tabs, Tab} from "react-bootstrap";
+import React from 'react'
+import {Card, Container, Dropdown, Alert, Tabs, Tab} from "react-bootstrap"
+
+import '../../styles/BeforeArrival.css'
+import '../../styles/Misc/Misc.css'
 
 function copy(content) {
   const el = document.createElement('input');
@@ -67,10 +69,10 @@ class BeforeArrival extends React.Component {
     ) {
       planQuarantinePlan = (
         <div>
-          <Card className="border-primary">
-            <Card.Header className="text-primary"><div className="h2-before">STEP 2.</div></Card.Header>
+          <Card className="border-success">
+            <Card.Header className="text-success"><div className="h2-before">No Quarantine Plan Required</div></Card.Header>
             <Card.Body>
-                <p className="p1-before text-primary">Exempt From Mandatory Quarantine</p>
+                <p className="p1-before text-success">Exempt From Mandatory Quarantine</p>
             </Card.Body>
           </Card>
 

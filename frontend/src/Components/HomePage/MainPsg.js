@@ -1,7 +1,9 @@
-import React from 'react';
-import { Card, CardDeck} from 'react-bootstrap';
-import '../../styles/MainPsg.css';
-import MainPsgSide from '../HomePage/MainPsgSide';
+import React from 'react'
+import { Card, CardDeck} from 'react-bootstrap'
+import MainPsgSide from '../HomePage/MainPsgSide'
+
+import '../../styles/MainPsg.css'
+import '../../styles/Misc/Misc.css'
 
 class MainPsg extends React.Component {
   constructor(props){

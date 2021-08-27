@@ -1,10 +1,9 @@
-import React, {Component} from "react";
-import '../../styles/NavBar.css'
-import 'bootstrap/dist/css/bootstrap.css'
+import React from "react"
 import {Container, Nav, Navbar} from 'react-bootstrap'
 
-class NavBar extends Component {
+import '../../styles/NavBar.css'
 
+class NavBar extends React.Component {
     render() {
         return (
             <div className="container-fullwidth">
@@ -34,7 +33,7 @@ class NavBar extends Component {
                     </Container>
                 </Navbar>
             </div>
-        );
+        )
     }
 }
 

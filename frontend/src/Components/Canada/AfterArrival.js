@@ -1,6 +1,7 @@
 import React from 'react';
 import {Card, Container, Alert, Accordion} from "react-bootstrap";
 import '../../styles/AfterArrival.css';
+import '../../styles/Misc/Misc.css';
 
 class AfterArrival extends React.Component {
 

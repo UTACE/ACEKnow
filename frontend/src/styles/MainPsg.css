@@ -29,9 +29,6 @@
 
 /* Mobile view */
 @media screen and (max-width:768px){
-    .mobile-hide{
-        display: none;
-    }
     .card-title{
         font-size: small !important;
     }
@@ -56,9 +53,6 @@
 
 /* Desktop view */
 @media screen and (min-width:768px){
-    .mobile-show{
-        display: none;
-    }
     .top-passage{
         width: 23%;
         margin-left: 1%;

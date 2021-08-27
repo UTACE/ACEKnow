@@ -9,6 +9,7 @@ import AfterArrival from "../Canada/AfterArrival";
 
 import "survey-react/survey.css";
 import "../../styles/CanadaPage.css";
+import "../../styles/Misc/Misc.css"
 
 class CanadaPage extends React.Component {
   constructor(props){
@@ -181,7 +182,6 @@ class CanadaPage extends React.Component {
                   </Row>
                 </Col>
               </Row>
-
             </Tab.Container>
           </Container>
           <Footer/>
@@ -195,7 +195,7 @@ class CanadaPage extends React.Component {
             <Tab.Container id="canada-tabs2" onSelect={this.handleSelect} activeKey={this.state.selectedKey}>
               <Row className="canada-main-content">
                 <Col lg={3} md={12}>
-                  <Nav variant="pills" className="flex-column canada-mobile-hide" style={{marginTop: "20px"}}>
+                  <Nav variant="pills" className="flex-column mobile-hide" style={{marginTop: "20px"}}>
                     <Nav.Item>
                       <Nav.Link eventKey="Before Arriving Canada">Before Arriving Canada</Nav.Link>
                     </Nav.Item>
@@ -206,7 +206,7 @@ class CanadaPage extends React.Component {
                       <Nav.Link eventKey="After Arriving Canada">After Arriving Canada</Nav.Link>
                     </Nav.Item>
                   </Nav>
-                  <DropdownButton variant="secondary" className="canada-menu canada-mobile-show" alignCenter title={this.state.selectedKey}>
+                  <DropdownButton variant="Secondary" className="canada-menu mobile-show" alignCenter title={this.state.selectedKey}>
                     <Dropdown.Item className="can-head-menu" eventKey="Before Arriving Canada" onClick={(e)=> this.handleSelect(e.target.textContent)}>Before Arriving Canada</Dropdown.Item>
                     <Dropdown.Divider />
                     <Dropdown.Item className="can-head-menu" eventKey="Upon Arriving Canada" onClick={(e)=> this.handleSelect(e.target.textContent)}>Upon Arriving Canada</Dropdown.Item>

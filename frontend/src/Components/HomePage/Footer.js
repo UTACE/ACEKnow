@@ -1,7 +1,9 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-import { Row, Col, Image } from 'react-bootstrap';
-import '../../styles/Footer.css';
+import React from 'react'
+import {Link} from 'react-router-dom'
+import { Row, Col, Image } from 'react-bootstrap'
+
+import '../../styles/Footer.css'
+import '../../styles/Misc/Misc.css'
 
 function Footer () {
     return (
@@ -10,16 +12,16 @@ function Footer () {
                 <div className="container">
                     <h5 className="footer-title">External Links</h5>
                     <Row className="mobile-hide">
-                        <Col sm={6} md={6}>
+                        <Col sm={6}>
                             <a className="footer-content footer-links" href="https://www.utace.club/">ACE Official Website</a>
                         </Col>
-                        <Col sm={6} md={6}>
+                        <Col sm={6}>
                             <a className="footer-content footer-links" href="https://github.com/UTACE">Github</a>
                         </Col>
                     </Row>
                     <div className="mobile-show">
                         <Row className="footer-row">
-                            <a className="footer-content footer-links" href="https://www.utace.club/">ACE官网</a>
+                            <a className="footer-content footer-links" href="https://www.utace.club/">ACE Official Website</a>
                         </Row>
                         <Row className="footer-row">
                             <a className="footer-content footer-links" href="https://github.com/UTACE">Github</a>
@@ -27,7 +29,7 @@ function Footer () {
                     </div>
                     <h5 className="footer-title">About Us</h5>
                     <Row className="mobile-hide">
-                        <Col sm={6} md={6}>
+                        <Col sm={6}>
                             <Link className="footer-content footer-links" to="/about">Team information</Link>
                         </Col>
                     </Row>
