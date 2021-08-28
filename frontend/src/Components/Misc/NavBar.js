@@ -23,7 +23,9 @@ class NavBar extends React.Component {
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="me-auto">
                                 <Nav.Link href="/tocanada">返加相关</Nav.Link>
+                                <Nav.Link href="/backtoschool">返校相关</Nav.Link>
                                 <Nav.Link href="/virusmap">加拿大疫情情况</Nav.Link>
+                                <Nav.Link href="/healthCode/-">ACE健康码</Nav.Link>
                             </Nav>
                             <Nav className="ml-auto">
                                 <button className="ml-auto btn btn-outline-info d-flex" onClick={() => window.location.href = "/about"}>关于我们</button>

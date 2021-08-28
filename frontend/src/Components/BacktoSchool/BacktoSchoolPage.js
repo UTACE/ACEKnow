@@ -3,12 +3,26 @@ import NavBar from "../Misc/NavBar"
 import Footer from "../HomePage/Footer"
 import {Col, Container, Dropdown, DropdownButton, Nav, Row, Tab} from "react-bootstrap"
 
+import GetVaccincatedPage from "../BacktoSchool/GetVaccincatedPage"
+
 import "../../styles/Misc/Misc.css"
-import BeforeArrival from "../Canada/BeforeArrival";
-import UponArrival from "../Canada/UponArrival";
-import AfterArrival from "../Canada/AfterArrival";
 
 class BacktoSchoolPage extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      selectedKey: "Go Get Vaccinated"
+    }
+
+    this.handleSelect = this.handleSelect.bind(this)
+  }
+
+  handleSelect(e){
+    console.log(e)
+    this.setState({selectedKey: e})
+  }
+
   render() {
     return (
       <div>
@@ -19,33 +33,33 @@ class BacktoSchoolPage extends React.Component {
               <Col lg={3} md={12}>
                 <Nav variant="pills" className="flex-column mobile-hide" style={{marginTop: "20px"}}>
                   <Nav.Item>
-                    <Nav.Link eventKey="Before Arriving Canada">Before Arriving Canada</Nav.Link>
+                    <Nav.Link eventKey="Notice">Notice</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link eventKey="Upon Arriving Canada">Upon Arriving Canada</Nav.Link>
+                    <Nav.Link eventKey="Go Get Vaccinated">Go Get Vaccinated</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link eventKey="After Arriving Canada">After Arriving Canada</Nav.Link>
+                    <Nav.Link eventKey="Go Back to School">Go Back to School</Nav.Link>
                   </Nav.Item>
                 </Nav>
                 <DropdownButton variant="secondary" className="canada-menu mobile-show" alignCenter title={this.state.selectedKey}>
-                  <Dropdown.Item className="can-head-menu" eventKey="Before Arriving Canada" onClick={(e)=> this.handleSelect(e.target.textContent)}>Before Arriving Canada</Dropdown.Item>
+                  <Dropdown.Item className="can-head-menu" eventKey="Notice" onClick={(e)=> this.handleSelect(e.target.textContent)}>Notice</Dropdown.Item>
                   <Dropdown.Divider />
-                  <Dropdown.Item className="can-head-menu" eventKey="Upon Arriving Canada" onClick={(e)=> this.handleSelect(e.target.textContent)}>Upon Arriving Canada</Dropdown.Item>
+                  <Dropdown.Item className="can-head-menu" eventKey="Go Get Vaccinated" onClick={(e)=> this.handleSelect(e.target.textContent)}>Go Get Vaccinated</Dropdown.Item>
                   <Dropdown.Divider />
-                  <Dropdown.Item className="can-head-menu" eventKey="After Arriving Canada" onClick={(e)=> this.handleSelect(e.target.textContent)}>After Arriving Canada</Dropdown.Item>
+                  <Dropdown.Item className="can-head-menu" eventKey="Go Back to School" onClick={(e)=> this.handleSelect(e.target.textContent)}>Go Back to School</Dropdown.Item>
                 </DropdownButton>
               </Col>
               <Col lg={9} md={12}>
                 <Tab.Content>
-                  <Tab.Pane eventKey="Before Arriving Canada">
-                    <BeforeArrival selectionResult={this.state.result}/>
+                  <Tab.Pane eventKey="Notice">
+                    dd
                   </Tab.Pane>
-                  <Tab.Pane eventKey="Upon Arriving Canada">
-                    <UponArrival selectionResult={this.state.result}/>
+                  <Tab.Pane eventKey="Go Get Vaccinated">
+                    <GetVaccincatedPage/>
                   </Tab.Pane>
-                  <Tab.Pane eventKey="After Arriving Canada">
-                    <AfterArrival selectionResult={this.state.result}/>
+                  <Tab.Pane eventKey="Go Back to School">
+                    ee
                   </Tab.Pane>
                 </Tab.Content>
               </Col>

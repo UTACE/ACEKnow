@@ -12,7 +12,7 @@ import CanadaPage from "./Components/Canada/CanadaPage";
 import ChinaPage from "./Components/ChinaPage";
 import VirusMap from "./Components/VirusMap";
 import BacktoSchoolPage from "./Components/BacktoSchool/BacktoSchoolPage";
-
+import HealthCode from "./Components/HealthCode/HealthCodePage"
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -47,6 +47,7 @@ class App extends React.Component {
             <Route path="/tochina" component={ChinaPage} />
             <Route path="/virusmap" component={VirusMap} />
             <Route path="/backtoschool" component={BacktoSchoolPage}/>
+            <Route path="/healthCode/:healthID/" component={HealthCode}/>
             <Route path="/" component={HomePage} />
           </Switch>
         </div>

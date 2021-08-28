@@ -1,0 +1,23 @@
+.h1-bts {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    display: block;
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.hr-bts {
+    display: block;
+    unicode-bidi: isolate;
+    margin-block-start: 0.5rem;
+    margin-block-end: 1.5rem;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    overflow: hidden;
+    border-style: inset;
+    border-width: 1px;
+}

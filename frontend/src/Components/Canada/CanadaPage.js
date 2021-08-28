@@ -30,7 +30,7 @@ class CanadaPage extends React.Component {
 
     this.onComplete = this.onComplete.bind(this)
     this.handleSelect = this.handleSelect.bind(this)
-}
+  }
 
   json = {
     title: "Please Fill in Some Basic Questions Before Begin...",

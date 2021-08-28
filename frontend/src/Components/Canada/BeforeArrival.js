@@ -172,7 +172,6 @@ class BeforeArrival extends React.Component {
     return (
       <div>    
         <Container>
-          
           {/* Title */}
           <div className = 'h1-before mobile-hide'>Before Arrival</div>
           <hr className = 'hr-before mobile-hide'/>
