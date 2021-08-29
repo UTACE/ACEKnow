@@ -1,3 +1,76 @@
 from django.db import models
+import random
+import base64
+import datetime
 
 # Create your models here.
+class Person(models.Model):
+    CODE_COLOR = (
+        ('G', 'Green'),
+        ('Y', 'Yellow'),
+        ('R', 'Red'),
+        ('U', 'Unknown')
+    )
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    vaccination_type = models.CharField(max_length=30, blank=True)
+    last_dose_date = models.DateField(blank=True)
+    wechat = models.CharField(max_length=30, unique=True)
+    phone = models.CharField(max_length=30)
+    neighborhood_id = models.CharField(max_length=5)
+    flight_land_date = models.DateField(blank=True)
+    manual_override = models.CharField(max_length=1, choices=CODE_COLOR, blank=True)
+
+    revision = models.IntegerField(default=0)
+    health_id = models.CharField(max_length=50, blank=True)
+
+    def save(self, *args, **kwargs):
+        if self.revision == 0:
+            n1 = str(random.randint(100000, 999999))
+            n2 = str(random.randint(100000, 999999))
+            combination = self.first_name + n1 + self.last_name + n2
+            combination_bytes = combination.encode("ascii")
+
+            base64_bytes = base64.b64encode(combination_bytes)
+            base64_string = base64_bytes.decode("ascii")
+
+            self.health_id = str(base64_string)[:-2] + n2
+
+        self.revision += 1
+
+        super().save(*args, **kwargs)  # Call the "real" save() method.
+
+    def countVaccineNum(self):
+        Vaccines = {"P": 0, "M": 0, "A": 0, "J": 0, "S": 0, "Total": 0}
+        for i in range(len(self.vaccination_type)):
+            if self.vaccination_type[i] == "P" or self.vaccination_type[i] == "p":
+                Vaccines["P"] += 1
+            elif self.vaccination_type[i] == "M" or self.vaccination_type[i] == "m":
+                Vaccines["M"] += 1
+            elif self.vaccination_type[i] == "A" or self.vaccination_type[i] == "a":
+                Vaccines["A"] += 1
+            elif self.vaccination_type[i] == "J" or self.vaccination_type[i] == "j":
+                Vaccines["J"] += 1
+            elif self.vaccination_type[i] == "S" or self.vaccination_type[i] == "s":
+                Vaccines["S"] += 1
+            Vaccines["Total"] += 1
+        return Vaccines
+
+    def healthCodeColor(self):
+        # Return Overrode Color if available
+        if self.manual_override != "":
+            return self.manual_override
+
+        vaccines = self.countVaccineNum()
+        if vaccines["Total"] >= 2:
+            return 'G'
+        elif vaccines["J"] >= 1:
+            return 'G'
+
+        currDate = datetime.date.today()
+        diff = currDate - self.flight_land_date
+
+        if diff.days < 14:
+            return 'R'
+        else:
+            return 'Y'
