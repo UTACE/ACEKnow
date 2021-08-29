@@ -18,7 +18,7 @@ class Person(models.Model):
     wechat = models.CharField(max_length=30, unique=True)
     phone = models.CharField(max_length=30)
     neighborhood_id = models.CharField(max_length=5)
-    flight_land_date = models.DateField(blank=True)
+    flight_land_date = models.DateField(null=True, blank=True)
     manual_override = models.CharField(max_length=1, choices=CODE_COLOR, blank=True)
 
     revision = models.IntegerField(default=0)
@@ -66,6 +66,9 @@ class Person(models.Model):
             return 'G'
         elif vaccines["J"] >= 1:
             return 'G'
+
+        if self.flight_land_date is None:
+            return 'Y'
 
         currDate = datetime.date.today()
         diff = currDate - self.flight_land_date

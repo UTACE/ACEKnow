@@ -167,6 +167,13 @@ class HealthCodePage extends React.Component {
               </Col>
             </Row>
             <MsgBox variant={"warning"} content={"If you get a green health code, it does not mean that you do not have the risk of exposed to COVID-19."}/>
+            <h4>What Does The Color Mean?</h4>
+            <p>If you get a green health code, that means you either get fully vaccinated against COVID-19 or you provided
+            proof that you were free of COVID-19 within a certain period of time before you generate the health code.</p>
+            <p>If you get a yellow health code, that means you are not fully vaccinated against COVID-19 and you have not
+            provided COVID-19 test.</p>
+            <p>If you get a red health code, that means you should quarantine yourself immediately. That means you are still
+            within the window of travel mandatory quarantine window or you have been exposed to COVID-19 in the past 14 days.</p>
           </Container>
         </Container>
         <Footer/>
