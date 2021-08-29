@@ -60,11 +60,11 @@ class getHealthQRCode(APIView):
 
         code_color = res.healthCodeColor()
         return Response(
-                data={
-                    "color": code_color
-                },
-                status=status.HTTP_200_OK
-            )
+            data={
+                "color": code_color
+            },
+            status=status.HTTP_200_OK
+        )
 
 # Create your views here.
 class FrontendAppView(View):

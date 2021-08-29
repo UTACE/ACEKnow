@@ -11,6 +11,10 @@ class Person(models.Model):
         ('R', 'Red'),
         ('U', 'Unknown')
     )
+    TEST_RESULT = (
+        ('N', 'Negative'),
+        ('P', 'Positive')
+    )
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     vaccination_type = models.CharField(max_length=30, blank=True)
@@ -18,8 +22,12 @@ class Person(models.Model):
     wechat = models.CharField(max_length=30, unique=True)
     phone = models.CharField(max_length=30)
     neighborhood_id = models.CharField(max_length=5)
+    emaill_address = models.CharField(max_length=50)
     flight_land_date = models.DateField(null=True, blank=True)
     manual_override = models.CharField(max_length=1, choices=CODE_COLOR, blank=True)
+
+    last_test_result = models.DateField(null=True, blank=True)
+    last_test_date = models.CharField(max_length=1, choices=TEST_RESULT, blank=True)
 
     revision = models.IntegerField(default=0)
     health_id = models.CharField(max_length=50, blank=True)
@@ -62,12 +70,17 @@ class Person(models.Model):
             return self.manual_override
 
         vaccines = self.countVaccineNum()
-        if vaccines["Total"] >= 2:
+
+        if vaccines["P"] >= 2 or vaccines["M"] >= 2 or vaccines["A"] >= 2 or \
+                vaccines["P"] + vaccines["M"] + vaccines["A"] >= 2:
             return 'G'
         elif vaccines["J"] >= 1:
             return 'G'
 
         if self.flight_land_date is None:
+            if vaccines["Total"] >= 2:
+                return 'G'
+
             return 'Y'
 
         currDate = datetime.date.today()
@@ -76,4 +89,6 @@ class Person(models.Model):
         if diff.days < 14:
             return 'R'
         else:
+            if vaccines["Total"] >= 2:
+                return 'G'
             return 'Y'
