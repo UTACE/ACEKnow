@@ -33,7 +33,7 @@ class HealthCodePage extends React.Component {
     const diff = (currentDate.getTime() - this.state.date.getTime()) / 1000
     if (diff > 900) {
       this.setState({
-        healthCodeStatus: 'U',
+        healthCodeStatus: {"color": "U"},
         msg: 'Health Code Expired, Please Refresh'
       })
     } else {
@@ -63,6 +63,23 @@ class HealthCodePage extends React.Component {
   }
 
   render() {
+    var certify = "%0d%0aVaccination Status:%0d%0a" +
+      "Residence Postal Code:%0d%0a" +
+      "WeChat ID:%0d%0a" +
+      "Phone Number:%0d%0a" +
+      "Email Address:%0d%0a" +
+      "Flight Ticket (If applicable):%0d%0a" +
+      "[**Please include Vaccination Proof(All shots) and Photo that You Hold a Government Issued ID in the attachment**]%0d%0a" +
+      "%0d%0a" +
+      "==============================================%0d%0a" +
+      "%0d%0a" +
+      "I promise that I will voluntarily report to ACE Health if I get a positive COVID-19 test. I can report through " +
+      "sending email to ACE health email address (health@utace.club) or sending instant messages to ACE Wechat official account. " +
+      "I understand that this is for the safety for myself and others around me. ACE Health can disqualify my ACE Health Code if I do " +
+      "not follow the instruction and can ban me from ever applying a new ACE Health Code again.%0d%0a%0d%0a" +
+      "[**Your Legal Name Here**]"
+
+
     if (this.state.healthID === "-") {
       return (
         <div>
@@ -72,12 +89,14 @@ class HealthCodePage extends React.Component {
             <h4>Get a Health Code</h4>
             <p>
               In order to get a health code, please send your essential documents to the ACE Health Code official email address:&nbsp;
-              <a href="mailto:health@utace.club?subject=Apply ACE Health Code&body=[Please Provide All The Documents Listed On The Website]">health@utace.club</a>.<br/>
+              <a href={"mailto:health@utace.club?subject=Apply ACE Health Code&body=" + certify}>health@utace.club</a>.<br/>
               We will process and verify all your documents within 48 hours. The ACE staff will then send you
               an email contains a unique link to your health code. Please make sure <strong>NOT</strong> to disclose the unique link.
               Failed to do so may ban you from participating any ACE organized activities.
             </p>
-            <a href={mainDomain + "healthCode/-"}><img src={ACEHealthlogo} alt={"Health Code Icon"} style={{maxWidth: "80%"}}/></a>
+            <a href={"mailto:health@utace.club?subject=Apply ACE Health Code&body=" + certify}>
+              <img src={ACEHealthlogo} alt={"Health Code Icon"} style={{maxWidth: "80%"}}/>
+            </a>
             <h4>Documents You Need To Provide</h4>
             <p>
               <li>Vaccination Proof (Either Chinese or English version is accepted)</li>
@@ -87,8 +106,13 @@ class HealthCodePage extends React.Component {
               <li>Your Phone Number</li>
               <li>Your Email Address</li>
               <li>Your Flight Ticket (If applicable)</li>
+              <li>Sign a Statement</li>
             </p>
-            <h4><a href="mailto:health@utace.club?subject=Apply ACE Health Code&body=[Please Provide All The Documents Listed On The Website]">Apply Now</a></h4>
+            <h4><a href={"mailto:health@utace.club?subject=Apply ACE Health Code&body=" + certify}>Apply Now</a></h4>
+            <h4>Clubs, Organizations that use Health Code</h4>
+            <p>
+              <li>ACE Club</li>
+            </p>
             <h4>Why Do We Need ACE Health Code</h4>
             <p>
               The purpose of the ACE Health Code is to ensure the safety of our staff members and all the people who attend
