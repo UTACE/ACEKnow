@@ -43,6 +43,8 @@ class HealthCodePage extends React.Component {
   }
 
   componentDidMount() {
+    document.title = 'ACE Health Code';
+
     if (this.state.healthID === "-") {return}
 
     fetch(mainDomain + 'api/getHealthQRCode/' + this.state.healthID + '/', {
