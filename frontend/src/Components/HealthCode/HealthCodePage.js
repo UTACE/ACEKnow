@@ -8,6 +8,7 @@ import {mainDomain} from "../../configuration"
 import ACEQR from "../../ACE-QR.jpg";
 import ACEKnowlogo from "../../logo_268.png"
 import ACEHealthlogo from "../../images/Health_code_full_icon.png"
+import ACEHealthIcon from "../../images/Health_code_icon.png"
 import '../../styles/AboutPage.css';
 
 import { QRCode } from 'react-qrcode-logo';
@@ -64,6 +65,7 @@ class HealthCodePage extends React.Component {
     if (this.state.healthID === "-") {
       return (
         <div>
+          <link rel="apple-touch-icon" href={ACEHealthIcon} />
           <NavBar/>
           <Container>
             <MsgBox variant={"warning"} content={"Please contact ACE official wechat to get a health code."}/>

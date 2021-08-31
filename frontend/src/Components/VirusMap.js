@@ -6,6 +6,7 @@ import NavBar from "./Misc/NavBar";
 import Footer from "./HomePage/Footer";
 
 import { mainDomain } from "../configuration";
+import logo from "../logo_268.png";
 
 
 class VirusMap extends React.Component {
@@ -159,6 +160,7 @@ class VirusMap extends React.Component {
 
     return (
       <div>
+        <link rel="apple-touch-icon" href={logo} />
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
             integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
             crossOrigin=""/>
