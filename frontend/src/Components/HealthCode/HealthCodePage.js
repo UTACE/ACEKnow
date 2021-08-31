@@ -7,6 +7,7 @@ import {mainDomain} from "../../configuration"
 
 import ACEQR from "../../ACE-QR.jpg";
 import ACEKnowlogo from "../../logo_268.png"
+import ACEHealthlogo from "../../images/Health_code_full_icon.png"
 import '../../styles/AboutPage.css';
 
 import { QRCode } from 'react-qrcode-logo';
@@ -29,7 +30,7 @@ class HealthCodePage extends React.Component {
   verifyHealthCode() {
     const currentDate = new Date()
     const diff = (currentDate.getTime() - this.state.date.getTime()) / 1000
-    if (diff > 1800) {
+    if (diff > 900) {
       this.setState({
         healthCodeStatus: 'U',
         msg: 'Health Code Expired, Please Refresh'
@@ -72,6 +73,7 @@ class HealthCodePage extends React.Component {
               an email contains a unique link to your health code. Please make sure <strong>NOT</strong> to disclose the unique link.
               Failed to do so may ban you from participating any ACE organized activities.
             </p>
+            <a href={mainDomain + "healthCode/-"}><img src={ACEHealthlogo} alt={"Health Code Icon"} style={{maxWidth: "80%"}}/></a>
             <h4>Documents You Need To Provide</h4>
             <p>
               <li>Vaccination Proof (Either Chinese or English version is accepted)</li>
