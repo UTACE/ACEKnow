@@ -85,7 +85,7 @@ class HealthCodePage extends React.Component {
         <div>
           <NavBar/>
           <Container>
-            <MsgBox variant={"warning"} content={"Please contact ACE official wechat to get a health code."}/>
+            <MsgBox variant={"success"} content={"Please send your essential documents to the ACE Health Code official email address to get a health code."}/>
             <h4>Get a Health Code</h4>
             <p>
               In order to get a health code, please send your essential documents to the ACE Health Code official email address:&nbsp;
