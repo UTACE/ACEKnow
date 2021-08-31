@@ -10,7 +10,6 @@ import AfterArrival from "../Canada/AfterArrival";
 import "survey-react/survey.css";
 import "../../styles/CanadaPage.css";
 import "../../styles/Misc/Misc.css"
-import logo from "../../logo_268.png";
 
 class CanadaPage extends React.Component {
   constructor(props){
@@ -157,7 +156,6 @@ class CanadaPage extends React.Component {
     {
       return (
         <div>
-          <link rel="apple-touch-icon" href={logo} />
           <NavBar/>
           <Container>
             <Tab.Container id="canada-tabs" defaultActiveKey="Getting Started" onSelect={this.handleSelect}>

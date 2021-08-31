@@ -45,6 +45,7 @@ class HealthCodePage extends React.Component {
 
   componentDidMount() {
     document.title = 'ACE Health Code';
+    document.getElementById('header-apple-icon').href = ACEHealthIcon
 
     if (this.state.healthID === "-") {return}
 
@@ -65,7 +66,6 @@ class HealthCodePage extends React.Component {
     if (this.state.healthID === "-") {
       return (
         <div>
-          <link rel="apple-touch-icon" href={ACEHealthIcon} />
           <NavBar/>
           <Container>
             <MsgBox variant={"warning"} content={"Please contact ACE official wechat to get a health code."}/>

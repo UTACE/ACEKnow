@@ -6,7 +6,6 @@ import {Col, Container, Dropdown, DropdownButton, Nav, Row, Tab} from "react-boo
 import GetVaccincatedPage from "../BacktoSchool/GetVaccincatedPage"
 
 import "../../styles/Misc/Misc.css"
-import logo from "../../logo_268.png";
 
 class BacktoSchoolPage extends React.Component {
   constructor(props) {
@@ -27,7 +26,6 @@ class BacktoSchoolPage extends React.Component {
   render() {
     return (
       <div>
-        <link rel="apple-touch-icon" href={logo} />
         <NavBar/>
         <Container>
           <Tab.Container id="canada-tabs2" onSelect={this.handleSelect} activeKey={this.state.selectedKey}>

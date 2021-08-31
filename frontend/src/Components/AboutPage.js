@@ -3,7 +3,6 @@ import NavBar from "./Misc/NavBar";
 import Footer from "./HomePage/Footer";
 import {Row, Col, Card, Container} from "react-bootstrap";
 import ACEQR from '../ACE-QR.jpg';
-import logo from '../logo_268.png'
 import ace_group_photo from '../ace_group_photo.jpeg'
 import '../styles/AboutPage.css';
 
@@ -11,7 +10,6 @@ class AboutPage extends React.Component {
   render() {
     return (
       <div>
-      <link rel="apple-touch-icon" href={logo} />
       <NavBar/>
       <Container>
         {/* Title */}
