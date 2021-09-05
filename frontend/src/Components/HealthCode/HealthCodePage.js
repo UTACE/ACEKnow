@@ -99,31 +99,41 @@ class HealthCodePage extends React.Component {
             </a>
             <h4>Documents You Need To Provide</h4>
             <p>
+              <li>First Name, and Last Name (for identify verification)</li>
               <li>Vaccination Proof (Either Chinese or English version is accepted)</li>
-              <li>Photo that You Hold a Government Issued ID</li>
-              <li>Your Residence Postal Code</li>
-              <li>Your WeChat ID</li>
-              <li>Your Phone Number</li>
-              <li>Your Email Address</li>
+              <li>Your Residence Postal Code (for neighborhood risk assessment)</li>
+              <li>Your WeChat ID (If applicable, for exposure contact)</li>
+              <li>Your Phone Number (for exposure contact)</li>
+              <li>Your Email Address (for exposure contact)</li>
               <li>Your Flight Ticket (If applicable)</li>
-              <li>Sign a Statement</li>
+              <li>Sign a Statement (as follows)
+                <p>
+                  I promise that I will voluntarily report to ACE Health if I get a positive COVID-19 test. I can report through
+                  sending email to ACE health email address (health@utace.club) or sending instant messages to ACE Wechat official account.
+                  I understand that this is for the safety for myself and others around me. ACE Health can disqualify my ACE Health Code if I do
+                  not follow the instruction and can ban me from ever applying a new ACE Health Code again.
+                </p>
+              </li>
             </p>
             <h4><a href={"mailto:health@utace.club?subject=Apply ACE Health Code&body=" + certify}>Apply Now</a></h4>
+
             <h4>Clubs, Organizations that use Health Code</h4>
             <p>
               <li>ACE Club</li>
             </p>
+
             <h4>Why Do We Need ACE Health Code</h4>
             <p>
               The purpose of the ACE Health Code is to ensure the safety of our staff members and all the people who attend
               our organized activities.
             </p>
+
             <h4>Privacy Concern Note</h4>
             <p>
               All your documents are for verification only. We will not share any of them mentioned in the list above
               with any third parties. We may keep your <strong>WeChat ID, Email and Phone Number</strong> in order to notify
-              any possible COVID exposure. We will <strong>delete</strong> your government issued id, and vaccination
-              proof as soon as the verification is complete.
+              any possible COVID exposure. We will <strong>delete</strong> vaccination proof as soon as the verification
+              is complete.
             </p>
 
             {/* Contact Us */}
@@ -136,6 +146,9 @@ class HealthCodePage extends React.Component {
                 <Card.Title>ACE WeChat</Card.Title>
               </Card>
             </div>
+
+            <h4>Organization Login Entry</h4>
+            <a href="/login">Login</a>
           </Container>
           <Footer/>
         </div>
@@ -179,7 +192,7 @@ class HealthCodePage extends React.Component {
             <Row>
               <Col xs={12} style={{textAlign: "center"}}>
                 <QRCode
-                  value={mainDomain + "api/getHealthQRCode/" + this.state.healthID + "/"}
+                  value={"api/verifyHealthQRCode/" + this.state.healthID + "/"}
                   size={300}
                   logoImage={ACEKnowlogo}
                   qrStyle={"dots"}

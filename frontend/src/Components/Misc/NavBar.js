@@ -4,7 +4,16 @@ import {Container, Nav, Navbar} from 'react-bootstrap'
 import '../../styles/NavBar.css'
 
 class NavBar extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
+        let logoutButton
+        if (this.props.isLoggedIn) {
+            logoutButton = <button className="ml-auto btn btn-outline-primary d-flex" onClick={this.props.logoutHandler}>Log out</button>
+        }
+
         return (
             <div className="container-fullwidth">
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
@@ -30,6 +39,7 @@ class NavBar extends React.Component {
                             <Nav className="ml-auto">
                                 <button className="ml-auto btn btn-outline-info d-flex" onClick={() => window.location.href = "/about"}>关于我们</button>
                                 {' '}
+                                {logoutButton}
                             </Nav>
                         </Navbar.Collapse>
                     </Container>
