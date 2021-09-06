@@ -1,9 +1,44 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+
 import random
 import base64
 import datetime
 
+
 # Create your models here.
+class CustomUser(AbstractUser):
+    organization = models.ForeignKey('Organization', on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        if self.organization is not None:
+            return self.username + '/' + self.organization.name
+        else:
+            return self.username + '/' + "NA"
+
+
+class Organization(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
+class Event(models.Model):
+    name = models.CharField(max_length=100)
+    organization = models.ForeignKey('Organization', on_delete=models.CASCADE)
+    eventDate = models.DateField()
+
+    def __str__(self):
+        return str(self.organization) + "/" + self.name
+
+
+class EventScan(models.Model):
+    event = models.ForeignKey('Event', on_delete=models.CASCADE)
+    person = models.ForeignKey('Person', on_delete=models.CASCADE)
+    scanTime = models.DateTimeField(auto_now=True)
+
+
 class Person(models.Model):
     CODE_COLOR = (
         ('G', 'Green'),
@@ -47,6 +82,9 @@ class Person(models.Model):
         self.revision += 1
 
         super().save(*args, **kwargs)  # Call the "real" save() method.
+
+    def __str__(self):
+        return self.last_name + ", " + self.first_name
 
     def countVaccineNum(self):
         Vaccines = {"P": 0, "M": 0, "A": 0, "J": 0, "S": 0, "Total": 0}
