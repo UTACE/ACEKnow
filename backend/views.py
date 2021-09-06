@@ -83,7 +83,9 @@ class verifyHealthQRCode(APIView):
         except Person.DoesNotExist:
             return Response(
                 data={
-                    "color": "U"
+                    "color": "U",
+                    "lastName": "Unknown",
+                    "firstName": "Unknown",
                 },
                 status=status.HTTP_200_OK
             )
@@ -91,7 +93,9 @@ class verifyHealthQRCode(APIView):
         code_color = res.healthCodeColor()
         return Response(
             data={
-                "color": code_color
+                "color": code_color,
+                "lastName": res.last_name,
+                "firstName": res.first_name,
             },
             status=status.HTTP_200_OK
         )
@@ -118,14 +122,6 @@ class getHealthQRCode(APIView):
             status=status.HTTP_200_OK
         )
 
-class verifyHealthQRCode(APIView):
-    def get(self, request, healthID):
-        return Response(
-            data={
-                "test": True
-            },
-            status=status.HTTP_200_OK
-        )
 
 # Create your views here.
 class FrontendAppView(View):
