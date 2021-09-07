@@ -6,7 +6,6 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, permissions, viewsets
 
-from .serializers import EventSerializer
 from .models import Event
 
 import os, json
@@ -94,7 +93,9 @@ class getHealthQRCode(APIView):
         code_color = res.healthCodeColor()
         return Response(
             data={
-                "color": code_color
+                "color": code_color["color"],
+                "message": code_color["message"],
+                "action": code_color["action"]
             },
             status=status.HTTP_200_OK
         )
@@ -139,7 +140,7 @@ class verifyHealthQRCode(APIView):
         code_color = res.healthCodeColor()
         return Response(
             data={
-                "color": code_color,
+                "color": code_color["color"],
                 "lastName": res.last_name,
                 "firstName": res.first_name,
             },

@@ -33,7 +33,11 @@ class HealthCodePage extends React.Component {
     const diff = (currentDate.getTime() - this.state.date.getTime()) / 1000
     if (diff > 900) {
       this.setState({
-        healthCodeStatus: {"color": "U"},
+        healthCodeStatus: {
+          "color": "U",
+          "message": "Health Code Expired",
+          "action": "Refresh the page"
+        },
         msg: 'Health Code Expired, Please Refresh'
       })
     } else {
@@ -218,6 +222,13 @@ class HealthCodePage extends React.Component {
             <Row>
               <Col xs={12} style={{textAlign: "center"}}>
                 {this.state.msg}
+              </Col>
+            </Row>
+            <hr/>
+            <Row>
+              <Col xs={12} >
+                <p>{this.state.healthCodeStatus.message}</p>
+                <p>{this.state.healthCodeStatus.action}</p>
               </Col>
             </Row>
             <MsgBox variant={"warning"} content={"If you get a green health code, it does not mean that you do not have the risk of exposed to COVID-19."}/>

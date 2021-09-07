@@ -10,11 +10,16 @@ class CustomUserAdmin(admin.ModelAdmin):
     list_display = ('username', 'organization', 'is_superuser', 'is_staff')
 
 admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.site_header = 'ACEKnow Admin'
 
 
 @admin.register(Person)
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ("first_name", "last_name", "manual_override", "healthCodeColor")
+    list_display = ("first_name", "last_name", "emaill_address", "manual_override")
+    search_fields = [
+        "wechat__exact",
+        "emaill_address__exact",
+    ]
 
 @admin.register(Organization)
 class CustomerAdmin(admin.ModelAdmin):

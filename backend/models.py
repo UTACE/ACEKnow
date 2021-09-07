@@ -52,8 +52,8 @@ class Person(models.Model):
     )
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    vaccination_type = models.CharField(max_length=30, blank=True)
-    last_dose_date = models.DateField(blank=True)
+    vaccination_type = models.CharField(max_length=30, null=True, blank=True)
+    last_dose_date = models.DateField(null=True, blank=True)
     wechat = models.CharField(max_length=30, unique=True)
     phone = models.CharField(max_length=30)
     neighborhood_id = models.CharField(max_length=5)
@@ -61,8 +61,8 @@ class Person(models.Model):
     flight_land_date = models.DateField(null=True, blank=True)
     manual_override = models.CharField(max_length=1, choices=CODE_COLOR, blank=True)
 
-    last_test_result = models.DateField(null=True, blank=True)
-    last_test_date = models.CharField(max_length=1, choices=TEST_RESULT, blank=True)
+    last_test_result = models.CharField(max_length=1, choices=TEST_RESULT, null=True, blank=True)
+    last_test_date = models.DateField(null=True, blank=True)
 
     revision = models.IntegerField(default=0)
     health_id = models.CharField(max_length=50, blank=True)
@@ -102,31 +102,78 @@ class Person(models.Model):
             Vaccines["Total"] += 1
         return Vaccines
 
+    def diffYellowandGreenCode(self, vaccines):
+        currDate = datetime.date.today()
+        if (vaccines["Total"] >= 3 or (vaccines["Total"] - vaccines["S"] >= 1 and vaccines["S"] >= 2)) and (
+                currDate - self.last_dose_date).days >= 14:
+            return {
+                "color": 'G',
+                "message": "You are fully-vaccinated.",
+                "action": "Thanks for being fully-vaccinated!"
+            }
+
+        if self.last_test_date is not None:
+            diff = currDate - self.last_test_date
+            if self.last_test_result is not None and self.last_test_result == 'N' and diff.days <= 3:
+                return {
+                    "color": 'G',
+                    "message": "You provided a negative COVID-19 test result within 3 days.",
+                    "action": "Try to get vaccinated!"
+                }
+
+        return {
+            "color": 'Y',
+            "message": "You are not fully-vaccinated.",
+            "action": "Please provide a negative PCR/antigen test result within 3 days to get a green health code. "
+                      "Send a test result proof to health@utace.club"
+        }
+
     def healthCodeColor(self):
+        # If positive test last time, Return Red Immediately
+        if self.last_test_result is not None and self.last_test_result == 'P':
+            return {
+                "color": 'R',
+                "message": "You were tested COVID-19 positive before.",
+                "action": "Please provide a negative PCR test result 14 days after your last positive COVID-19 test. "
+                          "Send a test result proof to health@utace.club"
+            }
+
         # Return Overrode Color if available
         if self.manual_override != "":
             return self.manual_override
 
-        vaccines = self.countVaccineNum()
+        currDate = datetime.date.today()
+        vaccines = {"P": 0, "M": 0, "A": 0, "J": 0, "S": 0, "Total": 0}
+        if self.vaccination_type != None:
+            vaccines = self.countVaccineNum()
 
-        if vaccines["P"] >= 2 or vaccines["M"] >= 2 or vaccines["A"] >= 2 or \
-                vaccines["P"] + vaccines["M"] + vaccines["A"] >= 2:
-            return 'G'
-        elif vaccines["J"] >= 1:
-            return 'G'
+        # Fully vaccinated (Canada Approved) gives green code
+        if (vaccines["P"] >= 2 or vaccines["M"] >= 2 or vaccines["A"] >= 2 or
+            vaccines["P"] + vaccines["M"] + vaccines["A"] >= 2) and (currDate - self.last_dose_date).days >= 14:
+            return {
+                "color": 'G',
+                "message": "You are fully-vaccinated.",
+                "action": "Thanks for being fully-vaccinated!"
+            }
+        elif vaccines["J"] >= 1 and (currDate - self.last_dose_date).days >= 14:
+            return {
+                "color": 'G',
+                "message": "You are fully-vaccinated.",
+                "action": "Thanks for being fully-vaccinated!"
+            }
 
         if self.flight_land_date is None:
-            if vaccines["Total"] >= 2:
-                return 'G'
+            # If no international travel
+            return self.diffYellowandGreenCode(vaccines)
 
-            return 'Y'
-
-        currDate = datetime.date.today()
+        # If has international travel
         diff = currDate - self.flight_land_date
 
         if diff.days < 14:
-            return 'R'
+            return {
+                "color": 'R',
+                "message": "You just had an international travel.",
+                "action": "Complete your 14 days mandatory quarantine."
+            }
         else:
-            if vaccines["Total"] >= 2:
-                return 'G'
-            return 'Y'
+            return self.diffYellowandGreenCode(vaccines)
