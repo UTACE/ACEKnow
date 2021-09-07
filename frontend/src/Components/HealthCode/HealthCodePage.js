@@ -73,7 +73,7 @@ class HealthCodePage extends React.Component {
       "Phone Number:%0d%0a" +
       "Email Address:%0d%0a" +
       "Flight Ticket (If applicable):%0d%0a" +
-      "[**Please include Vaccination Proof(All shots) and Photo that You Hold a Government Issued ID in the attachment**]%0d%0a" +
+      "[**Please include Vaccination Proof(All shots)**]%0d%0a" +
       "%0d%0a" +
       "==============================================%0d%0a" +
       "%0d%0a" +
