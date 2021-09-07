@@ -4,7 +4,7 @@ import { Redirect } from 'react-router'
 
 import NavBar from "./../Misc/NavBar";
 import Footer from "./../HomePage/Footer";
-import {Row, Col, Container, Button} from "react-bootstrap";
+import {Row, Col, Container, Button, DropdownButton, Dropdown} from "react-bootstrap";
 import { CheckCircle, ExclamationCircle, XCircle, QuestionCircle } from 'react-bootstrap-icons';
 
 class VerifyHealthCodePage extends React.Component {
@@ -13,9 +13,24 @@ class VerifyHealthCodePage extends React.Component {
     this.state = {
       scanned: false,
       result: 'No result',
-      healthCodeRes: {color: "U"}
+      healthCodeRes: {color: "U"},
+      eventList: [],
+      selected: 0,
     }
     console.log(props.isLoggedIn)
+  }
+
+  componentDidMount() {
+    var that = this
+    if (this.props.isLoggedIn) {
+      this.props.requestHandler("GET", "api/getEventList/")
+        .then(response => response.json())
+        .then(response => {
+          that.setState({
+            eventList: response
+          })
+      })
+    }
   }
 
   handleScan = data => {
@@ -55,17 +70,35 @@ class VerifyHealthCodePage extends React.Component {
     let body
 
     if (!this.state.scanned) {
-       body =
-         <Row>
-          <Col>
-            <QrReader
-              delay={100}
-              onError={this.handleError}
-              onScan={this.handleScan}
-              style={{ width: '100%', maxWidth: "600px",}}
-            />
-          </Col>
-         </Row>
+
+
+      body =
+        <>
+           <Row>
+             <Col>
+               <h4>Select Event for The Scan</h4>
+             </Col>
+           </Row>
+           <Row>
+            <Col>
+             <DropdownButton id="dropdown-item-button" title="Choose an event">
+              <Dropdown.Item as="button">Action</Dropdown.Item>
+              <Dropdown.Item as="button">Another action</Dropdown.Item>
+              <Dropdown.Item as="button">Something else</Dropdown.Item>
+             </DropdownButton>
+            </Col>
+           </Row>
+           <Row style={{marginTop: "20px"}}>
+            <Col>
+              <QrReader
+                delay={100}
+                onError={this.handleError}
+                onScan={this.handleScan}
+                style={{ width: '100%', maxWidth: "600px",}}
+              />
+            </Col>
+           </Row>
+        </>
     } else {
       let color, variant, message, detailedMessage
       if (this.state.healthCodeRes.color === "G") {

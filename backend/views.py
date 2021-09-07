@@ -4,11 +4,15 @@ from django.http import HttpResponse
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status, permissions
+from rest_framework import status, permissions, viewsets
+
+from .serializers import EventSerializer
+from .models import Event
 
 import os, json
 
 from rest_framework_simplejwt.tokens import RefreshToken
+
 
 from .models import Person
 
@@ -36,11 +40,9 @@ class LogoutView(APIView):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-# Create your views here.
 class GetUserInfoAPIView(APIView):
     def get(self, request):
         user = request.user.username
-        print(user)
         return Response(data={
             "username": request.user.username
         },
@@ -74,31 +76,6 @@ class GetNeighborhoodDataAPIView(APIView):
                 },
                 status=status.HTTP_200_OK
             )
-
-class verifyHealthQRCode(APIView):
-    def get(self, request, healthID):
-        res = None
-        try:
-            res = Person.objects.get(health_id=healthID)
-        except Person.DoesNotExist:
-            return Response(
-                data={
-                    "color": "U",
-                    "lastName": "Unknown",
-                    "firstName": "Unknown",
-                },
-                status=status.HTTP_200_OK
-            )
-
-        code_color = res.healthCodeColor()
-        return Response(
-            data={
-                "color": code_color,
-                "lastName": res.last_name,
-                "firstName": res.first_name,
-            },
-            status=status.HTTP_200_OK
-        )
 
 class getHealthQRCode(APIView):
     permission_classes = (permissions.AllowAny,)
@@ -141,3 +118,45 @@ class FrontendAppView(View):
                 """,
                 status=501,
             )
+
+
+## ALL AUTHENTICATION REQUIRED views below
+class verifyHealthQRCode(APIView):
+    def get(self, request, healthID):
+        res = None
+        try:
+            res = Person.objects.get(health_id=healthID)
+        except Person.DoesNotExist:
+            return Response(
+                data={
+                    "color": "U",
+                    "lastName": "Unknown",
+                    "firstName": "Unknown",
+                },
+                status=status.HTTP_200_OK
+            )
+
+        code_color = res.healthCodeColor()
+        return Response(
+            data={
+                "color": code_color,
+                "lastName": res.last_name,
+                "firstName": res.first_name,
+            },
+            status=status.HTTP_200_OK
+        )
+
+class getEventList(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request):
+        eventsQuery = Event.objects.all().filter(organization=request.user.organization)
+        eventsName = [{"pk": event.pk, "name": event.name} for event in eventsQuery]
+        return Response(eventsName)
+
+class logScanRecord(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request):
+        # {"HealthID" : "xxxx", "eventPk": idx}
+        return Response(None)
