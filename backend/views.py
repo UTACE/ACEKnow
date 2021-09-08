@@ -12,11 +12,12 @@ import os, json
 
 from rest_framework_simplejwt.tokens import RefreshToken
 
-
 from .models import Person
+
 
 class GetDebugInfoAPIView(APIView):
     permission_classes = (permissions.AllowAny,)
+
     def get(self, request):
         return Response(
             data={
@@ -24,6 +25,7 @@ class GetDebugInfoAPIView(APIView):
             },
             status=status.HTTP_200_OK
         )
+
 
 class LogoutView(APIView):
     permission_classes = (permissions.IsAuthenticated,)
@@ -50,6 +52,7 @@ class GetUserInfoAPIView(APIView):
 
 class GetCovidDataAPIView(APIView):
     permission_classes = (permissions.AllowAny,)
+
     def get(self, request):
         with open('backend/covid_data/covid_data.json', 'r') as covidDataFile:
             covidData = covidDataFile.read()
@@ -62,8 +65,10 @@ class GetCovidDataAPIView(APIView):
                 status=status.HTTP_200_OK
             )
 
+
 class GetNeighborhoodDataAPIView(APIView):
     permission_classes = (permissions.AllowAny,)
+
     def get(self, request):
         with open('backend/covid_data/neighborhood.json', 'r') as neighborhoodDataFile:
             neighborhoodData = neighborhoodDataFile.read()
@@ -76,8 +81,10 @@ class GetNeighborhoodDataAPIView(APIView):
                 status=status.HTTP_200_OK
             )
 
+
 class getHealthQRCode(APIView):
     permission_classes = (permissions.AllowAny,)
+
     def get(self, request, healthID):
         res = None
         try:
@@ -104,6 +111,7 @@ class getHealthQRCode(APIView):
 # Create your views here.
 class FrontendAppView(View):
     permission_classes = (permissions.AllowAny,)
+
     def get(self, request):
         print(os.path.join(settings.REACT_APP_DIR, 'build', 'index.html'))
         try:
@@ -147,6 +155,7 @@ class verifyHealthQRCode(APIView):
             status=status.HTTP_200_OK
         )
 
+
 class getEventList(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
@@ -155,9 +164,14 @@ class getEventList(APIView):
         eventsName = [{"pk": event.pk, "name": event.name} for event in eventsQuery]
         return Response(eventsName)
 
+
 class logScanRecord(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
         # {"HealthID" : "xxxx", "eventPk": idx}
-        return Response(None)
+        healthID = Person.health_id
+        eventPk = Event.pk
+        firstName = Person.first_name
+        lastName = Person.last_name
+        return {'healthID': healthID, 'eventPk': eventPk, 'firstName' : firstName, 'lastName' : lastName}
