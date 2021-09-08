@@ -165,7 +165,7 @@ class HealthCodePage extends React.Component {
       variant = "success"
       message = "Green 绿色"
     } else if (this.state.healthCodeStatus.color === "Y") {
-      color = "#FFCC00"
+      color = "#EEBB00"
       variant = "warning"
       message = "Yellow 黄色"
     } else if (this.state.healthCodeStatus.color === "R") {
