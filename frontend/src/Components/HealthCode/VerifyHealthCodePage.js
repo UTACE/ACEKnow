@@ -14,23 +14,28 @@ class VerifyHealthCodePage extends React.Component {
     this.state = {
       scanned: false,
       result: 'No result',
+      healthID: '',
       healthCodeRes: {color: "U"},
-      eventList: ["Orientation"],
+
+      eventListFetched: false,
+      eventList: [],
       selected: "Choose An Event",
+      selectedIdx: -1,
     }
-    console.log(props.isLoggedIn)
   }
 
-  componentDidMount() {
-    var that = this
+  fetchEventList() {
+    let that = this
+
     if (this.props.isLoggedIn) {
-      // this.props.requestHandler("GET", "api/getEventList/")
-      //   .then(response => response.json())
-      //   .then(response => {
-      //     that.setState({
-      //       eventList: response
-      //     })
-      // })
+      this.props.requestHandler("GET", "api/getEventList/")
+        .then(response => response.json())
+        .then(response => {
+          that.setState({
+            eventListFetched: true,
+            eventList: response
+          })
+      })
     }
   }
 
@@ -39,7 +44,8 @@ class VerifyHealthCodePage extends React.Component {
     if (data) {
       this.setState({
         scanned: true,
-        result: data
+        result: data,
+        healthID: data.substring("api/verifyHealthQRCode/".length, data.length - 1)
       })
 
       this.props.requestHandler("GET", data)
@@ -56,15 +62,34 @@ class VerifyHealthCodePage extends React.Component {
     console.error(err)
   }
 
-  scanNext = () => {
+  scanNext = (isRegister, isOverride, healthCodeColor) => {
+    let that = this
     this.setState({
       scanned: false
     })
+
+    if (isRegister) {
+      this.props.requestHandler("POST", "api/logScanRecord/", {
+        "eventPk": this.state.eventList[this.state.selectedIdx].pk,
+        "healthID": this.state.healthID,
+        "isOverride": isOverride,
+        "healthCodeColor": healthCodeColor
+      })
+        .then(response => response.json())
+        .then(response => {
+          that.setState({
+            healthCodeRes: response
+          })
+        })
+    }
   }
 
-  handleSelect(e){
-    console.log(e)
-    this.setState({selected: e})
+  handleSelect(idx){
+    this.setState({
+      selected: this.state.eventList[idx].name,
+      selectedIdx: idx,
+      eventListFetched: true,
+    })
   }
 
   render() {
@@ -73,28 +98,17 @@ class VerifyHealthCodePage extends React.Component {
     } else if (!this.props.isLoggedInChecked) {
       return <p>Authenticating...</p>
     }
+
+    if (!this.state.eventListFetched) {this.fetchEventList()}
+
+
     let body
 
     if (!this.state.scanned) {
+      let qrCode
 
-
-      body =
-        <>
-           <Row>
-             <Col>
-               <h4>Select Event for The Scan</h4>
-             </Col>
-           </Row>
-           <Row>
-            <Col>
-             <DropdownButton id="dropdown-item-button" title={this.state.selected} variant="secondary" menuVariant="dark">
-             {this.state.eventList.map((event)=>(
-               <Dropdown.Item className="dropdown-eventlist" as="button" onClick={(e)=> this.handleSelect(e.target.textContent)}>{event}</Dropdown.Item>
-             ))}
-             </DropdownButton>
-            </Col>
-           </Row>
-           <Row style={{marginTop: "20px"}}>
+      if (this.state.selectedIdx !== -1) {
+        qrCode = <Row style={{marginTop: "20px"}}>
             <Col>
               <QrReader
                 className="healthCodeScanner"
@@ -105,29 +119,87 @@ class VerifyHealthCodePage extends React.Component {
               />
             </Col>
            </Row>
+      }
+
+      body =
+        <>
+           <Row>
+             <Col>
+               <h4>Select Event for The Scan</h4>
+             </Col>
+           </Row>
+           <Row>
+            <Col>
+             <DropdownButton id="dropdown-item-button" title={this.state.selected} variant="secondary">
+             {this.state.eventList.map((event, idx)=>(
+               <Dropdown.Item className="dropdown-eventlist" as="button"
+                              onClick={()=> this.handleSelect(idx)} key={"eventDropdown_" + idx}>
+                 {event.name}
+               </Dropdown.Item>
+             ))}
+             </DropdownButton>
+            </Col>
+           </Row>
+          {qrCode}
         </>
     } else {
-      let color, variant, message, alertVariant, detailedMessage
+      let color, variant, message, alertVariant
+      let actionButton = []
       if (this.state.healthCodeRes.color === "G") {
         color = "#00CC00"
         variant = <CheckCircle style={{fontSize: "64px"}}/>
         message = "Green 绿色"
         alertVariant = "success"
+        actionButton.push(
+          <Col key={"green_default"}>
+            <Button variant="success" className="scan-next" onClick={()=> this.scanNext(true, false, 'G')}>Register for this event, Scan next</Button>
+          </Col>
+        )
+        actionButton.push(
+          <Col key={"green_skip"}>
+            <Button variant="secondary" className="scan-next" onClick={()=> this.scanNext(false, false, 'G')}>Skip for this event, Scan next</Button>
+          </Col>
+        )
       } else if (this.state.healthCodeRes.color === "Y") {
         color = "#FFCC00"
         variant = <ExclamationCircle style={{fontSize: "64px"}}/>
         message = "Yellow 黄色"
         alertVariant = "warning"
+        actionButton.push(
+          <Col key={"yellow_default"}>
+            <Button variant="primary" className="scan-next" onClick={()=> this.scanNext(false, false, 'Y')}>Do NOT register, Scan next</Button>
+          </Col>
+        )
+        actionButton.push(
+          <Col key={"yellow_override"}>
+            <Button variant="warning" className="scan-next" onClick={()=> this.scanNext(true, true, 'Y')}>Override requirement to register, Scan next</Button>
+          </Col>
+        )
       } else if (this.state.healthCodeRes.color === "R") {
         color = "#FF0000"
         variant = <XCircle style={{fontSize: "64px"}}/>
         message = "Red 红色"
         alertVariant = "danger"
+        actionButton.push(
+          <Col key={"red_default"}>
+            <Button variant="primary" className="scan-next" onClick={()=> this.scanNext(false, false, 'R')}>Do NOT register, Scan next</Button>
+          </Col>
+        )
+        actionButton.push(
+          <Col key={"red_override"}>
+            <Button variant="danger" className="scan-next" onClick={()=> this.scanNext(true, true, 'R')}>Override requirement to register, Scan next</Button>
+          </Col>
+        )
       } else if (this.state.healthCodeRes.color === "U") {
         color = "#555555"
         variant = <QuestionCircle style={{fontSize: "64px"}}/>
         message = "Gray 灰色"
         alertVariant = "dark"
+        actionButton.push(
+          <Col id={"gray_default"}>
+            <Button variant="primary" className="scan-next" onClick={()=> this.scanNext(false, false, 'U')}>Something is wrong, Scan next</Button>
+          </Col>
+        )
       }
 
       body =
@@ -139,16 +211,8 @@ class VerifyHealthCodePage extends React.Component {
             <Row>
               <Col style={{textAlign: "center"}}><strong>{this.state.healthCodeRes.lastName + ", " + this.state.healthCodeRes.firstName}</strong></Col>
             </Row>
-            <Row className="scan-next-btns">
-              <Col>
-                <Button variant="secondary" className="scan-next" onClick={this.scanNext}>Register for this event, Scan next</Button>
-              </Col>
-              <Col>
-                <Button variant="secondary" className="scan-next" onClick={this.scanNext}>Override requirement to register, Scan next</Button>
-              </Col>
-              <Col>
-                <Button variant="secondary" className="scan-next" onClick={this.scanNext}>Do not register, Scan next</Button>
-              </Col>
+            <Row className="scan-next-btns" style={{marginTop: "20px"}}>
+              {actionButton}
             </Row>
           </div>
         </div>

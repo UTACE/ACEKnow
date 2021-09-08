@@ -31,4 +31,9 @@ class CustomerAdmin(admin.ModelAdmin):
 
 @admin.register(EventScan)
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ("event", "person", "scanTime")
+    list_display = ("event", "person", "staff", "healthCodeColor", "override", "scanTime")
+    list_filter = ("override", "event__name")
+
+    search_fields = [
+        "event__name__exact",
+    ]

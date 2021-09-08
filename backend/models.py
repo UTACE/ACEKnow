@@ -5,6 +5,12 @@ import random
 import base64
 import datetime
 
+CODE_COLOR = (
+        ('G', 'Green'),
+        ('Y', 'Yellow'),
+        ('R', 'Red'),
+        ('U', 'Unknown')
+    )
 
 # Create your models here.
 class CustomUser(AbstractUser):
@@ -36,16 +42,14 @@ class Event(models.Model):
 class EventScan(models.Model):
     event = models.ForeignKey('Event', on_delete=models.CASCADE)
     person = models.ForeignKey('Person', on_delete=models.CASCADE)
+    staff = models.ForeignKey('CustomUser', on_delete=models.CASCADE)
+    healthCodeColor = models.CharField(max_length=1, choices=CODE_COLOR)
+    override = models.BooleanField()
     scanTime = models.DateTimeField(auto_now=True)
 
 
 class Person(models.Model):
-    CODE_COLOR = (
-        ('G', 'Green'),
-        ('Y', 'Yellow'),
-        ('R', 'Red'),
-        ('U', 'Unknown')
-    )
+
     TEST_RESULT = (
         ('N', 'Negative'),
         ('P', 'Positive')
@@ -140,7 +144,11 @@ class Person(models.Model):
 
         # Return Overrode Color if available
         if self.manual_override != "":
-            return self.manual_override
+            return {
+                "color": self.manual_override,
+                "message": "Your result was manually overrode by the ACE health.",
+                "action": "Contact ACE health official email if you think your health code color is incorrect."
+            }
 
         currDate = datetime.date.today()
         vaccines = {"P": 0, "M": 0, "A": 0, "J": 0, "S": 0, "Total": 0}

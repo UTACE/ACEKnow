@@ -4,9 +4,9 @@ from django.http import HttpResponse
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status, permissions, viewsets
+from rest_framework import status, permissions
 
-from .models import Event
+from .models import Event, EventScan
 
 import os, json
 
@@ -92,7 +92,9 @@ class getHealthQRCode(APIView):
         except Person.DoesNotExist:
             return Response(
                 data={
-                    "color": "U"
+                    "color": 'U',
+                    "message": "User doesn't exist.",
+                    "action": "Please contact ACE health official email."
                 },
                 status=status.HTTP_200_OK
             )
@@ -170,8 +172,23 @@ class logScanRecord(APIView):
 
     def post(self, request):
         # {"HealthID" : "xxxx", "eventPk": idx}
-        healthID = Person.health_id
-        eventPk = Event.pk
-        firstName = Person.first_name
-        lastName = Person.last_name
-        return {'healthID': healthID, 'eventPk': eventPk, 'firstName' : firstName, 'lastName' : lastName}
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
+        health_id = body["healthID"]
+        eventPk = body["eventPk"]
+        isOverride = body["isOverride"]
+        healthCodeColor = body['healthCodeColor']
+
+        selectedEvent = Event.objects.all().get(pk=eventPk)
+        selectedPerson = Person.objects.all().get(health_id=health_id)
+        staff = request.user
+
+        newScan = EventScan(event=selectedEvent, person=selectedPerson, staff=staff, override=isOverride, healthCodeColor=healthCodeColor)
+        newScan.save()
+
+        return Response(
+            data={
+                "res": True,
+            },
+            status=status.HTTP_200_OK
+        )
