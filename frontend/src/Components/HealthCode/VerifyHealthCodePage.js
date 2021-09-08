@@ -42,6 +42,20 @@ class VerifyHealthCodePage extends React.Component {
   handleScan = data => {
     var that = this
     if (data) {
+      if (data.indexOf("api/verifyHealthQRCode/") !== 0) {
+        this.setState({
+          scanned: true,
+          result: "Unrecognized QR Code",
+          healthID: "-",
+          healthCodeRes: {
+            "color": 'U',
+            "lastName": 'Unknown',
+            "firstName": 'Unknown',
+          }
+        })
+        return
+      }
+
       this.setState({
         scanned: true,
         result: data,
