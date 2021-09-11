@@ -58,11 +58,11 @@ class VerifyHealthCodePage extends React.Component {
 
       this.setState({
         scanned: true,
-        result: data,
-        healthID: data.substring("api/verifyHealthQRCode/".length, data.length - 1)
+        result: "api/verifyHealthQRCode/" + data + "/",
+        healthID: data
       })
 
-      this.props.requestHandler("GET", data)
+      this.props.requestHandler("GET", "api/verifyHealthQRCode/" + data + "/")
         .then(response => response.json())
         .then(response => {
           that.setState({

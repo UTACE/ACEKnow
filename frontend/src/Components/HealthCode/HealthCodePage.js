@@ -196,10 +196,11 @@ class HealthCodePage extends React.Component {
             <Row>
               <Col xs={12} style={{textAlign: "center"}}>
                 <QRCode
-                  value={"api/verifyHealthQRCode/" + this.state.healthID + "/"}
+                  value={this.state.healthID}
                   size={300}
                   logoImage={ACEKnowlogo}
-                  qrStyle={"dots"}
+                  qrStyle={"squares"}
+                  logoOpacity={0.7}
                   fgColor={color}
                   eyeRadius={[
                       [10, 10, 0, 10], // top/left eye

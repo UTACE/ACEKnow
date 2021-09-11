@@ -15,11 +15,13 @@ admin.site.site_header = 'ACEKnow Admin'
 
 @admin.register(Person)
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ("first_name", "last_name", "emaill_address", "manual_override")
+    list_display = ("first_name", "last_name", "emaill_address", "vaccination_type", "manual_override")
     search_fields = [
         "wechat__exact",
         "emaill_address__exact",
     ]
+
+    list_filter = ["vaccination_type", ]
 
 @admin.register(Organization)
 class CustomerAdmin(admin.ModelAdmin):
